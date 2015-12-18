@@ -1,0 +1,298 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Seminario de Investigación]{Ensamble de Modelos Sintácticos y Semánticos para la Evaluación Automática de Ensayos} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Diego Palma S.} % Your name
+\institute[UDEC] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+Universidad de Concepción \\ % Your institution for the title page
+\medskip
+\textit{dipalma@udec.cl} % Your email address
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}
+\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+\section{Introducción} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+%------------------------------------------------
+\begin{frame}
+\frametitle{Introducción}
+\begin{itemize}
+\item Un tema debatido en la actualidad es la capacidad de redacción y comprensión que debiesen tener las personas que egresan del sistema escolar.
+\item Ideas buenas podrían ser opacadas debido a que no son bien expresadas en un documento escrito.
+\item Un buen texto presenta dos características importantes: {\em coherencia} y {\em cohesión}.
+\item Para ayudar a propender el aumento de capacidades para formular adecuadamente las ideas en un texto, es necesario ``practicar''.
+\end{itemize}
+\end{frame}
+%\subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+\begin{frame}
+\frametitle{Introducción}
+\begin{itemize}
+\item Un especialista humano entrega retroalimentación. Se requiere pasar por procesos de corrección y evaluación.
+\item Sin embargo, evaluar un texto es una tarea costosa en términos de tiempo y personal requerido.
+\item Para darle solución a este problema, se han propuesto métodos de evaluación automática de ensayos.
+\item Los métodos tienen varias críticas relacionadas a cómo se evalúan los textos, pues no se consideran características que hacen que un texto sea ``bueno''.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Hipótesis}
+\begin{block}{Hipótesis}
+Un modelo que considera características sintácticas y semánticas para evaluar coherencia textual es más efectivo para la tarea de evaluación automática de ensayos en comparación a modelos que utilicen medidas superficiales de estas características.
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Objetivos}
+\begin{block}{Objetivo General}
+Desarrollar un modelo computacional que permita evaluar automáticamente textos en forma de ensayos considerando aspectos de coherencia textual.
+\end{block}
+
+\begin{block}{Objetivos Específicos}
+\begin{itemize}
+\item Establecer una representación de textos con la que se pueda modelar la sintáctica y semántica del contenido textual.
+\item Analizar estrategias de evaluación automática de ensayos.
+\item Desarrollar una estrategia que considere coherencia a nivel de contenido y sintáctica.
+\item Crear un prototipo para realizar las pruebas.
+\item Evaluar el modelo propuesto.
+\end{itemize}
+\end{block}
+\end{frame}
+
+%------------------------------------------------
+\section{Trabajo Relacionado}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Trabajo Relacionado}
+
+\begin{block}{P.E.G}
+$Puntaje = \beta_0 + \sum_{i=1}^{n}\beta_i P_i$
+\end{block}
+
+\begin{itemize}
+\item Modela un ensayo como una combinación lineal de características superficiales (Proxes) que representan características intrínsicas de un texto.
+\item Utiliza un conjunto de ensayos previamente evaluados, y se ajusta mediante regresión lineal multivariable para encontrar la ponderación de cada característica.
+
+\item Críticas
+\begin{itemize}
+\item No considera orden de las palabras. (El arbol está seco $\neq$ seco arbol El está)
+\item Medidas indirectas, lo hacen susceptible a engaños (ej: Alargar un ensayo).
+\end{itemize}
+
+\end{itemize}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Trabajo Relacionado}
+
+\begin{block}{Modelos de Espacio Vectorial}
+$d = (w_1, w_2, ..., w_n)$
+\end{block}
+
+\begin{itemize}
+\item Modela un ensayo como un vector donde cada componente $\in$ vocabulario a considerar en el CORPUS y su valor es la frecuencia de aparición en el ensayo $d$
+\item Se pueden utilizar medidas de similaridad para evaluar ensayos, a partir de ensayos pre-evaluados.
+
+\begin{block}{Similaridad Coseno}
+$cos(d_i, d_j) = \frac{d_i\cdot d_j}{\|d_i\| \|d_j\|}$
+\end{block}
+
+\item Críticas
+\begin{itemize}
+\item No considera orden de las palabras.
+\item Depende Fuertemente de la Ocurrencia de términos. Ensayos coherentes podrían ser mal evaluados.
+\end{itemize}
+
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Trabajo Relacionado}
+
+La evaluación automática de ensayos también se ha tratado como un problema de clasificación. Recientes investigaciones han propuesto:
+
+\begin{itemize}
+	\item Utilizar distintas técnicas de aprendizaje supervisado.
+	\item Agregar características más directas para medir coherencia.
+	\item Utilizar técnicas de aprendizaje no supervisado.
+\end{itemize}
+
+Algunos problemas:
+
+\begin{itemize}
+\item Interpretabilidad del modelo.
+\item Medidas basadas en modelos de espacio vectorial (se arrastran problemas como los anteriores)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Trabajo Relacionado}
+
+\begin{itemize}
+	\item Otros modelos de evaluación de coherencia textual están basados en análisis de discurso.
+	\item Teoría de centrado intenta caracterizar textos que pudiesen considerarse coherentes basándose en la forma en que se introducen y discuten {\em entidades de discurso} (usualmente nombres, descripciones, pronombres).
+	\item Se puede analizar coherencia textual considerando la sintáctica del texto.
+	\item También se puede considerar la semántica utilizando el modelo de {\em cadenas léxicas} (secuencia de palabras relacionadas que abarcan una unidad textual, como por ejemplo: Roma $\rightarrow$ capital $\rightarrow$ ciudad). Textos coherentes tendrán una alta concentración de estas cadenas.
+\end{itemize}
+
+\end{frame}
+
+\section{Metodología de Experimentación para Validar Hipótesis}
+\begin{frame}
+\frametitle{Metodología de Experimentación para Validar Hipótesis}
+\begin{enumerate}
+\item Se realizará una revisión bibliográfica de métodos que consideren evaluar coherencia a nivel
+de discurso.
+\item Se recopilarán datos de ensayos evaluados por humanos, los cuales se limpiarán y prepararán
+para utilizarlos en el modelo propuesto. Los datos a utilizar serán los proporcionados por Kaggle\footnote{http://www.kaggle.com/c/asap-aes/data} en la competencia {\em Automatic Essay Scoring}.
+\item El diseño del método de evaluación deberá considerar lo propuesto en la hipótesis, es
+decir, características sintácticas y semánticas del ensayo a evaluar.
+\item La implementación del prototipo se realizará con herramientas existentes: como paquetes de NLP y text mining en python, R.
+\end{enumerate}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Metodología de Experimentación para Validar Hipótesis}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item Para evaluar el modelo propuesto y luego contrastarlo con otros modelos en la literatura,
+se utilizarán las siguientes métricas:
+\begin{itemize}
+	\item {\em Exact Agreement}: Se define como el porcentaje de ensayos que fueron calificados igualmente
+por el evaluador humano y la técnica computacional.
+	\item {\em Adjacent Agreement}: Es una medida que se define como el porcentaje de ensayos que fueron evaluados igual por el evaluador humano y la técnica computacional o que difiere en a lo más 1 punto (de calificación).
+	\item {\em Quadratic Weighted Kappa}: es una métrica de error, que mide el grado de acuerdo entre dos evaluadores.
+\end{itemize}
+\end{enumerate}
+
+\end{frame}
+
+\section{Plan de Trabajo}
+\begin{frame}
+\frametitle{Plan de Trabajo}
+\begin{itemize}
+\item Revisión bibliográfica de métodos de evaluación de coherencia textual, basados en teoría de discurso: 1 Enero - 1 Marzo.
+\item Diseño de un método automático para evaluar ensayos: 7 Marzo - 7 Mayo.
+\item Ensamble de modelos que consideren sintáctica y semántica: 15 Mayo - 5 Junio
+\item Crear prototipo para realizar pruebas 10 Mayo - 10 Junio.
+\item Evaluar rendimiento del modelo y comparar con modelos del estado del arte: 15 Junio - 1
+Julio.
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\Huge{\centerline{Fin}}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\end{document} 

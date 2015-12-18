@@ -1,0 +1,324 @@
+\documentclass{article}
+
+\usepackage[latin1]{inputenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage[dvips]{graphicx}
+\usepackage{epsfig}
+\usepackage{enumerate}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage[section]{placeins}
+\usepackage{amsfonts}
+\usepackage{caption}
+\usepackage{url}
+\usepackage{amsmath,esint}
+\usepackage[a4paper]{geometry}
+%\usepackage[pass,paperwidth=8.5in,paperheight=11in]{geometry}
+
+\title{Ensamble de Modelos Sintácticos y Semánticos para la Evaluación Automática de Textos en forma de Ensayos}
+\author{Alumno: Diego Andrés Palma Sánchez\\Profesor: John Atkinson}
+\date{Noviembre de 2015}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+
+\section{Introducción}
+La escritura es una habilidad que se adquiere a temprana edad, pues se nos enseñan las letras, las palabras, las oraciones, etc. Sin embargo, estas habilidades no se desarrollan por completo, pues lo que se enseña no es suficiente para expresar claramente lo que se piensa, y como consecuencia nace la necesidad de saber redactar y/o de exponer de manera coherente y precisa las ideas.
+
+En la actualidad, un tema debatido es la capacidad de redacción y comprensión que debiesen tener las personas que egresan del sistema escolar \cite{t21}\cite{t22}. La discusión generada aborda temas como la carencia en el manejo del lenguaje escrito que evidencian alumnos en todos los niveles educacionales y estratos socioculturales \cite{t23}.
+
+Este problema tiene consecuencias relevantes como por ejemplo reprobar un examen porque las ideas expresadas no están claras o escritas en forma coherente. Por otro lado, una persona podría perder una oportunidad laboral debido a una mala redacción de la solicitud; en síntesis, ideas que podrían ser bastante buenas e innovadoras podrían llegar a verse opacadas o, peor aún, rechazadas por el receptor al ser comunicadas de manera defectuosa.
+
+Un texto se produce en función de un lector, con el objetivo de lograr comprensión sobre un tema que se busca comunicar. Debido a esto, al establecer las relaciones entre oraciones e ideas planteadas, se deben aplicar principios que aseguren un significado claro del tema que se desarrolla y un dominio preciso de los recursos lingüísticos relacionados con {\em coherencia} y {\em cohesión} \cite{t32}.
+
+La {\em coherencia textual} es una propiedad del texto que define las conexiones semánticas entre unidades de información. Esta conexión se da tanto localmente a nivel de oraciones adyacentes, como globalmente (texto completo). Por otro lado, la {\em cohesión} constituye un conjunto de recursos léxicos y gramaticales que enlazan una parte del texto con otra, y por esto, es uno de los factores fundamentales para determinar si un fragmento de discurso pueda ser considerado un texto y no una sucesión de oraciones inconexas.
+
+Luego, una forma de propender al aumento de las capacidades para formular adecuadamente las ideas en un texto es ``practicar'', realizando producciones textuales para que sean evaluadas y corregidas por un especialista humano y, a través de sucesivas repeticiones de este proceso perfeccionar la calidad del trabajo. El primer punto a considerar en este enfoque es la distinción entre corrección y evaluación \cite{t18}.
+
+\begin{itemize}
+	\item {\bf Corrección}: Ayuda a un estudiante a mejorar sus habilidades de escritura mediante la revisión de sus trabajos. El objetivo es corregir errores y avanzar en el manejo de estructuras y recursos necesarios para elaborar textos de mejor calidad y que expresen mejor las ideas.
+	\item {\bf Evaluación:} Busca determinar el nivel de competencias que tiene un estudiante para realizar un escrito, según un marco de evaluación definido.
+\end{itemize}
+
+Debe tenerse en cuenta que la evaluación de textos es una tarea costosa en términos de tiempo y personal requerido. Además, no existe otro modo que evalúe mejor el aprendizaje de un estudiante que no sea mediante la expresión de sus ideas a través de un escrito, por lo que hay una necesidad de repetir el ejercicio constantemente en el tiempo. Por otro lado, el número de estudiantes ha ido creciendo con el paso del tiempo, por lo que los costos de esta labor se vuelven abrumadores \cite{t10}.
+
+Para abordar este problema, se han propuesto métodos para evaluar ensayos escritos de manera automática, labor que en la literatura se conoce como {\em Automatic Essay Scoring}. El primer sistema fue Project Essay Grade (PEG)\cite{t0}, el cual se fundamenta en propiedades estadísticas. Se consideran características superficiales y su frecuencia de aparición, tales como conteo de signos de puntuación, largo de las oraciones, largo promedio de las palabras, entre otras.
+
+Sin embargo, esta metodología de evaluación automática de textos tiene varias críticas \cite{t9}\cite{t24}\cite{t25}. Los principales puntos débiles son:
+
+\begin{itemize}
+	\item No se evalúa completamente la coherencia textual, pues no considera el orden de las palabras. Por ejemplo, la oración ``El árbol está seco.'' sería equivalente a ``seco el está árbol.'' Un evaluador humano consideraría incoherente la segunda oración.
+	\item No se considera la cohesión de un texto. Por ejemplo el texto: ``Los beneficios de la siesta son bien conocidos, aunque parece que quedan algunas cosas por aclarar. Manfred Walzl, neurólogo austriaco, pone en marcha un estudio; con un estudio él pretende demostrar que la siesta aumenta la productividad laboral'', claramente tiene problemas de cohesión, los cuales pasan desapercibidos si sólo se considera frecuencia de términos.
+	\item No se considera el contenido sintáctico del texto. Por ejemplo, un sistema como el descrito previamente consideraría ``Resfriado me habría la lluvia mojado con me si hubiera'' equivalente a ``Si me hubiera mojado con la lluvia me habría resfriado''.
+	\item Al estar basadas en medidas superficiales, cualquier sistema que utilice esta metodología será susceptible al engaño. Por ejemplo la siguiente definición: ``Un campo magnético es una descripción matemática de la influencia magnética de las corrientes eléctricas y de los materiales magnéticos'', podría ser reemplazada por ``campo magnético valores corrientes electricidad matemática''. La diferencia es que la primera considera la explicación de un concepto, la segunda es sólo un conjunto de palabras.
+	
+\end{itemize}
+
+Debido a los problemas mencionados, se debe establecer un método que considere propiedades de un texto coherente. La {\em evaluación automática de coherencia textual} \cite{t33} es un problema de investigación que aún se encuentra abierto y tiene múltiples aplicaciones, como por ejemplo: generación automática de resúmenes \cite{t34}\cite{t35}, traducción automática, generación automática de texto, entre otros. 
+
+Existen modelos para evaluar coherencia textual basados en la teoría de centrado \cite{t36}, la cual intenta caracterizar textos que puedan considerarse coherentes basándose en la forma en que se introducen y discuten {\em entidades de discurso}, que generalmente son: nombres (por ejemplo: Juan), descripciones (por ejemplo: ``El hombre barbudo''), pronombres (él, ella). Esta teoría considera la estructura sintáctica del texto, mientras que lo propuesto en sistemas como PEG no.
+
+Consecuentemente, se han realizado estudios que comparan el rendimiento de los distintos modelos para evaluar la coherencia textual (generalmente utilizando métricas como correlación con humanos), y se ha concluido que no existe modelo que evalúe todos los aspectos de un texto coherente. Sin embargo, también se ha concluido que los distintos modelos evalúan propiedades complementarias de coherencia \cite{t33}, por lo que el uso de diferentes modelos podría subsanar los problemas de los métodos para la evaluación automática de ensayos.
+
+\subsection{Hipótesis}
+
+Un modelo que considera características sintácticas y semánticas para evaluar coherencia textual es más efectivo para la tarea de evaluación automática de ensayos en comparación a modelos que utilicen medidas superficiales de estas características.
+
+\subsection{Objetivos}
+\begin{itemize}
+	\item Objetivo General
+	\begin{itemize}
+		\item Desarrollar un modelo computacional que permita evaluar automáticamente textos en forma de ensayos considerando aspectos de coherencia textual.
+	\end{itemize}
+	
+	\item Objetivos Específicos
+	\begin{itemize}
+	\item Establecer una representación de textos con la que se pueda modelar la sintática y semántica del contenido textual.
+	\item Analizar estrategias de evaluación de ensayos en forma de texto, basados tanto en modelos de estadísticos, como en teoría de discurso.
+	\item Desarrollar una estrategia que considere coherencia a nivel de contenido y sintáctica.
+	\item Crear un prototipo para realizar las pruebas.
+	\item Evaluar el modelo propuesto.
+	\end{itemize}
+	
+\end{itemize}
+
+\section{Estado del Arte}
+
+La primera técnica para evaluar automáticamente ensayos fue PEG \cite{t0}.  Esta técnica modela un ensayo como una combinación lineal de características del texto, a las que se denominan {\em proxes}. Se consideran características superficiales tales como: la cantidad de palabras, largo del ensayo, cantidad de signos de puntuación utilizados, largo de las oraciones, etc. La metodología para la evaluación consta de dos etapas, una de entrenamiento y una de evaluación. En la etapa de entrenamiento se utilizan ensayos que ya tienen un puntaje asignado. Luego, se extraen las características superficiales de cada uno de ellos y se aplica un método de regresión lineal (multi-variable), de manera de ajustar las ponderaciones (pesos) de cada característica. Luego, el puntaje de un ensayo se calcula como se muestra en la ecuación \ref{eq0}.
+
+\begin{equation}
+	\label{eq0}
+	Puntaje = \beta_0 + \sum\limits_{i=1}^n \beta_iP_i
+\end{equation}
+
+Donde $\beta_i$ representa la ponderación correspondiente al {\em proxe} $P_i$. Los experimentos muestran que es posible obtener una correlación de 0.87 entre los puntajes asignados por PEG y los asignados por humanos\cite{t0}. Sin embargo, el sistema utiliza medidas indirectas de la calidad del texto a evaluar lo ha que sido criticado \cite{t9}. Las criticas argumentan que el uso de medidas indirectas deja al sistema vulnerable a engaños, porque los estudiantes podrían mejorar sus puntajes obtenidos mediante trucos, como por ejemplo escribir un ensayo más largo. También se ha argumentado que el uso de estas medidas indirectas no capturan características importantes como contenido, organización, y coherencia.
+
+Posteriores investigaciones se centraron en utilizar técnicas de {\em Recuperación de Información} (IR) \cite{t26} y {\em Procesamiento del Lenguaje Natural} (NLP) \cite{t27} para extraer medidas más directas del contenido y coherencia de un texto a evaluar. En recuperación de información, se representan los documentos con un modelo de espacio vectorial, como se muestra en la ecuación \ref{eq1}.
+
+\begin{equation}
+	\label{eq1}
+	d = (w_1, w_2, ..., w_n)
+\end{equation}
+
+Donde cada componente del vector $d$ representa la frecuencia en que el término $w_i$ aparece en el documento. Los términos dependerán de la aplicación y pueden ser palabras, oraciones, párrafos, etc. En evaluación automática de ensayos se ha utilizado frecuencia de palabras para representar los documentos. Con esta representación vectorial se puede establecer una medida de similitud entre ensayos, como por ejemplo similitud coseno, que se muestra en \ref{eq2}.
+
+\begin{equation}
+	\label{eq2}
+	cos(d_i, d_j) = \frac{d_i\cdot d_j}{\|d_i\| \|d_j\|}
+\end{equation}
+
+Donde $d_i$ y $d_j$ son vectores que representan el contenido del ensayo. Teniendo esta medida de similitud y, utilizando un conjunto de ensayos pre-evaluados, se pueden evaluar automáticamente ensayos nuevos. Lo que se hace es calificar al ensayo nuevo con la misma nota que el más similar del repositorio de ensayos pre-evaluados.
+
+Se ha logrado una correlación de 0.76 entre los puntajes asignados por la técnica y los asignados por humanos\cite{t5}. Sin embargo, la evaluación depende fuertemente de la co-ocurrencia de términos, por lo que un ensayo que sea sólo un conjunto de palabras sin una conexión clara, podría llegar a ser bien evaluado\cite{t9}. Por otro lado, la técnica está puramente basada en ``palabras claves'' las cuales podrían no aparecer explícitamente en ensayos coherentes.
+
+Para abordar el problema anterior, se ha propuesto el uso de técnicas de reducción dimensional como el {\em Análisis Semántico Latente} (LSA) \cite{t28}. El Análisis Semántico Latente es una técnica que intenta extraer y representar los significados de las palabras. La técnica toma como supuesto que existe algo que subyace latente en la estructura semántica de los datos, y que está parcialmente oculto a causa de la elección aleatoria de palabras. LSA puede utilizarse para medir coherencia textual \cite{t8} \cite{t10} \cite{t20} \cite{t29}, y evaluar ensayos\cite{t9}. Para evaluar ensayos, se entrena LSA con un corpus de documentos, entre ellos ensayos pre-evaluados, y se obtiene un espacio semántico. Los ensayos nuevos son llevados a este espacio y se evalúan de acuerdo a algún criterio de similaridad como los descritos previamente\cite{t10}.
+
+Un problema con LSA es que al utilizar un modelo de bolsa de palabras no considera el orden de las mismas. Por ejemplo se consideraría equivalente ``literatura fantástica'' con ``fantástica literatura''. Tampoco considera cómo están escritas las oraciones. Podría tenerse un texto sin cohesión y ser bien evaluado si cumple con los criterios de similaridad establecidos.
+
+Para solventar parcialmente el problema relacionado al orden de las palabras, se ha propuesto una variación de LSA \cite{t13}: ``Generalized Latent Semantic Analysis'' (GLSA). Esta variación utiliza conteo de n-gramas en lugar de palabras. La ventaja que tiene esto, es que hace distinción en segmentos de texto como por ejemplo ``dióxido de carbono'' con ``Carbono de dióxido'', lo que LSA convencional consideraría como equivalente. Para aplicar esta GLSA en la evaluación automática de ensayos, se realiza el mismo procedimiento que con LSA. Experimentalmente se ha obtenido una correlación 0.88 entre el puntaje asignado por humanos y el asignado por el método \cite{t13}. La mejora no es sustancial en comparación a LSA (correlación 0.86 - 0.87). Algunos problemas de esta técnica incluyen:
+
+\begin{itemize}
+	\item Alta dimensionalidad de la matriz, mayor que en LSA convencional.
+	\item Alto grado de dispersión.
+	\item La descomposición de valores singulares es costosa computacionalmente, y se vuelve poco práctica debido a la alta dimensionalidad de la matriz.
+\end{itemize}
+
+Por otro lado, se han propuesto nuevas medidas de coherencia semántica para resolver el problema de AEG mediante clasificación \cite{t40}. Estas medidas están basadas en un modelo de espacio vectorial como el descrito previamente. Lo que se hace es dividir cada ensayo en partes fundamentales (Introducción, desarrollo, y conclusión), y se extraen características tales como: oraciones más distantes semánticamente, distancia de las partes a un centroide, distancia promedio entre oraciones más cercanas, entre otros. Las pruebas demostraron que agregando estas medidas de coherencia se obtienen resultados mejores que sin considerarlas, y que superan a modelos en la literatura en términos de correlación entre notas asignadas por el sistema y por evaluador humano.
+
+Otras técnicas de evaluación consideran métodos de aprendizaje no supervisado es decir, ``no hay datos previamente etiquetados por humanos''. Este tipo de técnicas intentan resolver el problema de requerir demasiados datos pre-evaluados. En \cite{t37}, se utiliza un método de clustering basado {\em Z-score}. La técnica ha logrado buenos resultados en cuanto a {\em accuracy} de la evaluación. Los problemas con este método son los siguientes:
+
+\begin{itemize}
+	\item Utiliza modelo de bolsa de palabras, por lo que tiene los mismos problemas que los métodos anteriores.
+	\item El cálculo de los Z-score iniciales del método depende de una medida indirecta (cantidad de palabras ``únicas'' del ensayo).
+	\item Para interpretar los clusters obtenidos se requiere un historial de notas de ensayos, o suponer una distribución normal.
+\end{itemize}
+
+Existen otros métodos para medir coherencia textual que consideran la estructura sintáctica de un texto \cite{t33}\cite{t34}\cite{t35} y su fundamentan en teoría de centrado \cite{t36}. La teoría de centrado estudia cómo se introducen y discuten entidades dentro de un discurso. En particular, se establece que los segmentos de un discurso que se centran en ciertas entidades, son más coherentes que los que discuten múltiples entidades entre oraciones.
+
+Para la componente sintáctica se considera que el análisis de coherencia gira entorno a patrones de transiciones de entidades locales que especifican cómo el foco del discurso cambia entre las oraciones. El supuesto clave es que ciertos tipos de transiciones son probables que aparezcan discursos coherentes. Para exponer estos patrones de transición de entidades, se representará un texto mediante una matriz de entidades. Las columnas de esta matriz corresponden a las entidades del discurso, mientras que las celdas corresponden a oraciones del mismo. Un ejemplo de texto y su matriz de entidades se muestran en las figuras 1 y 2.
+	
+\begin{figure}[!htbp]
+  \begin{center}
+    \leavevmode
+    \fbox{\includegraphics[width=4in] {figure_1.png}}
+  \end{center}
+  \caption{Texto con anotaciones sintácticas para el cálculo de matriz de entidades.}
+  \label{figura1}
+\end{figure}
+
+\begin{figure}[!htbp]
+  \begin{center}
+    \leavevmode
+    \fbox{\includegraphics[width=4in] {figure_2.png}}
+  \end{center}
+  \caption{Una matriz de entidades}
+  \label{figura2}
+\end{figure}
+Las columnas de la matriz representan la presencia o ausencia de una entidad en una secuencia de oraciones $(S_1,...,S_n)$. En particular, cada celda de la matriz representa el rol $r_{ij}$ de la entidad $e_j$ en la oración $S_i$. Los roles gramaticales reflejan si una entidad es un sujeto, objeto, ninguno o simplemente se encuentra ausente. Por ejemplo, en la figura 2, si se considera la entidad arrest, se observa que en la oración 3 es un sujeto, en la oración 6 es un objeto, pero se encuentra ausente en el resto de las oraciones. El cálculo de estas matrices es simple si es que se tiene un parser preciso a disposición. En este caso se utiliza el parser de Collins' \cite{t38}, que es un parser estadístico para identificar las entidades de discurso y sus roles gramaticales.
+
+Posteriormente, la coherencia de un texto $T(S_1, ..., S_n)$ con entidades $e1, ..., e_m$ como una distribución de probabilidad conjunta que describe cómo las entidades están distribuidas a través de las oraciones de un documento:
+
+\begin{equation}
+	Pcoherence(T) = P(e_1,...,e_m; S_1,...,S_n)
+\end{equation}
+
+El modelo para ser entrenado requiere textos coherentes \cite{t36}. Luego, puede utilizarse para predecir $P$ en textos nuevos. Se tendrá que $P_{coherence}(T)$ será mayor para textos que se consideren más coherentes que los que tengan un $P_{coherence}(T)$ menor.
+
+Para la componente semántica existen se puede modelar la forma en que las oraciones y frases se enlazan. Se representa la cohesión léxica a través de un modelo {\em cadenas léxicas} \cite{t39}, es decir, secuencias de palabras relacionadas que abarcan una unidad textual. Unidades textuales coherentes tendrán una alta concentración de estas cadenas. La premisa fundamental detrás de las cadenas léxicas es que textos coherentes contendrán una gran cantidad de palabras relacionadas semánticamente. Este supuesto permite realizar una representación que no considere la estructura sintáctica del texto, y que no considere el orden de las palabras. Por tanto, se puede representar cada texto como una bolsa de palabras. Se puede representar cada oración como un conjunto de palabras. Luego, para medir la coherencia local de un texto se debe cuantificar la relación semántica entre oraciones adyacentes. Por lo tanto, para medira la coherencia de un texto T se tomará el promedio de las similitudes entre oraciones:
+
+\begin{equation}
+	coherencia(T) = \frac{\sum_{i=1}^{n-1}sim(S_i, S_{i+1})}{n-1}
+\end{equation}
+Se tiene que $sim(S_i, S_{i+1})$ es una medida de similaridad entre las oraciones $S_i$ y $S_{i+1}$. Se
+utilizarán distintas medidas de similitud.
+
+ Este método fue utilizado para evaluar coherencia de resúmenes generados automáticamente por un computador, tomando como referencia resúmenes escritos por humanos\cite{t33}. Se compararon distintos métodos para evaluar coherencia textual como LSA, o métodos basados en Thesauros. Se detectó que no hay correlación entre los métodos, por lo que evalúan distintas componentes de coherencia. Luego, se propuso un ensamble de modelos para evaluar la coherencia textual, obteniendo una correlación con humanos más alta que cualquier método por sí solo. 
+
+Tomando lo anterior, un modelo que considere la componente sintáctica y semántica de un ensayo puede superar a cualquier modelo que utilice medidas indirectas.
+
+\newpage
+\section{Metodología Experimental para Validar Hipótesis}
+
+\begin{enumerate}
+	\item Se realizará una revisión bibliográfica de métodos que consideren evaluar coherencia a nivel de discurso.
+	
+	\item Se recopilarán datos de ensayos evaluados por humanos, los cuales se limpiarán y prepararán para utilizarlos en el modelo propuesto. Para este procesamiento y limpieza se utilizarán herramientas existentes como por ejemplo nltk, pyCharm, entre otros. Los datos a utilizar serán los proporcionados por Kaggle\footnote{http://www.kaggle.com/c/asap-aes/data} en la competencia {\em Automatic Essay Scoring}. Este conjunto de datos contiene 8 categorías diferentes de ensayo. Cuatro de ellas consisten en géneros de escritura tradicional (persuasivo, narrativo, etc.) y los otros cuatro están basados en una fuente (es decir, los estudiantes leen un documento fuente y discuten preguntas respecto a dicho documento).
+	
+	\item El diseño del método de evaluación deberá considerar lo propuesto en la hipótesis, es decir, características sintácticas y semánticas del ensayo a evaluar. Para ello, se estudiarán modelos de evaluación de coherencia textual que se fundamenten en teoría de discursos. Se tomará como base el modelo propuesto en \cite{t33}, el cual deberá a lo menos ser adaptado al contexto de evaluación automática de ensayos.
+	
+	\item La implementación del prototipo se realizará con herramientas existentes: python, R. El prototipo deberá ser capaz de evaluar ensayos utilizando el modelo propuesto.
+	
+	\item Para evaluar el modelo propuesto y luego contrastarlo con otros modelos en la literatura, se utilizarán las siguientes métricas:
+	
+	\begin{itemize}
+		\item {\em Exact Agreement}: Se define como el porcentaje de ensayos que fueron calificados igualmente por el evaluador humano y la técnica computacional.
+		\item {\em Adjacent Agreement}: Es una medida que se define como el porcentaje de ensayos que fueron evaluados igual por el evaluador humano y la técnica computacional o que difiere en a lo más 1 punto (de calificación).
+		\item {\em Quadratic Weighted Kappa}: es una métrica de error, que mide el grado de acuerdo entre dos evaluadores.
+	\end{itemize}
+
+\end{enumerate}
+
+
+\section{Plan de Trabajo}
+
+\begin{itemize}
+	\item Revisión bibliográfica de métodos de evaluación de coherencia textual, basados en teoría de discurso: 1 Enero - 1 Marzo.
+	\item Diseño de un método automático para evaluar ensayos: 7 Marzo - 7 Mayo.
+	\item Ensamble de modelos que consideren sintáctica y semántica: 15 Mayo - 5 Junio
+	\item Crear prototipo para realizar pruebas 10 Mayo - 10 Junio.
+	\item Evaluar rendimiento del modelo y comparar con modelos del estado del arte: 15 Junio - 1 Julio.
+\end{itemize}
+
+\begin{thebibliography} {}
+	\bibitem{t0}
+	S. Valenti, F. Neri, and A. Cucchiarelli, ``An overview of current research on automated essay grading,'' {\em Journal of Information Technology Education}, vol. 2, pp. 319-330, 2003.
+	
+	\bibitem{t1}
+	T. Miller, ``Essay assessment with latent semantic analysis,'' {\em Department of Computer Science, University of Toronto}, Toronto, ON M55 3G4, Canada, 2002.
+	
+	\bibitem{t2}
+	L. M. Rudner and T. Liang, ``Automated essay scoring using Bayes' Theorem,'' {\em The Journal of Technology, Learning, and Assessment}, vol. 1, no. 2, 2002.
+	
+	\bibitem{t3}
+	K.M Nahar and L.M. Alsmadi, ``The automatic grading for online exams in Arabic with essay questions using statistical and computational linguistics techniques,'' {\em MASAUM Journal of Computing}, vol. 1, no. 2, 2009.
+	
+	\bibitem{t4}
+	S Ghosh and S. S. Fatima, ``Design of an Automated Essay Grading (AEG) system in Indian context,'' in {\em Proceedings of TENCON 2008-2008 IEEE Region 10 Conference}, pp. 1-6.
+	
+	\bibitem{t5}
+	Y. Attali, J. Burstein, ``Automated essay scoring with e-rater,'' {\em The Journal of Technology, Learning and Assessment}, vol. 4, no.3, 2006.
+	
+	\bibitem{t6}
+	L.M. Rudner, V. Garcia, C.Welch, ``An evaluation of the IntelliMetric essay scoring system,'' {\em The Journal of of Technology Learning, and Assessment}, vol. 4, no. 4, pp. 1-22, 2006.
+	
+	\bibitem{t7}
+	P. W. Foltz, D. Laham, T.K. Landauer, ``Automated essay scoring: applications to educational technology,'' in {\em Proceedings of World Conference on Educational Multimedia, Hypermedia and Telecommunications}, 1999, pp.939-944.
+	
+	\bibitem{t8}
+	B. Lemaire, P. Dessus, ``A system to assess the semantic content of student essay,'' {\em The Journal of Educational Computing Research},'' vol. 24, no. 3, pp. 305-320, 2001.
+	
+	\bibitem{t9}
+	M.A. Hearst, ``The debate on automated essay grading,'' {\em Intelligent Systems and their Applications}, IEEE , vol.15, no.5, pp.22-37, Sept.-Oct. 2000.
+	
+	\bibitem{t10}
+	T. Kakkonen, N. Myller, E. Sutinen, J. Timonen, ``Comparison of Dimension Reduction Methods for Automated Essay Grading,'' {\em Educational Technology and Society}, 2006, pp. 275-288.
+	
+	\bibitem{t11}
+	 P. Selvi, N.P. Gopalan, ``Automated writing Assessment of Student's Open-ended Answers Using the Combination of Novel Approach and Latent Semantic Analysis,'' {\em Advanced Computing and Communications} ADCOM 2006. International Conference on , vol., no., pp.370-375, 20-23 Dec. 2006.
+	
+	\bibitem{t12}
+	G. Russo-Lassner, J. Lin, P. Resnik, ``A Paraphrase-Based Approach to Machine Translation Evaluation,'' {\em Technical Report} LAMP-TR-125/CS-TR-4754/UMIACS-TR-2005-57, University of Maryland, College Park, August 2005.
+	
+	\bibitem{t13}
+	M.M. Islam, A.S.M.L. Hoque, ``Automated essay scoring using Generalized Latent Semantic Analysis,'' {\em Computer and Information Technology (ICCIT)}, 13th International Conference on, pp.358-363, 2010.
+	
+	\bibitem{t14}
+	H. Chen, B. He, T. Luo, B. Li, ``A Ranked-Based Learning Approach to Automated Essay Scoring,'' {\em Cloud and Green Computing (CGC)}, Second International Conference on, pp.448-455, 1-3 Nov. 2012.
+	
+	\bibitem{t15}
+	C.D. Manning, H, Schutze, ``Foundations of Statistical Natural Language Processing,'' Cambridge, MA: MIT Press, 1990.
+	
+	\bibitem{t16}
+	L. Rudner, L. Tahung, ``Automated Essay Scoring using Bayes' Theorem,'' {\em The Journal of Technology, Learning, and Assessments}, 3-21, 2002.
+	
+	\bibitem{t17}
+	H. Breland, R. Jones, Laura J., ``The College Board Vocabulary Study,'' {\em College Entrance Examination Board}, New York, 1994.
+	
+	\bibitem{t18}
+	C. Moncayo, F. Julio. ``La terminología como elemento de cohesión en los textos de especialidad del discurso económico-financiero'', Tesis Doctoral, Facultad de Filosofía y Letras, Universidad de Valladolid, pp. 1-50, 2002.
+	
+	\bibitem{t19}
+	
+	McCarthy, Philip M.; Briner, Stephen W.; Rus, Vasile y McNamara, Danielle S. ``Textual Signatures: Identifying Text-Types Using Latent Semantic Analysis to Measure the Cohesion of Text Structures'', Institute for Intelligent Systems, University of Memphis, USA., pp. 1-15, 2005.
+	
+	\bibitem{t20}
+	E. Kintsch, D. Steinhart, G. Stahl, and the LSA Research Group, Developing Summarization Skills through the Use of LSA-Based Feedback, Interactive Learning Environments, 8:2, pp. 87-109, 2000.
+	
+	\bibitem{t21} Organización para el Desarrollo Económico (OECD). ``Informe sobre los resultados de los estudiantes chilenos en el estudio PISA 2012'', pp. 60-78, 2012. Unidad de Curriculum y Evaluación, Ministerio de Educación, Chile.
+
+	\bibitem{t22} Fernández, Aguistín. ``Aprender a Leer: una tarea de todos y de siempre'', en Revista Digital
+Umbral 2000, tomo 13, pp. 1-10, 2003.
+
+	\bibitem{t23} Rivera Lam, Mailing. ``Estrategias de lecturas para la comprensión de textos escritos: El pensamiento reflexivo y no lineal en alumnos de educación superior'', en Revista Digital Umbral 2000, tomo 12, pp. 1-14, 2003.
+	
+	\bibitem{t24} Chung, Gregory K.W.K., and Eva L. Baker (2003). ``Issues in the Reliability and Validity of Automated Scoring of Constructed Responses'', p. 23. In: Automated Essay Scoring: A Cross-Disciplinary Perspective. Shermis, Mark D., and Jill Burstein, eds. Lawrence Erlbaum Associates, Mahwah, New Jersey, ISBN 0805839739.
+	
+	\bibitem{t25} Dikli, Semire (2006). ``An Overview of Automated Scoring of Essays''. Journal of Technology, Learning, and Assessment, 5.
+	
+	\bibitem{t26} Christopher D. Manning, Prabhakar Raghavan and Hinrich Schütze, ``Introduction to Information Retrieval'', Cambridge University Press. 2008.
+	
+	\bibitem{t27} Daniel Jurafsky and James H. Martin, ``An Introduction to Natural Language Processing, 
+Computational Linguistics, and Speech Recognition'', Second Edition. 2009.
+
+	\bibitem{t28} T. Landauer, S. Dumais, ``Introduction to Latent Semantic Analysis'', in: Discourse Procesess 25, pp. 259-284, 1997.
+	
+	\bibitem{t29} S. Hernández, A. Ferreira, ``Evaluación Automática de Coherencia Textual en Noticias Policiales Utilizando Análisis Semántico Latente'', Revista de Lingüística Teórica y Aplicada. Concepción (Chile), 48 (2), II Sem. 2010, pp. 115-139.
+	
+	\bibitem{t30} F. Wild, ``Parameters Driving Effectiveness of Automated Essay Scoring with LSA'', IN: Proceedings of the 9th CAA Conference, Loughborough: Loughborough University.
+	
+	\bibitem{t31} Mehryar Mohri, Afshin Rostamizadeh, Ameet Talwalkar (2012). ``Foundations of Machine Learning,'' The MIT Press. ISBN 978-0-262-01825-8.
+	
+	\bibitem{t32} Grosz, Barbara J, Pollack, Martha E. y Sidner, Candace L., ``The Discourse'', The MIT
+Press, pp. 437-467, 1989.
+
+	\bibitem{t33} M. Lapata and R. Barzilay, ``Automatic evaluation of text coherence: models and representations,'' In Proceedings of the 19th international joint conference on Artificial intelligence (IJCAI 05). Morgan Kaufmann Publishers Inc., San Francisco, CA, USA, 1085-1090.
+	
+	\bibitem{t34} Laura Alonso i Alemany and Maria Fuentes Fort, ``Integrating cohesion and coherence for automatic summarization.'' In Proceedings of the tenth conference on European chapter of the Association for Computational Linguistics - Volume 2 (EACL 03), Vol. 2. Association for Computational Linguistics, Stroudsburg, PA, USA, 1-8. 
+	
+	\bibitem{t35} Ani Nenkova, Rebecca Passonneau, and Kathleen McKeown, ``The Pyramid Method: Incorporating human content selection variation in summarization evaluation,'' ACM Trans. Speech Lang. Process. 4, 2, Article 4 (May 2007)
+	
+	\bibitem{t36} B. Grosz, A. Joshi, S. Weinstein, ``Centering: A framework for modeling the local coherence of a discourse,'' Computational Linguistics, pp. 203-225.
+	
+	\bibitem{t37} Yen-Yu Chen, Chien-Liang Liu, Tao-Hsing Chang, Chia-Hoang Lee, ``An Unsupervised Automated Essay Scoring System,'' in Intelligent Systems, IEEE , vol.25, no.5, pp.61-67, Sept.-Oct. 2010.
+	
+	\bibitem{t38} M. Collins, ``Head-driven Statistical Models for Natural Language Parsing,'' PhD thesis, University of Pennsylvania, 1998.
+	
+	\bibitem{t39} J. Morris and G. Hirst, ``Lexical cohesion computed by thesaural relations as an indicator of the structure of text. Computational Linguistics, 1(17):21-43, 1991.
+	
+	\bibitem{t40} K. Zupanc, Z. Bosnic, ``Automated Essay Evaluation Augmented with Semantic Coherence Measures,'' in Data Mining (ICDM), 2014 IEEE International Conference on , vol., no., pp.1133-1138, 14-17 Dec. 2014
+\end{thebibliography}
+\end{document}
