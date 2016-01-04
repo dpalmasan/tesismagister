@@ -19,7 +19,7 @@
 
 \title{Ensamble de Modelos Sintácticos y Semánticos para la Evaluación Automática de Textos en forma de Ensayos}
 \author{Alumno: Diego Andrés Palma Sánchez\\Profesor: John Atkinson}
-\date{Noviembre de 2015}
+\date{Enero de 2016}
 
 \begin{document}
 \maketitle
@@ -29,7 +29,7 @@
 \section{Introducción}
 La escritura es una habilidad que se adquiere a temprana edad, pues se nos enseñan las letras, las palabras, las oraciones, etc. Sin embargo, estas habilidades no se desarrollan por completo, pues lo que se enseña no es suficiente para expresar claramente lo que se piensa, y como consecuencia nace la necesidad de saber redactar y/o de exponer de manera coherente y precisa las ideas.
 
-En la actualidad, un tema debatido es la capacidad de redacción y comprensión que debiesen tener las personas que egresan del sistema escolar \cite{t21}\cite{t22}. La discusión generada aborda temas como la carencia en el manejo del lenguaje escrito que evidencian alumnos en todos los niveles educacionales y estratos socioculturales \cite{t23}.
+En la actualidad, un tema debatido es la capacidad de redacción y comprensión que debiesen tener las personas que egresan del sistema escolar \cite{t21}\cite{t22}. La discusión generada aborda temas tales como la carencia en el manejo del lenguaje escrito que evidencian alumnos en todos los niveles educacionales y estratos socioculturales \cite{t23}.
 
 Este problema tiene consecuencias relevantes como por ejemplo reprobar un examen porque las ideas expresadas no están claras o escritas en forma coherente. Por otro lado, una persona podría perder una oportunidad laboral debido a una mala redacción de la solicitud; en síntesis, ideas que podrían ser bastante buenas e innovadoras podrían llegar a verse opacadas o, peor aún, rechazadas por el receptor al ser comunicadas de manera defectuosa.
 
@@ -46,7 +46,7 @@ Luego, una forma de propender al aumento de las capacidades para formular adecua
 
 Debe tenerse en cuenta que la evaluación de textos es una tarea costosa en términos de tiempo y personal requerido. Además, no existe otro modo que evalúe mejor el aprendizaje de un estudiante que no sea mediante la expresión de sus ideas a través de un escrito, por lo que hay una necesidad de repetir el ejercicio constantemente en el tiempo. Por otro lado, el número de estudiantes ha ido creciendo con el paso del tiempo, por lo que los costos de esta labor se vuelven abrumadores \cite{t10}.
 
-Para abordar este problema, se han propuesto métodos para evaluar ensayos escritos de manera automática, labor que en la literatura se conoce como {\em Automatic Essay Scoring}. El primer sistema fue Project Essay Grade (PEG)\cite{t0}, el cual se fundamenta en propiedades estadísticas. Se consideran características superficiales y su frecuencia de aparición, tales como conteo de signos de puntuación, largo de las oraciones, largo promedio de las palabras, entre otras.
+Para abordar este problema, se han propuesto métodos para evaluar ensayos escritos de manera automática, labor que en la literatura se conoce como {\em Automatic Essay Scoring}. Los primeros sistemas propuestos para esta labor intentan evaluar características relacionadas a la calidad del texto tales como: dicción, uso de vocabulario, coherencia, entre otras. Para ello, se hace uso de ocurrencia de términos, como: conteo de signos de puntuación, largo de las palabras, entre otros. 
 
 Sin embargo, esta metodología de evaluación automática de textos tiene varias críticas \cite{t9}\cite{t24}\cite{t25}. Los principales puntos débiles son:
 
@@ -60,13 +60,13 @@ Sin embargo, esta metodología de evaluación automática de textos tiene varias cr
 
 Debido a los problemas mencionados, se debe establecer un método que considere propiedades de un texto coherente. La {\em evaluación automática de coherencia textual} \cite{t33} es un problema de investigación que aún se encuentra abierto y tiene múltiples aplicaciones, como por ejemplo: generación automática de resúmenes \cite{t34}\cite{t35}, traducción automática, generación automática de texto, entre otros. 
 
-Existen modelos para evaluar coherencia textual basados en la teoría de centrado \cite{t36}, la cual intenta caracterizar textos que puedan considerarse coherentes basándose en la forma en que se introducen y discuten {\em entidades de discurso}, que generalmente son: nombres (por ejemplo: Juan), descripciones (por ejemplo: ``El hombre barbudo''), pronombres (él, ella). Esta teoría considera la estructura sintáctica del texto, mientras que lo propuesto en sistemas como PEG no.
+Existen modelos para evaluar coherencia textual basados en la teoría de centrado \cite{t36}, la cual intenta caracterizar textos que puedan considerarse coherentes basándose en la forma en que se introducen y discuten {\em entidades de discurso}, que generalmente son: nombres (por ejemplo: Juan), descripciones (por ejemplo: ``El hombre barbudo''), pronombres (él, ella). Esta teoría considera la sintaxis del texto, mientras que lo propuesto en sistemas como PEG no.
 
 Consecuentemente, se han realizado estudios que comparan el rendimiento de los distintos modelos para evaluar la coherencia textual (generalmente utilizando métricas como correlación con humanos), y se ha concluido que no existe modelo que evalúe todos los aspectos de un texto coherente. Sin embargo, también se ha concluido que los distintos modelos evalúan propiedades complementarias de coherencia \cite{t33}, por lo que el uso de diferentes modelos podría subsanar los problemas de los métodos para la evaluación automática de ensayos.
 
 \subsection{Hipótesis}
 
-Un modelo que considera características sintácticas y semánticas para evaluar coherencia textual es más efectivo para la tarea de evaluación automática de ensayos en comparación a modelos que utilicen medidas superficiales de estas características.
+Un modelo que considera características sintácticas y semánticas para evaluar coherencia textual es más efectivo para la tarea de evaluación automática de ensayos en comparación a modelos que utilicen medidas superficiales de estas características (como conteo de palabras, largo de las oraciones, etc.).
 
 \subsection{Objetivos}
 \begin{itemize}
@@ -79,7 +79,7 @@ Un modelo que considera características sintácticas y semánticas para evaluar co
 	\begin{itemize}
 	\item Establecer una representación de textos con la que se pueda modelar la sintática y semántica del contenido textual.
 	\item Analizar estrategias de evaluación de ensayos en forma de texto, basados tanto en modelos de estadísticos, como en teoría de discurso.
-	\item Desarrollar una estrategia que considere coherencia a nivel de contenido y sintáctica.
+	\item Desarrollar una estrategia que considere coherencia a nivel de contenido y sintaxis.
 	\item Crear un prototipo para realizar las pruebas.
 	\item Evaluar el modelo propuesto.
 	\end{itemize}
@@ -97,7 +97,7 @@ La primera técnica para evaluar automáticamente ensayos fue PEG \cite{t0}.  Esta
 
 Donde $\beta_i$ representa la ponderación correspondiente al {\em proxe} $P_i$. Los experimentos muestran que es posible obtener una correlación de 0.87 entre los puntajes asignados por PEG y los asignados por humanos\cite{t0}. Sin embargo, el sistema utiliza medidas indirectas de la calidad del texto a evaluar lo ha que sido criticado \cite{t9}. Las criticas argumentan que el uso de medidas indirectas deja al sistema vulnerable a engaños, porque los estudiantes podrían mejorar sus puntajes obtenidos mediante trucos, como por ejemplo escribir un ensayo más largo. También se ha argumentado que el uso de estas medidas indirectas no capturan características importantes como contenido, organización, y coherencia.
 
-Posteriores investigaciones se centraron en utilizar técnicas de {\em Recuperación de Información} (IR) \cite{t26} y {\em Procesamiento del Lenguaje Natural} (NLP) \cite{t27} para extraer medidas más directas del contenido y coherencia de un texto a evaluar. En recuperación de información, se representan los documentos con un modelo de espacio vectorial, como se muestra en la ecuación \ref{eq1}.
+Posteriores investigaciones se centraron en utilizar técnicas de {\em Recuperación de Información} (IR) \cite{t26} y {\em Procesamiento del Lenguaje Natural} (NLP) \cite{t27} para extraer características más directas del contenido y coherencia de un texto a evaluar como por ejemplo sus etiquetas léxicas. En recuperación de información, se representan los documentos con un modelo de espacio vectorial, como se muestra en la ecuación \ref{eq1}.
 
 \begin{equation}
 	\label{eq1}
@@ -127,6 +127,10 @@ Para solventar parcialmente el problema relacionado al orden de las palabras, se
 	\item La descomposición de valores singulares es costosa computacionalmente, y se vuelve poco práctica debido a la alta dimensionalidad de la matriz.
 \end{itemize}
 
+Otro problema que tiene LSA, además de la selección de dimensionalidad, es que no define una adecuada distribución de probabilidades, es decir, se obtienen tópicos como por ejemplo $0.4$ auto + 1.1 $camion$, lo cual podría interpretarse como el concepto de vehículo, sin embargo, pueden aparecer relaciones sin interpretación evidente. Otro problema, es que pueden aparecer valores negativos en la matriz término-documento. Para solventar estos problemas, se han propuesto métodos como PLSA ({\em Probabilistic Latent Semantic Analysis}) y LDA ({\em Latent Dirichlet Allocation}). Estos métodos lo que hacen es representar los documentos como mezclas de tópicos, los cuales están representados por una distribución de probabilidad de palabras. Por ejemplo el texto ``{\em El  hamster está comiendo brocoli}'' podría ser representado por dos tópicos (comida y animales).
+
+Para aplicar PLSA y LDA en la evaluación automática de ensayos se requiere encontrar los tópicos que representan a los documentos. Teniendo los tópicos y la distribución de palabras que los representan, se pueden realizar calculos de similaridad entre documentos, y aplicar métodos como kNN, para dar nota a nuevos ensayos de acuerdo a la similaridad que tengan con ensayos previamente evaluados. Se ha encontrado que PLSA y LDA no obtienen mejores resultados que LSA para la tarea de evaluación automática de ensayos \cite{t42}. 
+
 Por otro lado, se han propuesto nuevas medidas de coherencia semántica para resolver el problema de AEG mediante clasificación \cite{t40}. Estas medidas están basadas en un modelo de espacio vectorial como el descrito previamente. Lo que se hace es dividir cada ensayo en partes fundamentales (Introducción, desarrollo, y conclusión), y se extraen características tales como: oraciones más distantes semánticamente, distancia de las partes a un centroide, distancia promedio entre oraciones más cercanas, entre otros. Las pruebas demostraron que agregando estas medidas de coherencia se obtienen resultados mejores que sin considerarlas, y que superan a modelos en la literatura en términos de correlación entre notas asignadas por el sistema y por evaluador humano.
 
 Otras técnicas de evaluación consideran métodos de aprendizaje no supervisado es decir, ``no hay datos previamente etiquetados por humanos''. Este tipo de técnicas intentan resolver el problema de requerir demasiados datos pre-evaluados. En \cite{t37}, se utiliza un método de clustering basado {\em Z-score}. La técnica ha logrado buenos resultados en cuanto a {\em accuracy} de la evaluación. Los problemas con este método son los siguientes:
@@ -137,7 +141,7 @@ Otras técnicas de evaluación consideran métodos de aprendizaje no supervisado es
 	\item Para interpretar los clusters obtenidos se requiere un historial de notas de ensayos, o suponer una distribución normal.
 \end{itemize}
 
-Existen otros métodos para medir coherencia textual que consideran la estructura sintáctica de un texto \cite{t33}\cite{t34}\cite{t35} y su fundamentan en teoría de centrado \cite{t36}. La teoría de centrado estudia cómo se introducen y discuten entidades dentro de un discurso. En particular, se establece que los segmentos de un discurso que se centran en ciertas entidades, son más coherentes que los que discuten múltiples entidades entre oraciones.
+Existen otros métodos para medir coherencia textual que consideran la sintaxis de un texto \cite{t33}\cite{t34}\cite{t35} y su fundamentan en teoría de centrado \cite{t36}. La teoría de centrado estudia cómo se introducen y discuten entidades dentro de un discurso. En particular, se establece que los segmentos de un discurso que se centran en ciertas entidades, son más coherentes que los que discuten múltiples entidades entre oraciones.
 
 Para la componente sintáctica se considera que el análisis de coherencia gira entorno a patrones de transiciones de entidades locales que especifican cómo el foco del discurso cambia entre las oraciones. El supuesto clave es que ciertos tipos de transiciones son probables que aparezcan discursos coherentes. Para exponer estos patrones de transición de entidades, se representará un texto mediante una matriz de entidades. Las columnas de esta matriz corresponden a las entidades del discurso, mientras que las celdas corresponden a oraciones del mismo. Un ejemplo de texto y su matriz de entidades se muestran en las figuras 1 y 2.
 	
@@ -168,7 +172,7 @@ Posteriormente, la coherencia de un texto $T(S_1, ..., S_n)$ con entidades $e1, 
 
 El modelo para ser entrenado requiere textos coherentes \cite{t36}. Luego, puede utilizarse para predecir $P$ en textos nuevos. Se tendrá que $P_{coherence}(T)$ será mayor para textos que se consideren más coherentes que los que tengan un $P_{coherence}(T)$ menor.
 
-Para la componente semántica existen se puede modelar la forma en que las oraciones y frases se enlazan. Se representa la cohesión léxica a través de un modelo {\em cadenas léxicas} \cite{t39}, es decir, secuencias de palabras relacionadas que abarcan una unidad textual. Unidades textuales coherentes tendrán una alta concentración de estas cadenas. La premisa fundamental detrás de las cadenas léxicas es que textos coherentes contendrán una gran cantidad de palabras relacionadas semánticamente. Este supuesto permite realizar una representación que no considere la estructura sintáctica del texto, y que no considere el orden de las palabras. Por tanto, se puede representar cada texto como una bolsa de palabras. Se puede representar cada oración como un conjunto de palabras. Luego, para medir la coherencia local de un texto se debe cuantificar la relación semántica entre oraciones adyacentes. Por lo tanto, para medira la coherencia de un texto T se tomará el promedio de las similitudes entre oraciones:
+Para la componente semántica existen se puede modelar la forma en que las oraciones y frases se enlazan. Se representa la cohesión léxica a través de un modelo {\em cadenas léxicas} \cite{t39}, es decir, secuencias de palabras relacionadas que abarcan una unidad textual. Unidades textuales coherentes tendrán una alta concentración de estas cadenas. La premisa fundamental detrás de las cadenas léxicas es que textos coherentes contendrán una gran cantidad de palabras relacionadas semánticamente. Este supuesto permite realizar una representación que no considere la sintaxis del texto, y que no considere el orden de las palabras. Por tanto, se puede representar cada texto como una bolsa de palabras. Se puede representar cada oración como un conjunto de palabras. Luego, para medir la coherencia local de un texto se debe cuantificar la relación semántica entre oraciones adyacentes. Por lo tanto, para medira la coherencia de un texto T se tomará el promedio de las similitudes entre oraciones:
 
 \begin{equation}
 	coherencia(T) = \frac{\sum_{i=1}^{n-1}sim(S_i, S_{i+1})}{n-1}
@@ -178,7 +182,7 @@ utilizarán distintas medidas de similitud.
 
  Este método fue utilizado para evaluar coherencia de resúmenes generados automáticamente por un computador, tomando como referencia resúmenes escritos por humanos\cite{t33}. Se compararon distintos métodos para evaluar coherencia textual como LSA, o métodos basados en Thesauros. Se detectó que no hay correlación entre los métodos, por lo que evalúan distintas componentes de coherencia. Luego, se propuso un ensamble de modelos para evaluar la coherencia textual, obteniendo una correlación con humanos más alta que cualquier método por sí solo. 
 
-Tomando lo anterior, un modelo que considere la componente sintáctica y semántica de un ensayo puede superar a cualquier modelo que utilice medidas indirectas.
+Tomando lo anterior, un modelo que considere la sintaxis y semántica de un ensayo puede superar a cualquier modelo que utilice medidas indirectas.
 
 \newpage
 \section{Metodología Experimental para Validar Hipótesis}
@@ -188,15 +192,15 @@ Tomando lo anterior, un modelo que considere la componente sintáctica y semántic
 	
 	\item Se recopilarán datos de ensayos evaluados por humanos, los cuales se limpiarán y prepararán para utilizarlos en el modelo propuesto. Para este procesamiento y limpieza se utilizarán herramientas existentes como por ejemplo nltk, pyCharm, entre otros. Los datos a utilizar serán los proporcionados por Kaggle\footnote{http://www.kaggle.com/c/asap-aes/data} en la competencia {\em Automatic Essay Scoring}. Este conjunto de datos contiene 8 categorías diferentes de ensayo. Cuatro de ellas consisten en géneros de escritura tradicional (persuasivo, narrativo, etc.) y los otros cuatro están basados en una fuente (es decir, los estudiantes leen un documento fuente y discuten preguntas respecto a dicho documento).
 	
-	\item El diseño del método de evaluación deberá considerar lo propuesto en la hipótesis, es decir, características sintácticas y semánticas del ensayo a evaluar. Para ello, se estudiarán modelos de evaluación de coherencia textual que se fundamenten en teoría de discursos. Se tomará como base el modelo propuesto en \cite{t33}, el cual deberá a lo menos ser adaptado al contexto de evaluación automática de ensayos.
+	\item Se desarrollará un método de evaluación que considere lo propuesto en la hipótesis, es decir, sintaxis y semántica del ensayo a evaluar. Para ello, se estudiarán modelos de evaluación de coherencia textual que se fundamenten en teoría de discursos. Se tomará como base el modelo propuesto en \cite{t33}, el cual deberá a lo menos ser adaptado al contexto de evaluación automática de ensayos. Para ello se requerirá realizar un ensamble de modelos de evaluación automática de ensayos.
 	
-	\item La implementación del prototipo se realizará con herramientas existentes: python, R. El prototipo deberá ser capaz de evaluar ensayos utilizando el modelo propuesto.
+	\item Se implementará un prototipo computacional para realizar las pruebas y experimentos que validen la hipótesis, y esto se realizará con herramientas existentes.
 	
-	\item Para evaluar el modelo propuesto y luego contrastarlo con otros modelos en la literatura, se utilizarán las siguientes métricas:
+	\item El modelo se evaluará y luego se comparará con otros modelos en la literatura, se utilizarán las siguientes métricas:
 	
 	\begin{itemize}
-		\item {\em Exact Agreement}: Se define como el porcentaje de ensayos que fueron calificados igualmente por el evaluador humano y la técnica computacional.
-		\item {\em Adjacent Agreement}: Es una medida que se define como el porcentaje de ensayos que fueron evaluados igual por el evaluador humano y la técnica computacional o que difiere en a lo más 1 punto (de calificación).
+		\item {\em Exact Agreement}: Se define como la proporción de ensayos que fueron calificados igualmente por el evaluador humano y la técnica computacional.
+		\item {\em Adjacent Agreement}: Es una medida que se define como el la proporción ensayos que fueron evaluados igual por el evaluador humano y la técnica computacional o que difiere en a lo más 1 punto (de calificación).
 		\item {\em Quadratic Weighted Kappa}: es una métrica de error, que mide el grado de acuerdo entre dos evaluadores.
 	\end{itemize}
 
@@ -208,7 +212,7 @@ Tomando lo anterior, un modelo que considere la componente sintáctica y semántic
 \begin{itemize}
 	\item Revisión bibliográfica de métodos de evaluación de coherencia textual, basados en teoría de discurso: 1 Enero - 1 Marzo.
 	\item Diseño de un método automático para evaluar ensayos: 7 Marzo - 7 Mayo.
-	\item Ensamble de modelos que consideren sintáctica y semántica: 15 Mayo - 5 Junio
+	\item Ensamble de modelos que consideren sintaxis y semántica: 15 Mayo - 5 Junio
 	\item Crear prototipo para realizar pruebas 10 Mayo - 10 Junio.
 	\item Evaluar rendimiento del modelo y comparar con modelos del estado del arte: 15 Junio - 1 Julio.
 \end{itemize}
@@ -320,5 +324,9 @@ Press, pp. 437-467, 1989.
 	\bibitem{t39} J. Morris and G. Hirst, ``Lexical cohesion computed by thesaural relations as an indicator of the structure of text. Computational Linguistics, 1(17):21-43, 1991.
 	
 	\bibitem{t40} K. Zupanc, Z. Bosnic, ``Automated Essay Evaluation Augmented with Semantic Coherence Measures,'' in Data Mining (ICDM), 2014 IEEE International Conference on , vol., no., pp.1133-1138, 14-17 Dec. 2014
+	
+	\bibitem{t41} T. Hoffman, ``Unsupervised learning by probabilistic latent semantic analysis'', Machine Learning, 42 (1-2), pp. 177-196, 2001.
+	
+	\bibitem{t42} T. Kakkonen, N. Myller, E. Sutinen, J. Timonen, ``Comparison of Dimension Reduction Methods for Automated Essay Grading,'' Educational Technology and Society, pp. 275-288, 2008.
 \end{thebibliography}
 \end{document}
