@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.12.18)  18 DEC 2015 15:53
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.12.18)  21 JAN 2016 17:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -407,32 +407,31 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 75.
- [3] [4]
-<figure_1.png, id=26, 539.76656pt x 216.81pt>
+ [3] [4] [5]
+<figure_1.png, id=29, 539.76656pt x 216.81pt>
 File: figure_1.png Graphic file (type png)
  <use figure_1.png>
-Package pdftex.def Info: figure_1.png used on input line 147.
+Package pdftex.def Info: figure_1.png used on input line 151.
 (pdftex.def)             Requested size: 289.07999pt x 116.11626pt.
 
-<figure_2.png, id=27, 497.60907pt x 249.93375pt>
+<figure_2.png, id=30, 497.60907pt x 249.93375pt>
 File: figure_2.png Graphic file (type png)
  <use figure_2.png>
-Package pdftex.def Info: figure_2.png used on input line 156.
+Package pdftex.def Info: figure_2.png used on input line 160.
 (pdftex.def)             Requested size: 289.07999pt x 145.19812pt.
- [5]
-[6 <./figure_1.png> <./figure_2.png>] [7] [8] [9] [10] [11]
-(./Informe_final_seminario.aux
+ [6 <./figure_1.png> <./figure_2.png>] [7] [8] [9] [10] [11] (./Informe_final_s
+eminario.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 ) ) 
 Here is how much of TeX's memory you used:
- 5247 strings out of 494925
- 74718 string characters out of 6178543
- 153137 words of memory out of 5000000
- 8365 multiletter control sequences out of 15000+600000
+ 5249 strings out of 494925
+ 74728 string characters out of 6178543
+ 153143 words of memory out of 5000000
+ 8367 multiletter control sequences out of 15000+600000
  12251 words of font info for 52 fonts, out of 8000000 for 9000
  62 hyphenation exceptions out of 8191
- 38i,8n,38p,1059b,304s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,8n,38p,1046b,304s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/tex
@@ -446,7 +445,7 @@ s/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Informe_final_seminario.pdf (11 pages, 254851 bytes).
+Output written on Informe_final_seminario.pdf (11 pages, 256018 bytes).
 PDF statistics:
  98 PDF objects out of 1000 (max. 8388607)
  68 compressed objects within 1 object stream
