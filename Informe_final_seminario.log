@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.12.18)  21 JAN 2016 17:51
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.12.18)  21 JAN 2016 19:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -394,15 +394,10 @@ LaTeX Font Info:    Try loading font information for U+esint on input line 25.
 File: uesint.fd 
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (15.10939pt too wide) in paragraph at lines 51--52
-[]\OT1/cmr/m/n/10 Sin em-bar-go, es-ta me-to-do-log^^S^^Pa de eva-lua-ci^^Son a
-u-tom^^Sati-ca de tex-tos tie-ne va-rias cr^^S^^Pti-cas [[]][[]][[]].
- []
-
-[2]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 75.
- (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
@@ -427,7 +422,7 @@ LaTeX Info: Redefining \% on input line 11.
 Here is how much of TeX's memory you used:
  5249 strings out of 494925
  74728 string characters out of 6178543
- 153143 words of memory out of 5000000
+ 152143 words of memory out of 5000000
  8367 multiletter control sequences out of 15000+600000
  12251 words of font info for 52 fonts, out of 8000000 for 9000
  62 hyphenation exceptions out of 8191
@@ -445,7 +440,7 @@ s/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Informe_final_seminario.pdf (11 pages, 256018 bytes).
+Output written on Informe_final_seminario.pdf (11 pages, 256098 bytes).
 PDF statistics:
  98 PDF objects out of 1000 (max. 8388607)
  68 compressed objects within 1 object stream
