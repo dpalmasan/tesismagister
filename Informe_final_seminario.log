@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.12.18)  21 JAN 2016 19:15
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.12.18)  25 JAN 2016 17:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -422,7 +422,7 @@ LaTeX Info: Redefining \% on input line 11.
 Here is how much of TeX's memory you used:
  5249 strings out of 494925
  74728 string characters out of 6178543
- 152143 words of memory out of 5000000
+ 153143 words of memory out of 5000000
  8367 multiletter control sequences out of 15000+600000
  12251 words of font info for 52 fonts, out of 8000000 for 9000
  62 hyphenation exceptions out of 8191
@@ -440,7 +440,7 @@ s/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Informe_final_seminario.pdf (11 pages, 256098 bytes).
+Output written on Informe_final_seminario.pdf (11 pages, 256006 bytes).
 PDF statistics:
  98 PDF objects out of 1000 (max. 8388607)
  68 compressed objects within 1 object stream
