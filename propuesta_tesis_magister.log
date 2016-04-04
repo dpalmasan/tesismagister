@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.12.18)  25 JAN 2016 17:54
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.12.18)  21 MAR 2016 16:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Informe_final_seminario.tex
-(./Informe_final_seminario.tex
+**propuesta_tesis_magister.tex
+(./propuesta_tesis_magister.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 7 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -261,11 +261,11 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen145
 \Gm@dimlist=\toks25
 )
-(./Informe_final_seminario.aux
+(./propuesta_tesis_magister.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
-\openout1 = `Informe_final_seminario.aux'.
+\openout1 = `propuesta_tesis_magister.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
@@ -414,19 +414,19 @@ File: figure_2.png Graphic file (type png)
  <use figure_2.png>
 Package pdftex.def Info: figure_2.png used on input line 160.
 (pdftex.def)             Requested size: 289.07999pt x 145.19812pt.
- [6 <./figure_1.png> <./figure_2.png>] [7] [8] [9] [10] [11] (./Informe_final_s
-eminario.aux
+ [6 <./figure_1.png> <./figure_2.png>] [7] [8] [9] [10] [11]
+(./propuesta_tesis_magister.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 ) ) 
 Here is how much of TeX's memory you used:
  5249 strings out of 494925
- 74728 string characters out of 6178543
+ 74737 string characters out of 6178543
  153143 words of memory out of 5000000
  8367 multiletter control sequences out of 15000+600000
  12251 words of font info for 52 fonts, out of 8000000 for 9000
  62 hyphenation exceptions out of 8191
- 38i,8n,38p,1046b,304s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,8n,38p,1047b,304s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/tex
@@ -440,7 +440,7 @@ s/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Informe_final_seminario.pdf (11 pages, 256006 bytes).
+Output written on propuesta_tesis_magister.pdf (11 pages, 256006 bytes).
 PDF statistics:
  98 PDF objects out of 1000 (max. 8388607)
  68 compressed objects within 1 object stream
