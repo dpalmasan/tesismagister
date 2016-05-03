@@ -60,9 +60,18 @@ Sin embargo, este método tiene algunas debilidades \cite{t24}\cite{t25}:
 
 La {\em evaluación automática de coherencia textual} \cite{t33} es un problema de investigación que aún se encuentra abierto y tiene múltiples aplicaciones, como por ejemplo: generación automática de resúmenes \cite{t34}\cite{t35}, traducción automática, generación automática de texto, entre otros. 
 
-Existen métodos para evaluar coherencia textual basados en la teoría de centrado \cite{t36}, la cual intenta caracterizar textos que puedan considerarse coherentes basándose en la forma en que se introducen y discuten {\em entidades de discurso}, que generalmente incluyen: nombres (por ejemplo: Juan), descripciones (por ejemplo: ``El hombre barbudo''), pronombres (él, ella). Algunos problemas que tienen estos métodos están relacionados con la ambigüedad que presentan algunos textos, por ejemplo cuando se habla sobre múltiples entidades de discurso está el problema de a cuál se hace referencia. 
+Existen diferentes métodos para evaluar coherencia textual: 
 
-Consecuentemente, se han realizado estudios que comparan el rendimiento de los distintos modelos para evaluar la coherencia textual (generalmente utilizando métricas como correlación con humanos), y se ha concluido que no existe modelo que evalúe todos los aspectos relacionados a la coherencia. Sin embargo, también se ha concluido que los distintos métodos evalúan propiedades complementarias de coherencia \cite{t33}.
+\begin{itemize}
+	\item basados en la teoría de centrado \cite{t36}, la cual intenta caracterizar textos que puedan considerarse coherentes basándose en la forma en que se introducen y discuten {\em entidades de discurso}, que generalmente incluyen: nombres (por ejemplo: Juan), descripciones (por ejemplo: ``El hombre barbudo''), pronombres (él, ella). Algunos problemas que tienen estos métodos están relacionados con la ambigüedad que presentan algunos textos, por ejemplo cuando se habla sobre múltiples entidades de discurso está el problema de a cuál se hace referencia.
+
+	\item basados en {\em Rethorical Structure Theory} \cite{t36}, la cual intenta caracterizar la coherencia mediante relaciones existentes entre una entidad principal de un texto y el texto e información que hace referencia a dicha entidad. Lo que hace esta teoría es definir un conjunto de relaciones, las cuales pueden ser detectadas mediante los marcadores de discurso utilizados en el texto a analizar. Algunos problemas de esta teoría, es que, por ejemplo hay marcadores de discurso que tienen más de un propósito, o mapean a más de una relación, dependiendo de lo que se está expresando en el texto.
+	
+	\item basados en modelos semánticos, estos intentan representar los textos mediante modelos matemáticos, en los que se define una medida de similitud entre fragmentos de un texto. La coherencia en este caso se mide en relación al grado de similitud que exista entre las distintas ideas, oraciones y párrafos del texto. 
+
+\end{itemize}
+
+Consecuentemente, se han realizado estudios que comparan el rendimiento de los distintos modelos para evaluar la coherencia textual (generalmente utilizando métricas como correlación con humanos), y se ha concluido que no existe modelo que evalúe todos los aspectos relacionados a la coherencia. Por otro lado, estos métodos evalúan propiedades complementarias de coherencia, por lo que podrían combinarse para medir de mejor forma esta propiedad \cite{t33}.
 
 \subsection{Hipótesis}
 
