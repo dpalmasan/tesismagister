@@ -65,17 +65,17 @@ Existen diferentes métodos para evaluar coherencia textual:
 \begin{itemize}
 	\item basados en la teoría de centrado \cite{t36}, la cual intenta caracterizar textos que puedan considerarse coherentes basándose en la forma en que se introducen y discuten {\em entidades de discurso}, que generalmente incluyen: nombres (por ejemplo: Juan), descripciones (por ejemplo: ``El hombre barbudo''), pronombres (él, ella). Algunos problemas que tienen estos métodos están relacionados con la ambigüedad que presentan algunos textos, por ejemplo cuando se habla sobre múltiples entidades de discurso está el problema de a cuál se hace referencia.
 
-	\item basados en {\em Rethorical Structure Theory} \cite{t36}, la cual intenta caracterizar la coherencia mediante relaciones existentes entre una entidad principal de un texto y el texto e información que hace referencia a dicha entidad. Lo que hace esta teoría es definir un conjunto de relaciones, las cuales pueden ser detectadas mediante los marcadores de discurso utilizados en el texto a analizar. Algunos problemas de esta teoría, es que, por ejemplo hay marcadores de discurso que tienen más de un propósito, o mapean a más de una relación, dependiendo de lo que se está expresando en el texto.
+	\item basados en {\em Rethorical Structure Theory} \cite{t36}, la cual intenta caracterizar la coherencia mediante relaciones existentes entre una entidad principal de un texto y el texto e información que hace referencia a dicha entidad. Lo que hace esta teoría es definir un conjunto de relaciones, las cuales pueden ser detectadas mediante los marcadores de discurso utilizados en el texto a analizar (como {\em porque}, {\em por lo tanto}, etc.). Algunos problemas de esta teoría, es que, por ejemplo hay marcadores de discurso que tienen más de un propósito, o mapean a más de una relación, dependiendo de lo que se está expresando en el texto.
 	
 	\item basados en modelos semánticos, estos intentan representar los textos mediante modelos matemáticos, en los que se define una medida de similitud entre fragmentos de un texto. La coherencia en este caso se mide en relación al grado de similitud que exista entre las distintas ideas, oraciones y párrafos del texto. 
 
 \end{itemize}
 
-Consecuentemente, se han realizado estudios que comparan el rendimiento de los distintos modelos para evaluar la coherencia textual (generalmente utilizando métricas como correlación con humanos), y se ha concluido que no existe modelo que evalúe todos los aspectos relacionados a la coherencia. Por otro lado, estos métodos evalúan propiedades complementarias de coherencia, por lo que podrían combinarse para medir de mejor forma esta propiedad \cite{t33}.
+Consecuentemente, se han realizado estudios que comparan el rendimiento de los distintos modelos para evaluar la coherencia textual (generalmente utilizando métricas como correlación con humanos), y se ha concluido que no existe modelo que evalúe todos los aspectos relacionados a la coherencia. Sin embargo, los métodos evalúan propiedades complementarias de coherencia, por lo que podrían combinarse para evaluar la coherencia textual \cite{t33}.
 
 \subsection{Hipótesis}
 
-Un método que considera características sintácticas y semánticas para evaluar coherencia textual es más efectivo para la tarea de evaluación automática de ensayos en comparación a modelos que utilicen medidas superficiales de estas características (como conteo de palabras, largo de las oraciones, etc.).
+Un método de evaluación de textos que considera características sintácticas y semánticas para evaluar coherencia textual es más efectivo para la tarea de evaluación automática de ensayos en comparación a modelos que utilicen medidas superficiales de estas características (como conteo de palabras, largo de las oraciones, etc.).
 
 \subsection{Objetivos}
 \begin{itemize}
@@ -97,7 +97,7 @@ Un método que considera características sintácticas y semánticas para evaluar co
 
 \section{Estado del Arte}
 
-La primeras técnicas de evaluación automática de textos (como PEG \cite{t0})  modelan los textos como una combinación lineal de sus características intrínsicas (dicción, contenido, fluidez, etc.). Estas características intrínsicas se estiman mediante características superficiales ({\em proxes}) tales como: la cantidad de palabras, largo del ensayo, cantidad de signos de puntuación utilizados, largo de las oraciones, etc. La metodología para la evaluación consta de dos etapas, una de entrenamiento y una de evaluación. En la etapa de entrenamiento se utilizan textos que ya tienen un puntaje asignado. Luego, existe una fase de estracción de características para posteriormente aplicar una regresión lineal (multi-variable), de manera de ajustar las ponderaciones (pesos) de cada característica. Finalmente, el puntaje de un ensayo se calcula como se muestra en la ecuación \ref{eq0}.
+La primeras técnicas de evaluación automática de textos \cite{t0} modelan los textos como una combinación lineal de sus características intrínsicas (dicción, contenido, fluidez, etc.), las cuales se estiman a través de características superficiales (denominadas {\em proxes}) tales como: la cantidad de palabras, largo del ensayo, cantidad de signos de puntuación utilizados, largo de las oraciones, etc. La evaluación se realiza en dos etapas, una de entrenamiento y una de evaluación. En la etapa de entrenamiento se utilizan textos que ya tienen un puntaje asignado por humanos, el cual representa qué tan correcto es el texto bajo la evaluación de un experto. Luego se ajusta un modelo lineal mediante una regresión (multi-variable), de manera de ajustar las ponderaciones (pesos) de cada {\em proxe}. Finalmente, el puntaje de un ensayo se calcula como se muestra en la ecuación \ref{eq0}.
 
 \begin{equation}
 	\label{eq0}
