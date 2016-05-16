@@ -1,5 +1,4 @@
 \documentclass{article}
-
 \usepackage[latin1]{inputenc}
 \usepackage[spanish,es-nodecimaldot]{babel}
 \usepackage[dvips]{graphicx}
@@ -15,6 +14,7 @@
 \usepackage{url}
 \usepackage{amsmath,esint}
 \usepackage[a4paper]{geometry}
+\renewcommand\spanishtablename{Tabla}
 %\usepackage[pass,paperwidth=8.5in,paperheight=11in]{geometry}
 
 \title{Ensamble de Modelos Sintácticos y Semánticos para la Evaluación Automática de Textos en forma de Ensayos}
@@ -63,7 +63,7 @@ La {\em evaluación automática de coherencia textual} \cite{t33} es un problema d
 Existen diferentes métodos para evaluar coherencia textual: 
 
 \begin{itemize}
-	\item basados en la teoría de centrado \cite{t36}, la cual intenta caracterizar textos que puedan considerarse coherentes basándose en la forma en que se introducen y discuten {\em entidades de discurso}, que generalmente incluyen: nombres (por ejemplo: Juan), descripciones (por ejemplo: ``El hombre barbudo''), pronombres (él, ella). Algunos problemas que tienen estos métodos están relacionados con la ambigüedad que presentan algunos textos, por ejemplo cuando se habla sobre múltiples entidades de discurso está el problema de a cuál se hace referencia.
+	\item basados en la teoría de centrado \cite{t36}, la cual intenta caracterizar textos que puedan considerarse coherentes basándose en la forma en que se introducen y discuten {\em entidades de discurso}, que generalmente incluyen: nombres (por ejemplo: Juan), descripciones (por ejemplo: ``El hombre barbudo''), pronombres (él, ella). Algunos problemas que tienen estos métodos están relacionados con la ambigüedad que presentan algunos textos, por ejemplo cuando se habla sobre múltiples entidades de discurso está el problema de a cuál se hace referencia ({\em coreference resolution}).
 
 	\item basados en {\em Rethorical Structure Theory} \cite{t36}, la cual intenta caracterizar la coherencia mediante relaciones existentes entre una entidad principal de un texto y el texto e información que hace referencia a dicha entidad. Lo que hace esta teoría es definir un conjunto de relaciones, las cuales pueden ser detectadas mediante los marcadores de discurso utilizados en el texto a analizar (como {\em porque}, {\em por lo tanto}, etc.). Algunos problemas de esta teoría, es que, por ejemplo hay marcadores de discurso que tienen más de un propósito, o mapean a más de una relación, dependiendo de lo que se está expresando en el texto.
 	
@@ -173,9 +173,53 @@ En general, los métodos basados en modelos de espacio vectorial tienen el proble
 
 Por otro lado, se han propuesto nuevas medidas de coherencia para evaluar textos automáticamente\cite{t40}. Estas medidas están basadas en un modelo de espacio vectorial. Se divide un texto en segmentos fundamentales (Introducción, desarrollo, y conclusión), luego estos segmentos son llevados a un espacio vectorial, y se representan como puntos en dicho espacio. En esta representación se definen características tales como: oraciones más distantes, distancia promedio entre oraciones, distancia entre párrafos, y otras medidas estadísticas relacionadas a la distribución de los datos, como por ejemplo distancia al centroide de cada párrafo. Estas características se interpretan como una medida de la coherencia local y global del texto a evaluar. Se encontró que agregar estas características a un método convencional de evaluación automática de ensayos, mejora la precisión y el grado de acuerdo con los puntajes asignados por humanos y se pueden obtener correlaciones de hasta 0.9, lo que supera a los métodos en el estado del arte \cite{t40}.
 
-Existen otros métodos para medir coherencia textual que consideran la sintaxis de un texto \cite{t33}\cite{t34}\cite{t35} y su fundamentan en teoría de centrado \cite{t36}. En particular, se establece que los segmentos de un discurso que se centran en ciertas entidades, son más coherentes que los que discuten múltiples entidades entre oraciones.
+Existen otros métodos para medir coherencia textual que consideran la sintaxis de un texto  \cite{t33} \cite{t34} \cite{t35} y su fundamentan en la {\em teoría de centrado} \cite{t36}. La teoría del centrado establece que un discurso está conformado por segmentos de texto y que cada segmento de texto está conformado por expresiones o enunciados ({\em utterances} $U_i$ - $U_n$). Cada expresión ($U_i$) tiene asociada un conjunto de entidades de discurso o centros del discurso (los cuales pueden ser nombres, pronombres, objetos, etc.), el cual se denomina {\em forward looking centers} $C_f(U_i)$. Los elementos de $C_f$ se rankean de acuerdo a su importancia dentro del discurso. El centro de $C_f$ que tiene el mayor rango se denomina $C_p$ o el centro preferido. También se define un centro que relaciona la expresión actual con la anterior, y se denomina {\em backward looking center} $C_b$, y se define como el centro con mayor rango en la expresión previa $U_{i-1}$ que es mencionado en la exprsesión $U_i$. $C_b$ es un tipo especial de centro ya representa el tema que está tratando $U_i$.
 
-Para evaluar la componente sintáctica de un texto, el análisis de coherencia se basa en patrones que se detectan entre entidades locales y que muestra la forma en que cambia el foco del discurso entre las oraciones. Se toma como supuesto que existen patrones que es más probable que aparezcan en discursos coherentes. Para detectar estos patrones, se representará un texto mediante una matriz de entidades. Las columnas de esta matriz corresponden a las entidades del discurso, y las celdas corresponden a oraciones del mismo. Un ejemplo de texto y su matriz de entidades se muestran en las figuras 1 y 2.
+La teoría define 4 tipos de transiciones, las cuales se muestran en la tabla \ref{t1}.
+
+\begin{table}[!htbp]
+\centering
+\caption{Tabla de transiciones en la Teoría del Centrado}
+\label{t1}
+\begin{tabular}{lll}
+\hline
+\hline
+                        & $C_b(U_i)=C_b(U_{i-1})$\_ & $C_b(U_i)\neq C_b(U_{i-1})$ \\
+\hline
+$C_b(U_i)=C_p(U_i)$     & {\em Continue}          & {\em Smooth Shift}        \\
+$C_b(U_i)\neq C_p(U_i)$ & {\em Retain}            & {\em Rough Shift}         \\
+\hline
+\hline   
+\end{tabular}
+\end{table}
+
+Estas transiciones sirven para evaluar qué tan coherente es un texto, y tienen un orden de preferencia, el cual se define como: Una transición tipo {\em continue} se prefiere respecto a una tipo {\em retain} la cual es prefiere respecto a una tipo {\em smooth shift} la cual se prefiere respecto a una tipo {\em rought shift}. La idea fundamental es que discursos coherentes tienden a mantener un centro entre expresiones ({\em utterance}) mientras que textos poco coherentes tienden a hacer cambios bruscos de centros (entidades de discurso). Para entender la idea, se propone el siguiente ejemplo:
+
+\begin{enumerate}[a)]
+	\item Juan tenía un terrible dolor de cabeza. \\
+	($C_b=?$ $C_f=Juan>Dolor de Cabeza$ ,$transicion=ninguna$)
+	\item Cuando la reunión terminó\\
+	($C_b=ninguno$ $C_f=Reunion$ ,$transicion=${\em Rough Shift})
+	\item él corrió a la farmacia\\
+	($C_b=ninguno$ $C_f=Juan$ ,$transicion=${\em Rough Shift})
+\end{enumerate}
+
+Observamos que el fragmento de discurso es complicado de leer, debido a que el foco en la segunda expresión cambia bruscamente, primero se hablaba de {\em Juan} y su {\em Dolor de Cabeza} y luego se habla sobre una {\em reunión}. Se observa que si se cambia el orden de las oraciones, se torna en un texto más coherente:
+
+\begin{enumerate}[a)]
+	\item Juan tenía un terrible dolor de cabeza. \\
+	($C_b=?$ $C_f=Juan>Dolor de Cabeza$ ,$transicion=ninguna$)
+	\item él corrió a la farmacia\\
+	($C_b=Juan$ $C_f=Juan>Farmacia$ ,$transicion=${\em Continue})
+	\item cuando la reunión terminó\\
+	($C_b=ninguno$ $C_f=Reunion$ ,$transicion=${\em Rough Shift})
+\end{enumerate}
+
+Puede notarse que en este orden que se entiende que el que estaba en una reunión era {\em Juan}.
+
+Esta teoría ha sido utilizada para ver la correlación que existe entre el procentaje de transiciones {\em Rough Shift} que ocurren en un discurso y el puntaje asignado por humanos a un texto. Se ha encontrado que mientras mayor sea la cantidad de transiciones {\em Rough Shift} los textos tienden a ser menos coherentes \cite{t45}. La principal ventaja de este método de evaluación de coherencia respecto a los otros, es que considera la sintaxis del texto y el orden de las palabras y oraciones es relevante. La desventaja que tiene es que depende fuertemente de la precisión con la que se capturan las entidades de discurso y se identifican los conjuntos $C_f$. En \cite{t45} se utilizaron textos etiquetdos por humanos para la extracción de centros de discurso, debido a que métodos automáticos tienen problemas al momento de identificar las coreferencias dentro del texto.
+
+Otro método de evaluar la coherencia textual mediante esta teoría, es tomar como supuesto que existen patrones que es más probable que aparezcan en discursos coherentes. Para detectar estos patrones, se representa un texto mediante una matriz de entidades. Un ejemplo de texto y su matriz de entidades se muestran en las figuras 1 y 2.
 	
 \begin{figure}[!htbp]
   \begin{center}
@@ -195,45 +239,46 @@ Para evaluar la componente sintáctica de un texto, el análisis de coherencia se 
   \label{figura2}
 \end{figure}
 
-Las columnas de la matriz representan la presencia o ausencia de una entidad en una secuencia de oraciones $(S_1,...,S_n)$. En particular, cada celda de la matriz representa el rol $r_{ij}$ de la entidad $e_j$ en la oración $S_i$. Los roles gramaticales reflejan si una entidad es un sujeto, objeto, ninguno o simplemente se encuentra ausente. Por ejemplo, en la figura 2, si se considera la entidad \textit{arrest}, se observa que en la oración 3 es un sujeto, en la oración 6 es un objeto, pero se encuentra ausente en el resto de las oraciones. 
+Las columnas de la matriz representan la presencia o ausencia de una entidad en una secuencia de oraciones $(S_1,...,S_n)$. En particular, cada celda de la matriz representa el rol $r_{ij}$ de la entidad $e_j$ en la oración $S_i$. Los roles gramaticales reflejan si una entidad es un sujeto, objeto, ninguno o simplemente se encuentra ausente. Por ejemplo, en la figura 2, si se considera la entidad \textit{arrest} es un sujeto, en la oración 3, es un objeto en la oración 6, pero se encuentra ausente en el resto de las oraciones. 
 
-Posteriormente, la coherencia de un texto $T(S_1, ..., S_n)$ con entidades $e1, ..., e_m$, se puede ver como una distribución de probabilidad conjunta que describe cómo las entidades están distribuidas a través de las oraciones de un documento:
+Así, la coherencia de un texto $T(S_1, ..., S_n)$ con entidades $e1, ..., e_m$, se puede ver como una distribución de probabilidad conjunta que describe cómo las entidades están distribuidas a través de las oraciones del texto $T$:
 
 \begin{equation}
 	Pcoherence(T) = P(e_1,...,e_m; S_1,...,S_n)
 \end{equation}
 
-Para obtener el modelo que define esta distribución de probabilidad, se requiere un conjunto de textos que los humanos consideren coherentes \cite{t36}. Luego, se puede predecir $P$ en textos nuevos. Se tendrá que $P_{coherence}(T)$ será mayor para textos que se consideren más coherentes que los que tengan un $P_{coherence}(T)$ menor.
+Para generar este modelo de distribución de probabilidad, se requiere un conjunto de textos que los humanos consideren coherentes \cite{t36}. Luego, se puede predecir $P(e_1,...,e_m; S_1,...,S_n)$ en textos en los que se quiera evaluar la coherencia. Luego, $P_{coherence}(T)$ será mayor para textos que se consideren más coherentes que los que tengan un $P_{coherence}(T)$ menor.
 
-El método también considera una componente semántica que modela cómo se enlazan las oraciones en términos de la representación mental que hace un lector al leer el texto. Se representa la cohesión léxica a través de un modelo de {\em cadenas léxicas} \cite{t39}, es decir, secuencias de palabras relacionadas que abarcan una unidad textual (por ejemplo: oración, párrafo, etc.). Se supone que unidades textuales coherentes tendrán una alta concentración de estas cadenas, pues se considera que los textos coherentes poseen una gran cantidad de palabras relacionadas semánticamente. Este supuesto permite realizar una representación que no considere la sintaxis del texto, y que no considere el orden de las palabras. Por tanto, se puede representar cada texto como una bolsa de palabras. Se puede representar cada oración como un conjunto de palabras. Luego, para medir la coherencia local de un texto se debe cuantificar la relación semántica entre oraciones adyacentes. Por lo tanto, para medir la coherencia de un texto T se tomará el promedio de las similitudes entre oraciones:
+El método también considera una componente semántica que modela la forma en que se conectan oraciones en términos de la representación mental que hace un lector al leer el texto. La cohesión léxica se representa a través de un modelo de {\em cadenas léxicas} \cite{t39}, es decir, secuencias de palabras relacionadas que abarcan una unidad textual (por ejemplo: oración, párrafo, etc.). De ahí que las unidades textuales coherentes deberán tener una alta concentración de estas cadenas, pues un texto coherente posee muchas de palabras relacionadas semánticamente. Esto permite representar un texto sin considerar el orden de las palabras, luego, cada oración es un conjunto de palabras. Así, para medir la coherencia local de un texto se debe cuantificar la relación semántica entre oraciones adyacentes. Es decir, la coherencia de un texto $T$ se puede considerar como el promedio del grado de similaridad entre oraciones:
 
 \begin{equation}
 	coherencia(T) = \frac{\sum_{i=1}^{n-1}sim(S_i, S_{i+1})}{n-1}
 \end{equation}
-Donde $sim(S_i, S_{i+1})$ es una medida de similaridad entre las oraciones $S_i$ y $S_{i+1}$ (ej: coseno).
+Donde $sim(S_i, S_{i+1})$ es una medida de similaridad entre las oraciones $S_i$ y $S_{i+1}$.
 
-Los experimentos compararon distintos métodos para evaluar coherencia textual como LSA, o métodos basados en Thesauros \cite{t33}. Se detectó que no hay correlación entre los distintos métodos, por lo que evalúan distintas componentes de la coherencia textual. Luego, se propuso un ensamble de modelos para evaluar la coherencia textual, obteniendo una correlación con humanos más alta que cualquier método por sí solo. 
+En \cite{t33} se comparó este método con otros métodos para medir coherencia textual (entre ellos LSA, basados en ontologías, basados en características superficiales.) en el ámbito de resumenes generados automáticamente. Se concluyó que no hay correlación entre los métodos, por lo que cada uno mide distintas componentes de la coherencia textual. Así, un modelo que considere estas componentes tendrá un mejor desempeño en términos de correlación con humanos que cualquier modelo por sí solo.
 
 Tomando lo anterior, un modelo que considere la sintaxis y semántica de un ensayo puede superar a cualquier modelo que utilice medidas indirectas.
 
 \newpage
-\section{Metodología Experimental para Validar Hipótesis}
+\section{Metodología Experimental}
 
 \begin{enumerate}
-	\item Se realizará una revisión bibliográfica de métodos para evaluación de coherencia a nivel de discurso.
+	\item Revisión bibliográfica de métodos para evaluación de coherencia a nivel de discurso.
 	
-	\item Se recopilarán datos de ensayos evaluados por humanos, los cuales se limpiarán y prepararán para utilizarlos en el método a desarrollar. Para este procesamiento y limpieza se utilizarán herramientas existentes como por ejemplo nltk, pyEnchant, entre otros. Los datos a utilizar serán los proporcionados por Kaggle\footnote{http://www.kaggle.com/c/asap-aes/data} en la competencia {\em Automatic Essay Scoring}, el cual contiene datos de ocho categorías diferentes de ensayo, que del total cuatro de ellas consisten en géneros de escritura tradicional (persuasivo, narrativo, etc.) y los otros cuatro están basados en una fuente (es decir, los estudiantes leen un documento fuente y discuten preguntas respecto a dicho documento).
+	\item Recopilación de datos de ensayos evaluados por humanos, los cuales se limpiarán y prepararán para utilizarlos en el método a desarrollar. Para este procesamiento y limpieza se utilizarán herramientas existentes como por ejemplo nltk, pyEnchant, entre otros. Los datos a utilizar serán los proporcionados por Kaggle\footnote{http://www.kaggle.com/c/asap-aes/data} en la competencia {\em Automatic Essay Scoring}, el cual contiene datos de ocho categorías diferentes de ensayo, que del total cuatro de ellas consisten en géneros de escritura tradicional (persuasivo, narrativo, etc.) y los otros cuatro están basados en una fuente (es decir, los estudiantes leen un documento fuente y discuten preguntas respecto a dicho documento).
 	
-	\item Se desarrollará un método de evaluación que considere sintaxis y semántica del ensayo a evaluar. Para ello, se estudiarán modelos de evaluación de coherencia textual que se fundamenten en teoría de discursos, pues estos consideran estas dos componenetes.
+	\item Desarrollo de un método de evaluación que considere sintaxis y semántica del ensayo a evaluar. Para ello, se estudiarán modelos de evaluación de coherencia textual que se fundamenten en teoría de discursos, pues estos consideran estas dos componenetes.
 	
-	\item Se implementará un prototipo computacional de los distintos métodos propuestos en la literatura, con la finalidad de realizar experimentos que validen la hipótesis.
+	\item Implementación de un prototipo computacional de los distintos métodos propuestos en la literatura, con la finalidad de realizar experimentos que validen la hipótesis.
 	
-	\item El método propuesto se evaluará y luego se comparará con otros métodos existentes en la literatura, para ello se utilizarán métricas tales como:
+	\item Evaluación del método propuesto y comparación con otros métodos existentes en la literatura (basados en semántica (LSA), y basados en características superficiales(PEG)), para ello se utilizarán métricas tales como:
 	
 	\begin{itemize}
-		\item {\em Exact Agreement}: Se define como la proporción de ensayos que fueron calificados igualmente por el evaluador humano y el método computacional.
-		\item {\em Adjacent Agreement}: Es una medida que se define como el la proporción ensayos que fueron evaluados igual por el evaluador humano y el método computacional o que difiere en a lo más 1 punto (de calificación).
+		\item {\em Exact Agreement}: Mide la proporción de ensayos que fueron calificados igualmente por el evaluador humano y el método computacional.
+		\item {\em Adjacent Agreement}: Mide la proporción ensayos que fueron evaluados igual por el evaluador humano y el método computacional o que difiere en a lo más 1 punto (de calificación).
 		\item {\em Quadratic Weighted Kappa}: Mide el grado de acuerdo entre los puntajes asignados por dos evaluadores. Su valor máximo es 1, si los evaluadores están completamente de acuerdo, si hay desacuerdo, la métrica puede tomar valores negativos.
+		\item {\em Correlación de Spearman}: Mide qué tan buena es la relación entre la evaluación humana y la automática.
 	\end{itemize}
 
 \end{enumerate}
@@ -364,5 +409,6 @@ Press, pp. 437-467, 1989.
 	\bibitem{t43} F. Gutierrez, D. Dou, S. Fickas, G. Griffiths, ``Online Reasoning for Ontology-Based Error Detection in Text'', OTM 2014, LNCS 8841, pp. 562-579, 2014.
 	
 	\bibitem{t44} F. Gutierrez, D. Dou, S. Fickas, G. Griffiths, ``Providing Grades and Feedback for Student Summaries by Ontology-based Information Extraction,'' CIKM\' 12, 2012.
+	\bibitem{t45} E. Miltasaki, K. Kukich, ``Evaluation of text coherence for electronic essay scoring systems,''. Natural Language Engineering, 2004.
 \end{thebibliography}
 \end{document}
