@@ -1,0 +1,55 @@
+import string
+from nltk.corpus import stopwords
+import enchant
+import codecs
+import nltk
+from collections import Counter
+from textstat.textstat import textstat
+import math
+
+stoplist = stopwords.words('english')
+d = enchant.Dict("en_US")
+
+# Lee un ensayo y retorna el texto puro
+def read_essay(filename):
+	with codecs.open(filename, 'r', "utf-8") as file:
+		return file.read()
+
+# Funcion auxiliar para aplicar translate a strings unicode
+def translate_non_alphanumerics(to_translate, translate_to=u'_'):
+	not_letters_or_digits = u'!"#%()*+,-./:;<=>?@[\]^_`{|}~'
+	translate_table = dict((ord(char), translate_to) for char in not_letters_or_digits)
+	return to_translate.translate(translate_table)
+
+# Reemplaza puntuacion por espacios
+def strip_punctuation(text):
+	return translate_non_alphanumerics(text, translate_to = u' ')
+
+def get_yules(tokens):
+	""" 
+	Returns a tuple with Yule's K and Yule's I.
+	(cf. Oakes, M.P. 1998. Statistics for Corpus Linguistics.
+	International Journal of Applied Linguistics, Vol 10 Issue 2)
+	In production this needs exception handling.
+	"""
+	token_counter = Counter(tok.upper() for tok in tokens)
+	m1 = sum(token_counter.values())
+	m2 = sum([freq ** 2 for freq in token_counter.values()])
+	try:
+		i = (m1*m1) / (m2-m1)
+		k = 1/i * 10000
+	except ZeroDivisionError:
+		i = 100000
+		k = 0
+	return (k, i)
+
+def hapax_legomena(tokens):
+	type_tokens = set(tokens)
+	hapax = 0
+	for token in type_tokens:
+		if tokens.count(token) == 1:
+			hapax += 1
+	return hapax
+
+
+print nltk.word_tokenize(strip_punctuation(u"hello don't i know you"))
