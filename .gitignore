@@ -29,6 +29,7 @@
 *.csv
 *.xls
 *.txt
+*.tsv
 
 # OS generated files #
 ######################
