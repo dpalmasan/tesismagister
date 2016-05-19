@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.11.10)  16 MAY 2016 11:50
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.11.10)  18 MAY 2016 22:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -395,45 +395,45 @@ File: uesint.fd
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 84.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 82.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 84.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 82.
  [3] [4] [5]
-<figure_plsa.png, id=29, 479.7925pt x 206.7725pt>
+<figure_plsa.png, id=29, 296.60812pt x 123.46124pt>
 File: figure_plsa.png Graphic file (type png)
  <use figure_plsa.png>
-Package pdftex.def Info: figure_plsa.png used on input line 156.
-(pdftex.def)             Requested size: 216.81pt x 93.43799pt.
+Package pdftex.def Info: figure_plsa.png used on input line 153.
+(pdftex.def)             Requested size: 216.81pt x 90.24838pt.
 
-[6 <./figure_plsa.png>] [7] <figure_1.png, id=40, 539.76656pt x 216.81pt>
+[6 <./figure_plsa.png (PNG copy)>] [7]
+<figure_1.png, id=38, 539.76656pt x 216.81pt>
 File: figure_1.png Graphic file (type png)
-
-<use figure_1.png>
-Package pdftex.def Info: figure_1.png used on input line 227.
+ <use figure_1.png>
+Package pdftex.def Info: figure_1.png used on input line 224.
 (pdftex.def)             Requested size: 289.07999pt x 116.11626pt.
- <figure_2.png, id=41, 497.60907pt x 249.93375pt>
-File: figure_2.png Graphic file (type png)
 
-<use figure_2.png>
-Package pdftex.def Info: figure_2.png used on input line 236.
+<figure_2.png, id=39, 497.60907pt x 249.93375pt>
+File: figure_2.png Graphic file (type png)
+ <use figure_2.png>
+Package pdftex.def Info: figure_2.png used on input line 233.
 (pdftex.def)             Requested size: 289.07999pt x 145.19812pt.
- [8] [9 <./figure_1.png> <./figure_2.png>] [10] [11] [12]
-[13] [14] (./propuesta_tesis_magister.aux
+ [8 <./figure_1.png>] [9 <./figure_2.png>] [10] [11] [12] [13]
+(./propuesta_tesis_magister.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 ) ) 
 Here is how much of TeX's memory you used:
  5262 strings out of 494925
  74906 string characters out of 6178543
- 153176 words of memory out of 5000000
+ 152155 words of memory out of 5000000
  8379 multiletter control sequences out of 15000+600000
  12251 words of font info for 52 fonts, out of 8000000 for 9000
  62 hyphenation exceptions out of 8191
- 38i,10n,38p,1517b,304s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,10n,38p,1518b,304s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/tex
@@ -447,10 +447,10 @@ s/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on propuesta_tesis_magister.pdf (14 pages, 275494 bytes).
+Output written on propuesta_tesis_magister.pdf (13 pages, 277585 bytes).
 PDF statistics:
- 111 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
+ 106 PDF objects out of 1000 (max. 8388607)
+ 73 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
