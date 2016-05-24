@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.11.10)  23 MAY 2016 23:17
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.5.9)  24 MAY 2016 16:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **propuesta_tesis_magister.tex
 (./propuesta_tesis_magister.tex
 LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 7 languages loaded.
+Babel <3.9h> and hyphenation patterns for 78 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
@@ -427,12 +427,12 @@ LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 ) ) 
 Here is how much of TeX's memory you used:
- 5262 strings out of 494925
- 74906 string characters out of 6178543
- 152156 words of memory out of 5000000
- 8379 multiletter control sequences out of 15000+600000
+ 5262 strings out of 493304
+ 74906 string characters out of 6139872
+ 156152 words of memory out of 5000000
+ 8613 multiletter control sequences out of 15000+600000
  12251 words of font info for 52 fonts, out of 8000000 for 9000
- 62 hyphenation exceptions out of 8191
+ 957 hyphenation exceptions out of 8191
  38i,10n,38p,1522b,304s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
@@ -447,7 +447,7 @@ s/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on propuesta_tesis_magister.pdf (14 pages, 278857 bytes).
+Output written on propuesta_tesis_magister.pdf (14 pages, 278852 bytes).
 PDF statistics:
  109 PDF objects out of 1000 (max. 8388607)
  75 compressed objects within 1 object stream
