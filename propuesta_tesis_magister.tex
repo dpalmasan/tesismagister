@@ -14,12 +14,12 @@
 \usepackage{url}
 \usepackage{amsmath,esint}
 \usepackage[a4paper]{geometry}
-%\renewcommand\spanishtablename{Tabla}
+\renewcommand\spanishtablename{Tabla}
 %\usepackage[pass,paperwidth=8.5in,paperheight=11in]{geometry}
 
 \title{Ensamble de Modelos Sintácticos y Semánticos para la Evaluación Automática de Ensayos}
-\author{Alumno: Diego Andrés Palma Sánchez\\Profesor: John Atkinson}
-\date{Enero de 2016}
+\author{Profesor: John Atkinson\\Alumno: Diego Andrés Palma Sánchez}
+\date{Mayo de 2016}
 
 \begin{document}
 \maketitle
@@ -92,7 +92,7 @@ Un método de evaluación de textos que considera características sintácticas y se
 	
 \end{itemize}
 
-\section{Estado del Arte}
+\section{Trabajo Relacionado}
 
 La primeras técnicas de evaluación automática de textos \cite{t0} modelaban los textos como una combinación lineal de sus características intrínsicas (dicción, contenido, fluidez, etc.), las cuales se estiman a través de características superficiales ({\em proxes}) tales como: la cantidad de palabras, largo del ensayo, cantidad de signos de puntuación utilizados, largo de las oraciones, etc. La evaluación se realiza en dos etapas: entrenamiento y evaluación. En la etapa de entrenamiento se utilizan textos que ya tienen un puntaje asignado por humanos, que representa qué tan correcto es el texto bajo la evaluación de un experto. Luego se ajusta un modelo lineal mediante una regresión (multi-variable), de manera de ajustar las ponderaciones (pesos) de cada {\em proxe}. Finalmente, el puntaje de un ensayo se calcula como se muestra en la ecuación \ref{eq0}.
 
@@ -101,7 +101,7 @@ La primeras técnicas de evaluación automática de textos \cite{t0} modelaban los 
 	Puntaje = \beta_0 + \sum\limits_{i=1}^n \beta_iP_i
 \end{equation}
 
-Donde $\beta_i$ representa la ponderación correspondiente al {\em proxe} $P_i$, y representa el impacto que tiene el {\em proxe} en el puntaje del ensayo. Los mejores resultados experimentales mostraron una correlación de 0.87 entre los puntajes asignados por PEG y los asignados por humanos \cite{t0}. Sin embargo, el método utiliza medidas indirectas de la calidad del texto a evaluar lo lo vulnerable a engaños \cite{t9}, ya que un estudiante podría mejorar su puntaje mediante trucos (por ejemplo escribir un texto más largo). Por otro lado, el uso de estas medidas no captura características importantes tales como contenido, organización, y coherencia. La razón de ello es que el método se fundamenta únicamente en la frecuencia de aparición de cada {\em proxe} y no en el significado de lo que está esctrito ni en las relaciones que existen entre las ideas expresadas en el texto.
+Donde $\beta_i$ representa la ponderación correspondiente al {\em proxe} $P_i$, y representa el impacto que tiene el {\em proxe} en el puntaje del ensayo. Los mejores resultados experimentales mostraron una correlación de 0.87 entre los puntajes asignados por PEG y los asignados por humanos \cite{t0}. Sin embargo, el método utiliza medidas indirectas de la calidad del texto a evaluar lo que lo hace vulnerable a engaños \cite{t9}, ya que un estudiante podría mejorar su puntaje mediante trucos (por ejemplo escribir un texto más largo). Por otro lado, el uso de estas medidas no captura características importantes tales como contenido, organización, y coherencia. La razón de ello es que el método se fundamenta únicamente en la frecuencia de aparición de cada {\em proxe} y no en el significado de lo que está escrito ni en las relaciones que existen entre las ideas expresadas en el texto.
 
 Para evaluar el contenido de un texto, se han utilizado técnicas de {\em Recuperación de Información} (IR) \cite{t26} y {\em Procesamiento del Lenguaje Natural} (NLP) \cite{t27}. Para representar el contenido de un texto se utiliza un modelo de IR conocido como {\em modelo de espacio vectorial} \cite{t26}, el cual considera un vocabulario previamente definido (términos relevantes que encapsulan el contenido del texto) que se utiliza para representar un documento a partir de la frecuencia de aparición de los términos que lo componen, como se muestra en la ecuación \ref{eq1}.
 
@@ -145,7 +145,7 @@ El problema de la polisemia no es totalmente resuelto por GLSA, ya que depende d
 	\item Tópicos: Variables ocultas.
 \end{itemize}
 
-PLSA se fundamenta en un modelo probabilístico denominado {\em Aspect Model}, el cual expreesa que las variables ocultas (tópicos) están asociadas a las variables observadas (documentos y palabras). En la figura \ref{figura_plsa} se muestra una representación gráfica del modelo, en la que se describe el proceso generativo de N documentos en el corpus. $N_w$ es la cantidad de palabras en el documento $d$. Cada palabra $w$ tiene asociada un tópico $z$ (variable latente) que la genera.
+PLSA se fundamenta en un modelo probabilístico denominado {\em Aspect Model}, el cual expresa que las variables ocultas (tópicos) están asociadas a las variables observadas (documentos y palabras). En la figura \ref{figura_plsa} se muestra una representación gráfica del modelo, en la que se describe el proceso generativo de N documentos en el corpus. $N_w$ es la cantidad de palabras en el documento $d$. Cada palabra $w$ tiene asociada un tópico $z$ (variable latente) que la genera.
 
 \begin{figure}[!htbp]
   \begin{center}
@@ -164,15 +164,15 @@ Las ventajas que posee PLSA respecto a LSA son incluyen:
 	\item Logra solventar el problema de la polisemia, pues se tienen grupos de palabras que representan un determinado tópico (variable oculta).
 \end{itemize}
 
-Este método se ha utilizado para la evaluación automática de ensayos, y los resultados obtenidos son similares a los de LSA en conjuntos de datos pequeños, mejora a LSA en corpus con más documentos.
+Este método se ha utilizado para la evaluación automática de ensayos, los resultados obtenidos son similares a los de LSA en conjuntos de datos pequeños, y mejores que LSA en corpus con más documentos.
 
-En general, los métodos basados en modelos de espacio vectorial tienen el problema de que no son capaces de detectar errores semánticos, como por ejemplo hechos contradictorios dentro de un texto, o hechos inconsistentes dentro del dominio en el que se quiere evaluar el texto. Debido a esto, se ha propuesto el uso de ontologías para la detección de errores semánticos \cite{t43}. Una ontología es una definición formal de tipos, propiedades, y relaciones entre entidades con respecto a un dominio específico. Básicamente, contiene axiomas que representan el dominio y sus características. Para evaluar la coherencia textual en un dominio específico, lo que se hace es crear una base de conocimiento que tenga axiomas sobre el dominio a considerar. Luego, para evaluar un texto, se genera una representación lógica del contenido del mismo y se evalúa la consistencia de los hechos mencionados en el texto con respecto a la base de conocimiento del dominio. Cualquier hecho que sea incosistente se considerará como un error semántico. Se ha encontrado que este método puede detectar errores semánticos que pasan desapercibidos en métodos basados en un modelo de espacio vectorial como LSA \cite{t44}. Un problema con este método es que la generación de la ontología y los axiomas se hace manualmente, por lo que se vuelve poco práctico si se tiene un corpus miles de documentos. En los experimentos reportados se utilizan conjuntos de datos del orden de los 30 - 50 documentos.
+En general, los métodos basados en modelos de espacio vectorial tienen el problema de que no son capaces de detectar errores semánticos, como por ejemplo hechos contradictorios dentro de un texto, o hechos inconsistentes dentro del dominio en el que se quiere evaluar el texto. Debido a esto, se ha propuesto el uso de ontologías para la detección de errores semánticos \cite{t43}. Una ontología es una definición formal de tipos, propiedades, y relaciones entre entidades con respecto a un dominio específico. Básicamente, contiene axiomas que representan el dominio y sus características. Para evaluar la coherencia textual en un dominio específico, lo que se hace es crear una base de conocimiento que tenga axiomas sobre el dominio a considerar. Luego, para evaluar un texto, se genera una representación lógica del contenido del mismo y se evalúa la consistencia de los hechos mencionados en el texto con respecto a la base de conocimiento del dominio. Cualquier hecho que sea incosistente se considerará como un error semántico. Se ha encontrado que este método puede detectar errores semánticos que pasan desapercibidos en métodos basados en un modelo de espacio vectorial como LSA \cite{t44}. Un problema con este método es que la generación de la ontología y los axiomas se hace manualmente, por lo que se vuelve poco práctico si se tiene un corpus con miles de documentos. En los experimentos reportados se utilizan conjuntos de datos del orden de los 30 - 50 documentos.
 
 Por otro lado, se han propuesto nuevas medidas de coherencia para evaluar textos automáticamente \cite{t40}. Estas medidas están basadas en un modelo de espacio vectorial. Se divide un texto en segmentos fundamentales (Introducción, desarrollo, y conclusión), luego estos segmentos son llevados a un espacio vectorial, y se representan como puntos en dicho espacio. En esta representación, se definen características tales como distancia entre oraciones más distantes, distancia promedio entre oraciones, distancia entre párrafos, y otras medidas estadísticas relacionadas a la distribución de los datos, como por ejemplo distancia al centroide de cada párrafo. Estas características se interpretan como una medida de la coherencia local y global del texto a evaluar. Se encontró que agregar estas características a un método convencional de evaluación automática de ensayos, mejora la precisión y el grado de acuerdo con los puntajes asignados por humanos y se pueden obtener correlaciones de hasta 0.9, lo que supera a los métodos en el estado del arte \cite{t40}.
 
 Existen otros métodos para medir coherencia textual que consideran la sintaxis de un texto  \cite{t33} \cite{t34} \cite{t35} y se fundamentan en la {\em teoría de centrado} \cite{t36}. Esta establece que un discurso está conformado por segmentos de texto y que cada segmento de texto está conformado por expresiones o enunciados ({\em utterances} $U_i$ - $U_n$). Cada expresión ($U_i$) tiene asociada un conjunto de entidades de discurso o centros del discurso (los cuales pueden ser nombres, pronombres, objetos, etc.), el cual se denomina {\em forward looking centers} $C_f(U_i)$. Los elementos de $C_f$ se rankean de acuerdo a su importancia dentro del discurso. El centro de $C_f$ que tiene el mayor rango se denomina $C_p$ o el centro preferido. También se define un centro que relaciona la expresión actual con la anterior, y se denomina {\em backward looking center} $C_b$, y se define como el centro con mayor rango en la expresión previa $U_{i-1}$ que es mencionado en la exprsesión $U_i$. $C_b$ es un tipo especial de centro ya representa el tema que está tratando $U_i$.
 
-La teoría define tipos de transiciones, las cuales se muestran en el cuadro \ref{t1}.
+La teoría define cuatro tipos de transiciones, las cuales se muestran en la tabla \ref{t1}.
 
 \begin{table}[!htbp]
 \centering
@@ -190,7 +190,7 @@ $C_b(U_i)\neq C_p(U_i)$ & {\em Retain}            & {\em Rough Shift}         \\
 \end{tabular}
 \end{table}
 
-Estas transiciones se utilizan para evaluar qué tan coherente es un texto, y tienen un orden de preferencia, el cual se define como: Una transición tipo {\em continue} se prefiere respecto a una tipo {\em retain} la cual es prefiere respecto a una tipo {\em smooth shift} la cual se prefiere respecto a una tipo {\em rought shift}. La idea fundamental es que discursos coherentes tienden a mantener un centro entre expresiones ({\em utterance}) mientras que textos poco coherentes tienden a hacer cambios bruscos de centros (entidades de discurso). Para entender la idea, se propone el siguiente ejemplo:
+Estas transiciones se utilizan para evaluar qué tan coherente es un texto, y tienen un orden de preferencia, el cual se define como: Una transición tipo {\em continue} se prefiere respecto a una tipo {\em retain} la cual se prefiere respecto a una tipo {\em smooth shift} la cual se prefiere respecto a una tipo {\em rough shift}. La idea fundamental es que discursos coherentes tienden a mantener un centro entre expresiones ({\em utterance}) mientras que textos poco coherentes tienden a hacer cambios bruscos de centros (entidades de discurso). Para entender la idea, se propone el siguiente ejemplo:
 
 \begin{enumerate}[a)]
 	\item Juan tenía un terrible dolor de cabeza. \\
@@ -214,9 +214,9 @@ Observamos que el fragmento de discurso es complicado de leer, debido a que el f
 
 En este caso es claro que {\em Juan corrió} a la {\em farmacia} una vez terminada la {\em reunión}.
 
-Esta teoría ha sido utilizada para determinar la correlación entre la proporción de transiciones {\em Rough Shift} que ocurren en un discurso y el puntaje asignado por humanos a un texto. Se ha encontrado que mientras mayor sea esta proporción, los textos tienden a ser menos coherentes \cite{t45}. La principal ventaja, es que se considera la sintaxis del texto (el orden de las expresiones es relevante). La desventaja que tiene es que depende fuertemente de la precisión con la que se capturan las entidades de discurso y se identifican los conjuntos $C_f$. En \cite{t45} se utilizaron textos etiquetdos por humanos para la extracción de centros de discurso, debido a que métodos automáticos tienen problemas al momento de identificar las coreferencias dentro del texto.
+Esta teoría ha sido utilizada para determinar la correlación entre la proporción de transiciones {\em Rough Shift} que ocurren en un discurso y el puntaje asignado por humanos a un texto. Se ha encontrado que mientras mayor sea esta proporción, los textos tienden a ser menos coherentes \cite{t45}. La principal ventaja, es que se considera la sintaxis del texto (el orden de las expresiones es relevante). La desventaja que tiene es que depende fuertemente de la precisión con la que se capturan las entidades de discurso y se identifican los conjuntos $C_f$. En \cite{t45} se utilizaron textos etiquetados por humanos para la extracción de centros de discurso, debido a que métodos automáticos tienen problemas al momento de identificar las coreferencias dentro del texto.
 
-Otro método de se evaluación basado en esta teoría, es tomar como supuesto que existen patrones que es más probable que aparezcan en discursos coherentes. Para detectar estos patrones, un texto se representa mediante una matriz de entidades. Un ejemplo de texto y su matriz de entidades se muestran en las figuras 1 y 2.
+Otro método de evaluación basado en esta teoría, toma como supuesto que existen patrones que es más probable que aparezcan en discursos coherentes. Para detectar estos patrones, un texto se representa mediante una matriz de entidades. Un ejemplo de texto y su matriz de entidades se muestran en las figuras 1 y 2.
 	
 \begin{figure}[!htbp]
   \begin{center}
@@ -246,18 +246,22 @@ Así, la coherencia de un texto $T(S_1, ..., S_n)$ con entidades $e1, ..., e_m$, 
 
 Para generar este modelo de distribución, se requiere un conjunto de textos que los humanos consideren coherentes \cite{t36}. Luego, se puede predecir $P(e_1,...,e_m; S_1,...,S_n)$ en textos en los que se quiera evaluar la coherencia. Luego, $P_{coherence}(T)$ será mayor para textos que se consideren más coherentes que los que tengan un $P_{coherence}(T)$ menor.
 
-El método también considera una componente semántica que modela la forma en que se conectan oraciones en términos de la representación mental que hace un lector al leer el texto. La cohesión léxica se representa a través de un modelo de {\em cadenas léxicas} \cite{t39}, es decir, secuencias de palabras relacionadas que abarcan una unidad textual (por ejemplo: oración, párrafo, etc.). De ahí que las unidades textuales coherentes deberán tener una alta concentración de estas cadenas, pues un texto coherente posee muchas de palabras relacionadas semánticamente. Esto permite representar un texto sin considerar el orden de las palabras, luego, cada oración es un conjunto de palabras. Así, para medir la coherencia local de un texto se debe cuantificar la relación semántica entre oraciones adyacentes. Es decir, la coherencia de un texto $T$ se puede considerar como el promedio del grado de similaridad entre oraciones:
+El método también considera una componente semántica que modela la forma en que se conectan oraciones en términos de la representación mental que hace un lector al leer el texto. La cohesión léxica se representa a través de un modelo de {\em cadenas léxicas} \cite{t39}, es decir, secuencias de palabras relacionadas que abarcan una unidad textual (por ejemplo: oración, párrafo, etc.). De ahí que las unidades textuales coherentes deberán tener una alta concentración de estas cadenas, pues un texto coherente posee muchas palabras relacionadas semánticamente. Esto permite representar un texto sin considerar el orden de las palabras, luego, cada oración es un conjunto de palabras. Así, para medir la coherencia local de un texto se debe cuantificar la relación semántica entre oraciones adyacentes. Es decir, la coherencia de un texto $T$ se puede considerar como el promedio del grado de similaridad entre oraciones:
 
 \begin{equation}
 	coherencia(T) = \frac{\sum_{i=1}^{n-1}sim(S_i, S_{i+1})}{n-1}
 \end{equation}
 Donde $sim(S_i, S_{i+1})$ es una medida de similaridad entre las oraciones $S_i$ y $S_{i+1}$.
 
-Este método ha sido comparado con otros enfoques para medir coherencia textual (entre ellos LSA, basados en ontologías, basados en características superficiales.) en el ámbito de resumenes generados automáticamente \cite{t33}. Los resultados muestran que no existe correlación entre los métodos, por lo que cada uno mide distintas componentes de la coherencia textual. Así, un modelo que considere estas componentes tendrá un mejor desempeño en términos de correlación con humanos que cualquier modelo por sí solo.
+Este método ha sido comparado con otros enfoques para medir coherencia textual (entre ellos LSA, basados en ontologías, basados en características superficiales) en el ámbito de resumenes generados automáticamente \cite{t33}. Los resultados muestran que no existe correlación entre los métodos, por lo que cada uno mide distintas componentes de la coherencia textual. Así, un modelo que considere estas componentes tendrá un mejor desempeño en términos de correlación con humanos que cualquier modelo por sí solo.
 
 Tomando lo anterior, un modelo que considere la sintaxis y semántica de un ensayo podría mejorar el rendimiento de la evaluación debido a que considería diferentes componentes de la coherencia textual.
 
-\newpage
+\section{Propuesta}
+
+Tomando lo revisado en el trabajo relacionado, se propone trabajar en un método de evaluación de ensayos que considere la sintaxis y semántica de los textos. Para ello, se tomarán como punto de partida los métodos basados en un modelo de espacio vectorial y los métodos que se fundamentan en teoría de discurso. La razón de ello, es que los métodos evalúan diferentes características de la coherencia textual, es decir, no existe correlación entre las evaluaciones que entregan.
+
+
 \section{Metodología Experimental}
 
 \begin{enumerate}
