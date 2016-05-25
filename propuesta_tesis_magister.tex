@@ -259,7 +259,67 @@ Tomando lo anterior, un modelo que considere la sintaxis y semántica de un ensay
 
 \section{Propuesta}
 
-Se propone desarrollar un método computacional que permita evaluar automáticamente ensayos considerando aspectos de coherencia textual y que considere la sintaxis y semántica. Para ello, se tomarán como punto de partida los métodos basados en un modelo de espacio vectorial y los métodos que se fundamentan en teoría de discurso. La razón de ello, es que los métodos evalúan diferentes características de la coherencia textual, es decir, no existe correlación entre las evaluaciones que entregan.
+Se propone desarrollar un método computacional que permita evaluar automáticamente ensayos considerando aspectos de coherencia textual y que considere la sintaxis y semántica. Para ello, se tomarán como punto de partida los métodos basados en un modelo de espacio vectorial y los métodos que se fundamentan en teoría de discurso. 
+
+Se tomará como {\em baseline} el método descrito en \cite{t40}, el cual considera las características estadísticas que se muestran en la tabla \ref{t2} para luego aplicar una regresión. Por otro lado, se considerarán otros métodos para medir la coherencia textual, entre ellos LSA y los métodos que utilizan teoría de centrado.
+
+\begin{table}[!htbp]
+\centering
+\caption{Atributos Lingüísticos y de Contenido}
+\label{t2}
+\begin{tabular}{lll}
+\hline
+\hline
+{\bf lexical sophistication} & {\bf grammar} \\
+\hline
+{\em number of characters}       & {\em Number of different POS tags} \\
+{\em number of words}            & {\b Number of Each POS tag} \\
+{\em number of long words}       & {\em adverb}         \\
+{\em number of short words}      & {\em coordinating conjunction}\\
+{\em most frequent word length}  & {\em numeral}         \\
+{\em average word length}        & {\em determiner}         \\
+{\em number of sentences}        & {\em existential there}  \\
+{\em number of long sentences}   & {\em preposition}         \\
+{\em number of short sentences}  & {\em adjective}         \\
+{\em most frequent sentence length} & {\em superlative adjective}      \\
+{\em average sentence length}    & {\em comparative adjective}         \\
+{\em number of different words}  & {\em modal auxiliary}         \\
+{\em number of stop words}       & {\em singular or mass common noun} \\
+{\b Readability measures \cite{t46}, \cite{t47}} & {\em plural common noun}\\
+{\em Gunning Fog Index}          & {\em singular proper noun}    \\
+{\em Flesch Reading Ease}        & {\em preposition participle}  \\
+{\em Flesch Kincaid Grade Level} & {\em predeterminer}         \\
+{\em Dale Chall Readability formula} & {\em personal pronoun}   \\
+{\em automated readability index} & {\em possessive pronoun}    \\
+{\em Simple Measure of Gobbledygook} & {\em adverb}         \\
+{\em LIX}       & {\em genitive marker}     \\
+{\em Word Variation Index}       & {\em comparative adverb}         \\
+{\em Nominal Ratio}              & {\em superlative adverb}         \\
+{\b Lexical Diversity \cite{t48}}       & {\em verb - base form}    \\
+{\em TTR}                        & {\em verb - past tense}         \\
+{\em Guiraud's index}            & {\em verb - gerund/present participle}\\
+{\em Yule's K}                   & {\em verb - past participle}         \\
+{\em hapax legomena}             & {\em wh-determiner}     \\
+{\em Advanced Giraud}            & {\em wh-pronoun}     \\
+           & {\em possessive wh-pronoun}         \\
+                      & {\em wh-adverb}         \\
+\hline
+{\bf Content} & \\
+\hline
+
+1. cosine similarity with source text & \\
+2. score point level for maximum cosine & \\
+similarity over all score points & \\
+3. cosine similarity with essays that & \\
+have highest score point level & \\
+4. pattern cosine \cite{t49} & \\
+5. weighted sum of all cosine correlation values \cite{t49} & \\
+
+\hline
+\hline   
+\end{tabular}
+\end{table}
+
 
 
 \section{Metodología Experimental}
@@ -413,5 +473,15 @@ Press, pp. 437-467, 1989.
 	
 	\bibitem{t44} F. Gutierrez, D. Dou, S. Fickas, G. Griffiths, ``Providing Grades and Feedback for Student Summaries by Ontology-based Information Extraction,'' CIKM\' 12, 2012.
 	\bibitem{t45} E. Miltasaki, K. Kukich, ``Evaluation of text coherence for electronic essay scoring systems,''. Natural Language Engineering, 2004.
+	\bibitem{t46} W. H. ``Dubay, Smart Language: Readers , Readability , and the
+Grading of Text''. BookSurge Publishing, 2007.
+
+	\bibitem{t47} C. Smith and A. Jönsson, ``Automatic Summarization As
+Means Of Simplifying Texts, An Evaluation For Swedish'', in Proceedings of the 18th Nordic Conference of Computational Linguistics NODALIDA 2011, B. Sandford Pedersen,
+G. Nespore, and I. Skadina, Eds., 2011, pp. 198?205.
+
+	\bibitem{t48} A. Mellor, ``Essay Length , Lexical Diversity and Automatic Essay Scoring,'' Memoirs of the Osaka Institute of Technology, vol. 55, no. 2, pp. 1?14, 2011.
+	\bibitem{t49} Y. Attali, ``A Differential Word Use Measure for Content Analysis in Automated Essay Scoring,'' ETS Research Report Series, vol. 36, 2011.
+
 \end{thebibliography}
 \end{document}

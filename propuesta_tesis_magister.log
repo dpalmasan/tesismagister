@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.5.9)  24 MAY 2016 16:27
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.5.9)  25 MAY 2016 12:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -421,19 +421,19 @@ File: figure_2.png Graphic file (type png)
  <use figure_2.png>
 Package pdftex.def Info: figure_2.png used on input line 233.
 (pdftex.def)             Requested size: 289.07999pt x 145.19812pt.
- [8 <./figure_1.png>] [9 <./figure_2.png>] [10] [11] [12] [13] [14]
+ [8 <./figure_1.png>] [9 <./figure_2.png>] [10] [11] [12] [13] [14] [15] [16]
 (./propuesta_tesis_magister.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 ) ) 
 Here is how much of TeX's memory you used:
- 5262 strings out of 493304
- 74906 string characters out of 6139872
- 156152 words of memory out of 5000000
- 8613 multiletter control sequences out of 15000+600000
+ 5267 strings out of 493304
+ 74930 string characters out of 6139872
+ 156181 words of memory out of 5000000
+ 8618 multiletter control sequences out of 15000+600000
  12251 words of font info for 52 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,10n,38p,1522b,304s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,14n,38p,1522b,304s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/tex
@@ -447,10 +447,10 @@ s/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on propuesta_tesis_magister.pdf (14 pages, 278852 bytes).
+Output written on propuesta_tesis_magister.pdf (16 pages, 285002 bytes).
 PDF statistics:
- 109 PDF objects out of 1000 (max. 8388607)
- 75 compressed objects within 1 object stream
+ 115 PDF objects out of 1000 (max. 8388607)
+ 79 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
