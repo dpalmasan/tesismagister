@@ -250,6 +250,7 @@ El método también considera una componente semántica que modela la forma en que 
 
 \begin{equation}
 	coherencia(T) = \frac{\sum_{i=1}^{n-1}sim(S_i, S_{i+1})}{n-1}
+	\label{eq5}
 \end{equation}
 Donde $sim(S_i, S_{i+1})$ es una medida de similaridad entre las oraciones $S_i$ y $S_{i+1}$.
 
@@ -259,9 +260,19 @@ Tomando lo anterior, un modelo que considere la sintaxis y semántica de un ensay
 
 \section{Propuesta}
 
-Se propone desarrollar un método computacional que permita evaluar automáticamente ensayos considerando aspectos de coherencia textual y que considere la sintaxis y semántica. Para ello, se tomarán como punto de partida los métodos basados en un modelo de espacio vectorial y los métodos que se fundamentan en teoría de discurso. 
+Se propone desarrollar un método computacional que permita evaluar automáticamente ensayos considerando aspectos de coherencia textual y que considere la sintaxis y semántica.
 
-Se tomará como {\em baseline} el método descrito en \cite{t40}, el cual considera las características estadísticas que se muestran en la tabla \ref{t2} para luego aplicar una regresión. Por otro lado, se considerarán otros métodos para medir la coherencia textual, entre ellos LSA y los métodos que utilizan teoría de centrado.
+Para ello se considerarán métodos que evalúen diferentes componentes de la coherencia textual, para posteriormente ensamblarlos.
+
+El primer método a considerar será un método basado en características estadísticas de los textos, tal como el descrito en \cite{t40}. Este método de evaluación de ensayos considerará las características mostradas en la tabla \ref{t2}. Para aplicar este método, es necesario tener un conjunto de ensayos pre-evaluados, y ajustar un modelo de regresión como el mostrado en la ecuación \ref{eq0}.
+
+Por otro lado, también se considerará un método basado en un modelo de espacio vectorial. Se utizará LSA, y se aplicará a un conjunto de ensayos pre-evaluados con el fin de obtener un espacio semántico. Dentro de dicho espacio se compararán los ensayos utilizando la similitud coseno (ecuación \ref{eq2}).
+
+Para considerar las características sintácticas de los textos se utilizará un método basado en la teoría del centrado como el mostrado en \cite{t50}. Para ello, se requerirá representar un documento como una matriz de entidades, donde cada entidad tiene un rol dentro de la oración, como por ejemplo sujeto (s), objeto (o) u otro rol que no sea sujeto ni objeto (x). En la figura \ref{figura3} se muestra un ejemplo de una matriz de entidades, donde las filas de la matriz representan las oraciones del texto, las columnas son las entidades dentro del texto y en cada celda de la matriz se encuentra el rol de la entidad. Luego, el análisis de coherencia se hará considerando transiciones de entidades entre oraciones. Cada transición tendrá una cierta probabilidad dependiendo de la estructura de la matriz. Por ejemplo en la figura \ref{figura3} la transición {\em [s-]} tiene una probabilidad de 0.08 (se calcula como la razón entre la frecuencia de ocurrencia de la transición (8) y la cantidad de transiciones de largo 2, en este caso 75). Se considera que ciertos patrones de transiciones tienden a ocurrir en textos coherentes. Luego, cada ensayo se representará como un vector, donde cada componente del vector corresponderá a la probabilidad de ocurrencia de una transición, un ejemplo de ello se muestra en la figura \ref{figura4}. Finalmente se aplicará regresión para encontrar un modelo que relacione las probabilidades obtenidas y la nota del ensayo.
+
+Otro método que se utilizará para evaluar la coherencia textual estará basado en un modelo de {\em cadenas léxicas}. Este modelo toma como supuesto que un texto es coherente si se utilizan palabras que estén relacionadas semánticamente entre oraciones. Para aplicar este método, se requiere tener una representación de matemática del significado de las palabras y así poder cuantificar la similitud entre ellas. Esto se logrará de dos formas alternativas, la primera es considerando un corpus de millones de documentos, como el corpus TASA (Touchstone Applied Science Associates). Este corpus contiene millones de documentos que consideran conceptos de una amplia cantidad de tópicos, y el significado de las palabras se extraerá utilizando LSA. Al aplicar LSA, se obtendrá un espacio semántico, y cada palabra estará representada como un vector. Luego, se podrá utilizar la similitud coseno para ver qué tan similares son dos palabras. Luego, cada texto se segmentará en oraciones, y para obtener una representación vectorial de estas, se considerará la suma vectorial de las palabras que la componen. Posteriormente, se calculará la similitud promedio entre oraciones adyacentes (ecuación \ref{eq5}). Alternativamente, se considerará otra representación de palabras como la realizada en \cite{t51}, pues esta a diferencia de LSA no asume un modelo de bolsa de palabras. Con los vectores de palabras obtenidos, se realizará el cálculo de similitud entre oraciones adyacentes como el descrito previamente.
+
+Finalmente, utilizando estos métodos, se hará un ensamble (inicialmente con un modelo de regresión), es decir, se evaluará un texto considerando las componentes de la coherencia de todos los métodos.
 
 \begin{table}[!htbp]
 \centering
@@ -320,6 +331,23 @@ have highest score point level & \\
 \end{tabular}
 \end{table}
 
+\begin{figure}[!htbp]
+  \begin{center}
+    \leavevmode
+    \fbox{\includegraphics[width=4in] {figure_3.png}}
+  \end{center}
+  \caption{Matriz de entidades.}
+  \label{figura3}
+\end{figure}
+
+\begin{figure}[!htbp]
+  \begin{center}
+    \leavevmode
+    \fbox{\includegraphics[width=4in] {figure_4.png}}
+  \end{center}
+  \caption{Representación de documentos como vectores de transicion de entidades}
+  \label{figura4}
+\end{figure}
 
 
 \section{Metodología Experimental}
@@ -473,15 +501,19 @@ Press, pp. 437-467, 1989.
 	
 	\bibitem{t44} F. Gutierrez, D. Dou, S. Fickas, G. Griffiths, ``Providing Grades and Feedback for Student Summaries by Ontology-based Information Extraction,'' CIKM\' 12, 2012.
 	\bibitem{t45} E. Miltasaki, K. Kukich, ``Evaluation of text coherence for electronic essay scoring systems,''. Natural Language Engineering, 2004.
+	
 	\bibitem{t46} W. H. ``Dubay, Smart Language: Readers , Readability , and the
 Grading of Text''. BookSurge Publishing, 2007.
 
-	\bibitem{t47} C. Smith and A. Jönsson, ``Automatic Summarization As
-Means Of Simplifying Texts, An Evaluation For Swedish'', in Proceedings of the 18th Nordic Conference of Computational Linguistics NODALIDA 2011, B. Sandford Pedersen,
-G. Nespore, and I. Skadina, Eds., 2011, pp. 198?205.
+	\bibitem{t47} C. Smith and A. Jönsson, ``Automatic Summarization As Means Of Simplifying Texts, An Evaluation For Swedish'', in Proceedings of the 18th Nordic Conference of Computational Linguistics NODALIDA 2011, B. Sandford Pedersen, G. Nespore, and I. Skadina, Eds., 2011, pp. 198?205.
 
 	\bibitem{t48} A. Mellor, ``Essay Length , Lexical Diversity and Automatic Essay Scoring,'' Memoirs of the Osaka Institute of Technology, vol. 55, no. 2, pp. 1?14, 2011.
+	
 	\bibitem{t49} Y. Attali, ``A Differential Word Use Measure for Content Analysis in Automated Essay Scoring,'' ETS Research Report Series, vol. 36, 2011.
+	
+	\bibitem{t50} R. Barzilay, M. Lapata, ``Modeling Local Coherence: An Entity-based Approach,'' Procedings of the 43rd Annual Meeting of the ACL, pp. 141-148, 2005.
+	
+	\bibitem{t51} T. Mikolov, K. Chen, G. Corrado, D. Jeffrey, ``Efficient estimation of word representations in vector space,'' arXiv preprint arXiv:1301.3781, 2013a.
 
 \end{thebibliography}
 \end{document}

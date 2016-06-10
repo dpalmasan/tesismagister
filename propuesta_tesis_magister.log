@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.5.9)  25 MAY 2016 12:49
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.11.10)  9 JUN 2016 22:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **propuesta_tesis_magister.tex
 (./propuesta_tesis_magister.tex
 LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 78 languages loaded.
+Babel <3.9h> and hyphenation patterns for 7 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
@@ -421,19 +421,32 @@ File: figure_2.png Graphic file (type png)
  <use figure_2.png>
 Package pdftex.def Info: figure_2.png used on input line 233.
 (pdftex.def)             Requested size: 289.07999pt x 145.19812pt.
- [8 <./figure_1.png>] [9 <./figure_2.png>] [10] [11] [12] [13] [14] [15] [16]
-(./propuesta_tesis_magister.aux
+ [8 <./figure_1.png>] [9 <./figure_2.png>] <figure_3.png, id=46, 717.68124pt x 
+447.6725pt>
+File: figure_3.png Graphic file (type png)
+
+<use figure_3.png>
+Package pdftex.def Info: figure_3.png used on input line 337.
+(pdftex.def)             Requested size: 289.07999pt x 180.32271pt.
+ <figure_4.png, id=48, 753.81625pt x 174.6525pt>
+File: figure_4.png Graphic file (type png)
+
+<use figure_4.png>
+Package pdftex.def Info: figure_4.png used on input line 346.
+(pdftex.def)             Requested size: 289.07999pt x 66.97624pt.
+ [10] [11] [12 <./figure_3.png> <./figure_4.png>] [13]
+[14] [15] [16] [17] (./propuesta_tesis_magister.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 ) ) 
 Here is how much of TeX's memory you used:
- 5267 strings out of 493304
- 74930 string characters out of 6139872
- 156181 words of memory out of 5000000
- 8618 multiletter control sequences out of 15000+600000
+ 5282 strings out of 494925
+ 75121 string characters out of 6178543
+ 159221 words of memory out of 5000000
+ 8397 multiletter control sequences out of 15000+600000
  12251 words of font info for 52 fonts, out of 8000000 for 9000
- 957 hyphenation exceptions out of 8191
- 38i,14n,38p,1522b,304s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62 hyphenation exceptions out of 8191
+ 38i,14n,38p,1552b,304s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/tex
@@ -447,10 +460,10 @@ s/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
 8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on propuesta_tesis_magister.pdf (16 pages, 285002 bytes).
+Output written on propuesta_tesis_magister.pdf (17 pages, 336315 bytes).
 PDF statistics:
- 115 PDF objects out of 1000 (max. 8388607)
- 79 compressed objects within 1 object stream
+ 123 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
