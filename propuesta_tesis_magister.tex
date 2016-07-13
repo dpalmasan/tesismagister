@@ -29,7 +29,7 @@
 \section{Introducción}
 La escritura es una habilidad que se adquiere a temprana edad, pues se nos enseñan las letras, las palabras, las oraciones, etc. Sin embargo, esta habilidad no se desarrolla por completo, pues lo que se enseña no es suficiente para expresar claramente lo que se piensa, y como consecuencia nace la necesidad de saber redactar y/o de exponer de manera coherente y precisa las ideas \cite{t21}. 
 
-En la actualidad, es un tema ampliamente debatido es la capacidad de redacción y comprensión que debiesen tener las personas que egresan del sistema escolar \cite{t22}. Esto aborda temas tales como la carencia en el manejo del lenguaje escrito que evidencian los estudiantes en todos los niveles educacionales y estratos socioculturales \cite{t23}.
+En la actualidad, un tema ampliamente debatido es la capacidad de redacción y comprensión que debiesen tener las personas que egresan del sistema escolar \cite{t22}. Esto aborda temas tales como la carencia en el manejo del lenguaje escrito que evidencian los estudiantes en todos los niveles educacionales y estratos socioculturales \cite{t23}.
 
 Una mala capacidad de redacción tiene consecuencias relevantes como por ejemplo reprobar un examen porque las ideas expresadas no están claras. Por otro lado, una persona podría perder una oportunidad laboral debido a una mala redacción; en síntesis, ideas que podrían ser bastante buenas e innovadoras podrían llegar a verse opacadas o, peor aún, rechazadas por el receptor al ser comunicadas de manera defectuosa.
 
@@ -49,7 +49,7 @@ Debe tenerse en cuenta que la evaluación de textos es una tarea costosa en térmi
 Para reducir los costos del personal requerido para revisar evaluaciones textuales a gran escala, se han propuesto métodos para evaluar textos de manera automática, tarea conocida como {\em Automatic Essay Scoring} \cite{t9}. Los primeros enfoques para esta tarea evaluan características relacionadas a la calidad del texto tales como la dicción, uso de vocabulario, coherencia, entre otros aspectos. Para ello, se utilizan propiedades superficiales del texto como por ejemplo: conteo de palabras, conteo de signos de puntuación, largo promedio de las palabras del texto, entre otros. Sin embargo, este método tiene algunas debilidades \cite{t24}\cite{t25}:
 
 \begin{itemize}
-	\item No se evalúa la extructura sintáctica del texto, pues no considera el orden de las palabras. Por ejemplo, la oración {\em ``El árbol está seco.''} sería equivalente a {\em ``seco el está árbol.''} Un evaluador humano consideraría estas oraciones como diferentes.
+	\item No se evalúa la estructura sintáctica del texto, pues no considera el orden de las palabras. Por ejemplo, la oración {\em ``El árbol está seco.''} sería equivalente a {\em ``seco el está árbol.''} Un evaluador humano consideraría estas oraciones como diferentes.
 	\item No se considera la coherencia textual, pues las características con las que el método evalúa un texto no representan su contenido a nivel de las representaciones mentales que tendría un lector.
 	\item No se considera la cohesión de un texto en términos del correcto uso de recursos lingüísticos para expresar las ideas. Por ejemplo el texto: {\em ``Los beneficios de la siesta son bien conocidos, aunque parece que quedan algunas cosas por aclarar. Manfred Walzl, neurólogo austriaco, pone en marcha un estudio; con un estudio él pretende demostrar que la siesta aumenta la productividad laboral''}, tiene problemas de cohesión, como por ejemplo la repetición de la palabra estudio y tampoco queda claro que la segunda aparición de la palabra se refiera a lo mismo que se refiere la primera. El pronombre {\em él} aparece innecesariamente y es redundante luego de mencionar a {\em Manfred Walzl}. Estos problemas pasan desapercibidos si sólo se considera la frecuencia de términos.
 	\item No se considera la estructura sintáctica del texto. Por ejemplo, se consideraría {\em ``Resfriado me habría la lluvia mojado con me si hubiera''} equivalente a {\em ``Si me hubiera mojado con la lluvia me habría resfriado''}.
@@ -73,7 +73,7 @@ Consecuentemente, se han realizado estudios que comparan el rendimiento de los d
 
 \subsection{Hipótesis}
 
-Un método de evaluación de textos que considera características sintácticas y semánticas para evaluar coherencia textual es más efectivo para la tarea de evaluación automática de ensayos en comparación a modelos que utilicen medidas superficiales estadísticas (como conteo de palabras, largo de las oraciones, etc.).
+Un método de evaluación de textos que considere características sintácticas y semánticas para evaluar coherencia textual será más efectivo para la tarea de evaluación automática de ensayos en comparación a modelos que utilicen medidas superficiales estadísticas (como conteo de palabras, largo de las oraciones, etc.).
 
 \subsection{Objetivos}
 \begin{itemize}
@@ -94,14 +94,14 @@ Un método de evaluación de textos que considera características sintácticas y se
 
 \section{Trabajo Relacionado}
 
-La primeras técnicas de evaluación automática de textos \cite{t0} modelaban los textos como una combinación lineal de sus características intrínsicas (dicción, contenido, fluidez, etc.), las cuales se estiman a través de características superficiales ({\em proxes}) tales como: la cantidad de palabras, largo del ensayo, cantidad de signos de puntuación utilizados, largo de las oraciones, etc. La evaluación se realiza en dos etapas: entrenamiento y evaluación. En la etapa de entrenamiento se utilizan textos que ya tienen un puntaje asignado por humanos, que representa qué tan correcto es el texto bajo la evaluación de un experto. Luego se ajusta un modelo lineal mediante una regresión (multi-variable), de manera de ajustar las ponderaciones (pesos) de cada {\em proxe}. Finalmente, el puntaje de un ensayo se calcula como se muestra en la ecuación \ref{eq0}.
+Las primeras técnicas de evaluación automática de textos \cite{t0} modelaban los textos como una combinación lineal de sus características intrínsecas (dicción, contenido, fluidez, etc.), las cuales se estiman a través de características superficiales ({\em proxes}) tales como: la cantidad de palabras, largo del ensayo, cantidad de signos de puntuación utilizados, largo de las oraciones, etc. La evaluación se realiza en dos etapas: entrenamiento y evaluación. En la etapa de entrenamiento se utilizan textos que ya tienen un puntaje asignado por humanos, que representa qué tan correcto es el texto bajo la evaluación de un experto. Luego se ajusta un modelo lineal mediante una regresión (multi-variable), de manera de ajustar las ponderaciones (pesos) de cada {\em proxe}. Finalmente, el puntaje de un ensayo se calcula como se muestra en la ecuación \ref{eq0}.
 
 \begin{equation}
 	\label{eq0}
 	Puntaje = \beta_0 + \sum\limits_{i=1}^n \beta_iP_i
 \end{equation}
 
-Donde $\beta_i$ representa la ponderación correspondiente al {\em proxe} $P_i$, y representa el impacto que tiene el {\em proxe} en el puntaje del ensayo. Los mejores resultados experimentales mostraron una correlación de 0.87 entre los puntajes asignados por PEG y los asignados por humanos \cite{t0}. Sin embargo, el método utiliza medidas indirectas de la calidad del texto a evaluar lo que lo hace vulnerable a engaños \cite{t9}, ya que un estudiante podría mejorar su puntaje mediante trucos (por ejemplo escribir un texto más largo). Por otro lado, el uso de estas medidas no captura características importantes tales como contenido, organización, y coherencia. La razón de ello es que el método se fundamenta únicamente en la frecuencia de aparición de cada {\em proxe} y no en el significado de lo que está escrito ni en las relaciones que existen entre las ideas expresadas en el texto.
+Donde $\beta_i$ representa la ponderación correspondiente al {\em proxe} $P_i$, y representa el impacto que tiene el {\em proxe} en el puntaje del ensayo. Los mejores resultados experimentales mostraron una correlación de 0.87 entre los puntajes asignados por éste método y los asignados por humanos \cite{t0}. Sin embargo, el método utiliza medidas indirectas de la calidad del texto a evaluar lo que lo hace vulnerable a engaños \cite{t9}, ya que un estudiante podría mejorar su puntaje mediante trucos (por ejemplo escribir un texto más largo). Por otro lado, el uso de estas medidas no captura características importantes tales como contenido, organización, y coherencia. La razón de ello es que el método se fundamenta únicamente en la frecuencia de aparición de cada {\em proxe} y no en el significado de lo que está escrito ni en las relaciones que existen entre las ideas expresadas en el texto.
 
 Para evaluar el contenido de un texto, se han utilizado técnicas de {\em Recuperación de Información} (IR) \cite{t26} y {\em Procesamiento del Lenguaje Natural} (NLP) \cite{t27}. Para representar el contenido de un texto se utiliza un modelo de IR conocido como {\em modelo de espacio vectorial} \cite{t26}, el cual considera un vocabulario previamente definido (términos relevantes que encapsulan el contenido del texto) que se utiliza para representar un documento a partir de la frecuencia de aparición de los términos que lo componen, como se muestra en la ecuación \ref{eq1}.
 
@@ -123,7 +123,7 @@ En el contexto de evaluación automática de ensayos, se tiene un conjunto de docu
 
 La aplicación del método ha logrado una correlación con la evaluación realizada por humanos de 0.76 \cite{t5}. Sin embargo, la evaluación depende fuertemente de la co-ocurrencia de términos, por lo que un ensayo que sea sólo un conjunto de palabras sin una conexión clara, podría ser bien evaluado \cite{t9}. Por otro lado, la técnica está puramente basada en representaciones de palabras, las cuales podrían no aparecer explícitamente en los ensayos (por ejemplo sinónimos).
 
-Para abordar el problema de la co-ocurrencia de palabras, se ha aplicado una técnica de reducción dimensional conocida como {\em Análisis Semántico Latente} (LSA) \cite{t28}, la cual intenta extraer y representar el significados de las palabras, lo que permite encontrar similitudes entre documentos aunque no haya co-ocurrencia de términos. El método toma como supuesto que existen relaciones que subyacen de forma latente en la estructura semántica de los datos, y que se encuentran parcialmente ocultas. Este método requiere un corpus, y que se defina un vocabulario con las palabras más relevantes del corpus para representar los documentos en un espacio vectorial. El método considera un modelo de {\em bolsas de palabras} (BOW), es decir, asume que el orden de las palabras no importa. Posteriormente, se obtiene una matriz de palabras y documentos del corpus. Luego, se aplica una técnica matemática conocida como {\em descomposición de valores singulares} (SVD), para obtener una matriz reducida que en este contexto se denomina {\em espacio semántico}. Las dimensiones de este espacio semántico son una combinación lineal de documentos, las que se interpretan como {\em conceptos}, y posteriormente se puede definir una medida de similitud entre ellos. Luego, se puede medir la coherencia textual \cite{t8} \cite{t10} \cite{t20} \cite{t29}, y evaluar ensayos \cite{t9}. 
+Para abordar el problema de la co-ocurrencia de palabras, se ha aplicado una técnica de reducción dimensional conocida como {\em Análisis Semántico Latente} (LSA) \cite{t28}, la cual intenta extraer y representar el significado de las palabras, lo que permite encontrar similitudes entre documentos aunque no haya co-ocurrencia de términos. El método toma como supuesto que existen relaciones que subyacen de forma latente en la estructura semántica de los datos, y que se encuentran parcialmente ocultas. Este método requiere un corpus, y que se defina un vocabulario con las palabras más relevantes del corpus para representar los documentos en un espacio vectorial. El método considera un modelo de {\em bolsas de palabras} (BOW), es decir, asume que el orden de las palabras no importa. Posteriormente, se obtiene una matriz de palabras y documentos del corpus. Luego, se aplica una técnica matemática conocida como {\em descomposición de valores singulares} (SVD), para obtener una matriz reducida que en este contexto se denomina {\em espacio semántico}. Las dimensiones de este espacio semántico son una combinación lineal de documentos, las que se interpretan como {\em conceptos}, y posteriormente se puede definir una medida de similitud entre ellos. Luego, se puede medir la coherencia textual \cite{t8} \cite{t10} \cite{t20} \cite{t29}, y evaluar ensayos \cite{t9}. 
 
 La evaluación de ensayos en LSA se realiza en dos etapas. En la primera etapa se requiere un corpus que contenga documentos relacionados al tópico a evaluar. Luego, se aplica LSA para obtener un espacio semántico. En la segunda etapa, se consideran ensayos pre-evaluados por humanos, y se comparan con ensayos nuevos utilizando algún criterio de similitud (por ejemplo coseno). Esta comparación se realiza dentro del espacio semántico obtenido en la etapa 1 \cite{t10}. Finalmente, al ensayo se le asigna la nota del ensayo más similar dentro del espacio semántico.
 
@@ -156,7 +156,7 @@ PLSA se fundamenta en un modelo probabilístico denominado {\em Aspect Model}, el
   \label{figura_plsa}
 \end{figure}
 
-Las ventajas que posee PLSA respecto a LSA son incluyen:
+Las ventajas que posee PLSA respecto a LSA incluyen:
 
 \begin{itemize}
 	\item Modelo con base estadística sólida, donde los parámetros están bien definidos y tienen interpretación probabilística clara (variables latentes como tópicos), a diferencia de LSA donde el espacio semántico no tiene una interpretación clara. 
@@ -264,7 +264,7 @@ En este trabajo se propone desarrollar un método computacional que permita evalu
 
 El primer método a considerar está basado en un modelo de regresión\cite{t40}. Este método de evaluación de ensayos considerará las características mostradas en la tabla \ref{t2}.
 
-Para considerar las características sintácticas de los textos se utilizará un método basado en la teoría del centrad \cite{t50}. Para ello, se representan los documentos como una matriz de entidades, donde cada entidad tiene un rol dentro de la oración, como por ejemplo sujeto (s), objeto (o) u otro rol que no sea sujeto ni objeto (x). En la figura \ref{figura3} se muestra un ejemplo de una matriz de entidades, donde las filas de la matriz representan las oraciones del texto, las columnas son las entidades dentro del texto y en cada celda de la matriz se encuentra el rol de la entidad. Luego, el análisis de coherencia se hará considerando transiciones de entidades entre oraciones. Cada transición tendrá una cierta probabilidad dependiendo de la estructura de la matriz. Por ejemplo en la figura \ref{figura3} la transición {\em [s-]} tiene una probabilidad de 0.08 (se calcula como la razón entre la frecuencia de ocurrencia de la transición (8) y la cantidad de transiciones de largo 2, en este caso 75).
+Para considerar las características sintácticas de los textos se utilizará un método basado en la teoría del centrado \cite{t50}. Para ello, se representan los documentos como una matriz de entidades, donde cada entidad tiene un rol dentro de la oración, como por ejemplo sujeto (s), objeto (o) u otro rol que no sea sujeto ni objeto (x). En la figura \ref{figura3} se muestra un ejemplo de una matriz de entidades, donde las filas de la matriz representan las oraciones del texto, las columnas son las entidades dentro del texto y en cada celda de la matriz se encuentra el rol de la entidad. Luego, el análisis de coherencia se hará considerando transiciones de entidades entre oraciones. Cada transición tendrá una cierta probabilidad dependiendo de la estructura de la matriz. Por ejemplo en la figura \ref{figura3} la transición {\em [s-]} tiene una probabilidad de 0.08 (se calcula como la razón entre la frecuencia de ocurrencia de la transición (8) y la cantidad de transiciones de largo 2, en este caso 75).
 
 Otro método que se utilizará para evaluar la coherencia textual estará basado en un modelo de {\em cadenas léxicas}. Este método toma como supuesto que un texto es coherente si se utilizan palabras que estén relacionadas semánticamente entre oraciones. 
 
@@ -273,7 +273,7 @@ Finalmente, utilizando estos métodos, se hará un ensamble (inicialmente con un m
 Las principales contribuciones de este trabajo son dos:
 
 \begin{itemize}
-	\item Se aplicará un ensamble de diferentes métodos basados en sintaxis y en semántica de los ensayos; Esto a mi conocimiento no ha sido aplicado como tal. La diferencia con las investigaciones recientes es que la tendencia apunta a aplicar nuevos métodos de clasificación a un conjunto de características estadísticas, o generar nuevas características que evalúen coherencia textual. Por otro lado, este trabajo apunta a utilizar técnicas de evaluación de coherencia textual (ej: modelo de cadenas léxicas, y teoría del centrado) que han sido utilizadas en otros contextos (generación de resúmenes, traducción automática), y se usarán para la evaluación automática de ensayos.
+	\item Se aplicará un ensamble de diferentes métodos basados en sintaxis y en semántica de los ensayos. La diferencia con las investigaciones recientes es que la tendencia apunta a aplicar nuevos métodos de clasificación a un conjunto de características estadísticas, o generar nuevas características que evalúen coherencia textual. Por otro lado, este trabajo apunta a utilizar técnicas de evaluación de coherencia textual (ej: modelo de cadenas léxicas, y teoría del centrado) que han sido utilizadas en otros contextos (generación de resúmenes, traducción automática), y se usarán para la evaluación automática de ensayos.
 	
 	\item Se realizará una comparación del rendimiento de los métodos para evaluar coherencia textual, en la evaluación automática de ensayos y otros algoritmos de aprendizaje automático utilizados para la evaluación automática de ensayos, lo que dará nuevas direcciones para investigar este problema.
 \end{itemize}
@@ -359,36 +359,38 @@ have highest score point level & \\
 \begin{enumerate}
 	\item Revisión bibliográfica de métodos para evaluación de coherencia a nivel de discurso.
 	
-	\item Establecer una representación de textos con la que se pueda modelar la sintática y semántica del contenido textual.
+	\item Establecer una representación de textos con la que se pueda modelar la semántica del contenido textual.
 	
-	\item Recopilación de datos de ensayos evaluados por humanos, los cuales se limpiarán y prepararán para utilizarlos en el método a desarrollar. Para este procesamiento y limpieza se utilizarán herramientas existentes como por ejemplo nltk, pyEnchant, entre otros. Los datos a utilizar serán los proporcionados por Kaggle\footnote{http://www.kaggle.com/c/asap-aes/data} en la competencia {\em Automatic Essay Scoring}, el cual contiene datos de ocho categorías diferentes de ensayo, que del total cuatro de ellas consisten en géneros de escritura tradicional (persuasivo, narrativo, etc.) y los otros cuatro están basados en una fuente (es decir, los estudiantes leen un documento fuente y discuten preguntas respecto a dicho documento).
+	\item Recopilación de datos de ensayos evaluados por humanos, los cuales se limpiarán y prepararán para utilizarlos en el método a desarrollar. Para este procesamiento y limpieza se utilizarán herramientas existentes como por ejemplo nltk, pyEnchant, entre otros. Los datos a utilizar serán los proporcionados por Kaggle\footnote{http://www.kaggle.com/c/asap-aes/data} en la competencia {\em Automatic Essay Scoring}, el cual contiene datos de ocho categorías diferentes de ensayo, que del total cuatro consisten en géneros de escritura tradicional (persuasivo, narrativo, etc.) y los otros cuatro están basados en una fuente (es decir, los estudiantes leen un documento fuente y discuten preguntas respecto a dicho documento).
 	
-	\item Desarrollo de un método de evaluación que considere sintaxis y semántica del ensayo a evaluar. Para ello, se estudiarán modelos de evaluación de coherencia textual que se fundamenten en teoría de discursos, pues estos consideran estas dos componenetes.
+	\item Desarrollo de un método de evaluación que considere sintaxis y semántica del ensayo a evaluar. Para ello, se estudiarán modelos de evaluación de coherencia textual que se fundamenten en teoría de discursos, pues estos consideran estas dos componentes.
 	
-	\item Implementación de un prototipo computacional de los distintos métodos propuestos en la literatura, con la finalidad de realizar experimentos que validen la hipótesis.
+	\item Implementación de un prototipo computacional de los distintos métodos propuestos en la literatura, con la finalidad de realizar experimentos que validen la hipótesis. Se utilizarán herramientas y bibliotecas con algunos métodos ya implementados (por ejemplo: LSA), los cuales requerirán leves adaptaciones para aplicarlos al problema a investigar.
 	
 	\item Evaluación del método propuesto y comparación con otros métodos existentes en la literatura (basados en semántica (LSA), y basados en características superficiales(PEG)), para ello se utilizarán métricas tales como:
 	
 	\begin{itemize}
 		\item {\em Exact Agreement}: Mide la proporción de ensayos que fueron calificados igualmente por el evaluador humano y el método computacional.
-		\item {\em Adjacent Agreement}: Mide la proporción ensayos que fueron evaluados igual por el evaluador humano y el método computacional o que difiere en a lo más 1 punto (de calificación).
+		\item {\em Adjacent Agreement}: Mide la proporción ensayos que fueron evaluados igual por el evaluador humano y el método computacional o que difieren en a lo más 1 punto (de calificación).
 		\item {\em Quadratic Weighted Kappa}: Mide el grado de acuerdo entre los puntajes asignados por dos evaluadores. Su valor máximo es 1, si los evaluadores están completamente de acuerdo, si hay desacuerdo, la métrica puede tomar valores negativos.
 		\item {\em Correlación de Spearman}: Mide qué tan buena es la relación entre la evaluación humana y la automática.
 	\end{itemize}
 
 \end{enumerate}
 
-
+\newpage
 \section{Plan de Trabajo}
 
 \begin{itemize}
 	\item Revisión bibliográfica de métodos de evaluación de coherencia textual, basados en teoría de discurso: 1 Enero - 1 Marzo.
-	\item Diseño de un método automático para evaluar ensayos: 7 Marzo - 7 Mayo.
-	\item Ensamble de modelos que consideren sintaxis y semántica: 15 Mayo - 5 Junio
-	\item Crear prototipo para realizar pruebas 10 Mayo - 10 Junio.
-	\item Evaluar rendimiento del modelo y comparar con modelos del estado del arte: 15 Junio - 1 Julio.
+	\item Diseño de un método automático para evaluar ensayos: 13 Junio - 13 Agosto.
+	\item Implementación de métodos en el estado del arte, para posteriormente comparar con lo propuesto: 13 Junio - 13 Septiembre
+	\item Ensamble de modelos que consideren sintaxis y semántica: 13 Agosto - 13 Septiembre
+	\item Crear prototipo para realizar pruebas 13 Junio - 13 Septiembre.
+	\item Evaluar rendimiento del modelo y comparar con modelos del estado del arte: 13 Septiembre - 13 Octubre.
 \end{itemize}
 
+\newpage
 \begin{thebibliography} {}
 	\bibitem{t0}
 	S. Valenti, F. Neri, and A. Cucchiarelli, ``An overview of current research on automated essay grading,'' {\em Journal of Information Technology Education}, vol. 2, pp. 319-330, 2003.

@@ -1,7 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.3.24)  17 JUN 2016 12:16
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.3.24)  13 JUL 2016 00:27
 entering extended mode
 **propuesta_tesis_magister.tex
-(C:\Users\chicho\Desktop\tesis\tesismagister\propuesta_tesis_magister.tex
+
+(C:\Users\chicho\Desktop\TESIS_IDEAS_CORRECCIONES\tesismagister\propuesta_tesis
+_magister.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -275,7 +277,8 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@dimlist=\toks25
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
-(C:\Users\chicho\Desktop\tesis\tesismagister\propuesta_tesis_magister.aux)
+(C:\Users\chicho\Desktop\TESIS_IDEAS_CORRECCIONES\tesismagister\propuesta_tesis
+_magister.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
@@ -370,61 +373,63 @@ File: figure_plsa.png Graphic file (type png)
 Package pdftex.def Info: figure_plsa.png used on input line 153.
 (pdftex.def)             Requested size: 216.81pt x 90.24838pt.
 
-[6 <C:/Users/chicho/Desktop/tesis/tesismagister/figure_plsa.png (PNG copy)>]
-[7] <figure_1.png, id=37, 539.76656pt x 216.81pt>
+[6 <C:/Users/chicho/Desktop/TESIS_IDEAS_CORRECCIONES/tesismagister/figure_plsa.
+png (PNG copy)>] [7] <figure_1.png, id=37, 539.76656pt x 216.81pt>
 File: figure_1.png Graphic file (type png)
- <use figure_1.png>
+
+<use figure_1.png>
 Package pdftex.def Info: figure_1.png used on input line 224.
 (pdftex.def)             Requested size: 289.07999pt x 116.11626pt.
-
-<figure_2.png, id=38, 497.60907pt x 249.93375pt>
+ <figure_2.png, id=38, 497.60907pt x 249.93375pt>
 File: figure_2.png Graphic file (type png)
- <use figure_2.png>
+
+<use figure_2.png>
 Package pdftex.def Info: figure_2.png used on input line 233.
 (pdftex.def)             Requested size: 289.07999pt x 145.19812pt.
- [8 <C:/Users/chicho/Desktop/tesis/tesismagister/figure_1.png>] [9 <C:/Users/ch
-icho/Desktop/tesis/tesismagister/figure_2.png>]
-<figure_3.png, id=45, 717.68124pt x 447.6725pt>
+ [8 <C:/Users/chicho/Desktop/TESIS_IDEAS_CORRECCIONES/tesismagister/figure_1.pn
+g>] [9 <C:/Users/chicho/Desktop/TESIS_IDEAS_CORRECCIONES/tesismagister/figure_2
+.png>] <figure_3.png, id=45, 717.68124pt x 447.6725pt>
 File: figure_3.png Graphic file (type png)
- <use figure_3.png>
+
+<use figure_3.png>
 Package pdftex.def Info: figure_3.png used on input line 341.
 (pdftex.def)             Requested size: 289.07999pt x 180.32271pt.
-
-<figure_4.png, id=47, 753.81625pt x 174.6525pt>
+ <figure_4.png, id=47, 753.81625pt x 174.6525pt>
 File: figure_4.png Graphic file (type png)
- <use figure_4.png>
+
+<use figure_4.png>
 Package pdftex.def Info: figure_4.png used on input line 350.
 (pdftex.def)             Requested size: 289.07999pt x 66.97624pt.
- [10]
-[11] [12 <C:/Users/chicho/Desktop/tesis/tesismagister/figure_3.png> <C:/Users/c
-hicho/Desktop/tesis/tesismagister/figure_4.png>] [13] [14] [15] [16] [17]
-(C:\Users\chicho\Desktop\tesis\tesismagister\propuesta_tesis_magister.aux) ) 
+ [10] [11] [12 <C:/Users/chicho/Desktop/TESIS_IDEAS_CORRECCIONES/tesismagister/
+figure_3.png> <C:/Users/chicho/Desktop/TESIS_IDEAS_CORRECCIONES/tesismagister/f
+igure_4.png>] [13] [14] [15] [16] [17] [18]
+(C:\Users\chicho\Desktop\TESIS_IDEAS_CORRECCIONES\tesismagister\propuesta_tesis
+_magister.aux) ) 
 Here is how much of TeX's memory you used:
  4851 strings out of 493921
- 68465 string characters out of 3144873
+ 68598 string characters out of 3144873
  145613 words of memory out of 3000000
  8059 multiletter control sequences out of 15000+200000
  12251 words of font info for 52 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  36i,14n,38p,1522b,304s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:
-/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/P
-rogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Pro
-gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Progr
-am Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program
- Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Fi
-les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files
- (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files (x
-86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (x86)
-/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on propuesta_tesis_magister.pdf (17 pages, 349664 bytes).
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+mex10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmm
+i10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7
+.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pf
+b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><
+C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/
+Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Prog
+ram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program File
+s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files 
+(x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x8
+6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on propuesta_tesis_magister.pdf (18 pages, 350381 bytes).
 PDF statistics:
- 121 PDF objects out of 1000 (max. 8388607)
+ 124 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
