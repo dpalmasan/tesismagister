@@ -43,6 +43,12 @@ Thumbs.db
 .Rhistory
 *~
 *.swp
+*.bib
+*.cls
+*.lot
+*.lof
+*.toc
+*.aux
 # Some dirs
 #####################
 essays
