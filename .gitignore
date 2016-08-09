@@ -55,3 +55,13 @@ essays
 essays_cleaned
 test_essays
 test_essays_cleaned
+
+# Extra stuff #
+###############
+*.out
+*.nav
+*.vrb
+*.toc
+*.snm
+*~
+*.synctex
