@@ -62,9 +62,9 @@ Automática de Ensayos}
 % Notice that these are not typeset. But they do serve a purpose for
 % future references.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\submitdate{September, 2011} % date you submitted to the committee
-\defensedate{Octubre, 2011}  % date the defense was set
-\copyrightyear{2011}         % document for final archiving
+%\submitdate{September, 2011} % date you submitted to the committee
+%\defensedate{Octubre, 2011}  % date the defense was set
+%\copyrightyear{2011}         % document for final archiving
 
 \begin{document}
 \frontmatter
@@ -88,7 +88,7 @@ Automática de Ensayos}
 % http://research.berkeley.edu/ucday/abstract.html
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-Insertar Abstract aquí...
+La evaluación automática de ensayos es un problema abierto que tiene aplicaciones importantes en el contexto educativo. Por ejemplo, permite tener un sistema tutor inteligente que le entregue retroalimentación inmediata a un estudiante que desee mejorar sus capacidades de escritura y expresión de ideas. Un sistema con tales características debe ser capaz de evaluar un texto considerando sus propiedades fundamentales que son la coherencia y la cohesión. Hasta ahora se han desarrollado métodos que permiten hacer esto de forma parcial, principalmente basados en propiedades estadísticas de los textos, siendo la más común el conteo de palabras. En este trabajo, se pretende diseñar un método computacional que considere las distintas componentes de la coherencia textual, y ello se logrará combinando, métodos utilizados previamente para la tarea de la evaluación automática de ensayos, con métodos basados en teoría lingüística para el análisis de discursos. En síntesis, se propone un método de evaluación automática de ensayos que considera tanto características de contenido, como características sintácticas a nivel de discurso. Trabajos anteriores mostraron que integrando componentes de la semántica de un texto se pueden obtener mejores resultados que sólo considerando propiedades estadísticas, sin embargo, no se han utilizado combinaciones de métodos basados en teoría de discurso para esta tarea. El objetivo será mostrar empíricamente que un método de evaluación que considere las características mencionadas, tiene mejores resultados que los métodos convencionales.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -143,12 +143,32 @@ Existen diferentes enfoques para evaluar coherencia textual:
 
 Consecuentemente, se han realizado estudios que comparan el rendimiento de los distintos modelos para evaluar la coherencia textual (generalmente utilizando métricas como correlación con humanos), y se ha concluido que no existe modelo que evalúe todos los aspectos relacionados a la coherencia. Sin embargo, los métodos evalúan propiedades complementarias de coherencia, por lo que podrían combinarse para evaluar la coherencia textual \cite{t33}.
 
+\section{Hipótesis}
+
+Un método de evaluación de textos que considere características sintácticas y semánticas para evaluar coherencia textual será más efectivo para la tarea de evaluación automática de ensayos en comparación a modelos que utilicen medidas superficiales estadísticas (como conteo de palabras, largo de las oraciones, etc.).
+
+\section{Objetivos}
+	\subsection{Objetivo General}
+		Desarrollar un método computacional que permita evaluar automáticamente textos en forma de ensayos considerando aspectos de coherencia textual.
+
+	\subsection{Objetivos Específicos}
+
+	\begin{itemize}
+		\item Analizar estrategias de evaluación de ensayos en forma de texto, basados tanto en modelos de estadísticos, como en teoría de discurso.
+		\item Desarrollar una estrategia que considere coherencia a nivel de contenido y sintaxis.
+		\item Crear un prototipo para realizar las pruebas.
+		\item Evaluar el modelo propuesto.
+	\end{itemize}
+	
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Step 11: Add background and literature review
 %
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Background and Related Work}\label{chap:background}
+\chapter{Trabajo Relacionado}\label{chap:background}
+
+\section{Primer Enfoque para la Evaluación Automática de Ensayos}
 
 Las primeras técnicas de evaluación automática de textos \cite{t0} modelaban los textos como una combinación lineal de sus características intrínsecas (dicción, contenido, fluidez, etc.), las cuales se estiman a través de características superficiales ({\em proxes}) tales como: la cantidad de palabras, largo del ensayo, cantidad de signos de puntuación utilizados, largo de las oraciones, etc. La evaluación se realiza en dos etapas: entrenamiento y evaluación. En la etapa de entrenamiento se utilizan textos que ya tienen un puntaje asignado por humanos, que representa qué tan correcto es el texto bajo la evaluación de un experto. Luego se ajusta un modelo lineal mediante una regresión (multi-variable), de manera de ajustar las ponderaciones (pesos) de cada {\em proxe}. Finalmente, el puntaje de un ensayo se calcula como se muestra en la ecuación \ref{eq0}.
 
@@ -159,7 +179,9 @@ Las primeras técnicas de evaluación automática de textos \cite{t0} modelaban 
 
 Donde $\beta_i$ representa la ponderación correspondiente al {\em proxe} $P_i$, y representa el impacto que tiene el {\em proxe} en el puntaje del ensayo. Los mejores resultados experimentales mostraron una correlación de 0.87 entre los puntajes asignados por éste método y los asignados por humanos \cite{t0}. Sin embargo, el método utiliza medidas indirectas de la calidad del texto a evaluar lo que lo hace vulnerable a engaños \cite{t9}, ya que un estudiante podría mejorar su puntaje mediante trucos (por ejemplo escribir un texto más largo). Por otro lado, el uso de estas medidas no captura características importantes tales como contenido, organización, y coherencia. La razón de ello es que el método se fundamenta únicamente en la frecuencia de aparición de cada {\em proxe} y no en el significado de lo que está escrito ni en las relaciones que existen entre las ideas expresadas en el texto.
 
-Para evaluar el contenido de un texto, se han utilizado técnicas de {\em Recuperación de Información} (IR) \cite{t26} y {\em Procesamiento del Lenguaje Natural} (NLP) \cite{t27}. Para representar el contenido de un texto se utiliza un modelo de IR conocido como {\em modelo de espacio vectorial} \cite{t26}, el cual considera un vocabulario previamente definido (términos relevantes que encapsulan el contenido del texto) que se utiliza para representar un documento a partir de la frecuencia de aparición de los términos que lo componen, como se muestra en la ecuación \ref{eq1}.
+\section{Modelo de Espacio Vectorial}
+
+Para evaluar el contenido de un texto, se han utilizado técnicas de {\em Recuperación de Información} (IR) \cite{t26} y {\em Procesamiento del Lenguaje Natural} (NLP) \cite{t27}. Para representar el contenido de un texto se utiliza un modelo de IR conocido como {\em modelo de espacio vectorial} \cite{t26}, el cual representa a los documentos en un espacio altamente dimensional, donde cada dimensión está asociada a términos relevantes del texto, como por ejemplo frecuencia de aparición de palabras. Luego, un documento se puede representar como un vector (ecuación \ref{eq1}).
 
 \begin{equation}
 	\label{eq1}
@@ -175,9 +197,27 @@ Donde cada componente del vector $d$ representa la frecuencia en que el término
 
 Donde $d_i$ y $d_j$ son vectores que representan el contenido del texto. Luego, teniendo a disposición un corpus (conjunto de documentos), se puede utilizar esta técnica para encontrar las similitudes ente un documento nuevo y un documento del corpus.
 
+En la figura \ref{fig_01} se muestra como ejemplo un espacio vectorial de 3 dimensiones y documentos representados en dicho espacio.
+
+\begin{figure}[!htbp]
+  \begin{center}
+    \leavevmode
+    \fbox{\includegraphics[width=4in] {fig_01.png}}
+  \end{center}
+  \caption{Representación de documentos en un espacio fectorial}
+  \label{fig_01}
+\end{figure}
+
 En el contexto de evaluación automática de ensayos, se tiene un conjunto de documentos previamente evaluados por expertos humanos. Luego, para evaluar un texto nuevo, se calcula la similitud entre el documento nuevo y los documentos del corpus, y se asigna el puntaje del más similar, o una suma ponderada de los puntajes más similares.
 
 La aplicación del método ha logrado una correlación con la evaluación realizada por humanos de 0.76 \cite{t5}. Sin embargo, la evaluación depende fuertemente de la co-ocurrencia de términos, por lo que un ensayo que sea sólo un conjunto de palabras sin una conexión clara, podría ser bien evaluado \cite{t9}. Por otro lado, la técnica está puramente basada en representaciones de palabras, las cuales podrían no aparecer explícitamente en los ensayos (por ejemplo sinónimos).
+
+La efectividad del método depende de qué tan cercano es el cálculo de similitud realizado en el espacio vectorial, con la similitud real de los documentos. Algunos problemas que existen con este enfoque son los siguientes:
+
+\begin{itemize}
+	\item Polisemia ($sim(d_i, d_j) < cos(d_i, d_j)$): Si en el vocabulario definido para representar los vectores existen palabras que tengan múltiples significados, es posible que la similitud calculada (por ejemplo coseno), sobre-estime la similitud real entre los documentos, debido a que los términos se consideran equivalentes pues solo importa su frecuencia de aparición.
+	\item Sinónimos ($sim(d_i, d_j) > cos(d_i, d_j)$): 
+\end{itemize}
 
 Para abordar el problema de la co-ocurrencia de palabras, se ha aplicado una técnica de reducción dimensional conocida como {\em Análisis Semántico Latente} (LSA) \cite{t28}, la cual intenta extraer y representar el significado de las palabras, lo que permite encontrar similitudes entre documentos aunque no haya co-ocurrencia de términos. El método toma como supuesto que existen relaciones que subyacen de forma latente en la estructura semántica de los datos, y que se encuentran parcialmente ocultas. Este método requiere un corpus, y que se defina un vocabulario con las palabras más relevantes del corpus para representar los documentos en un espacio vectorial. El método considera un modelo de {\em bolsas de palabras} (BOW), es decir, asume que el orden de las palabras no importa. Posteriormente, se obtiene una matriz de palabras y documentos del corpus. Luego, se aplica una técnica matemática conocida como {\em descomposición de valores singulares} (SVD), para obtener una matriz reducida que en este contexto se denomina {\em espacio semántico}. Las dimensiones de este espacio semántico son una combinación lineal de documentos, las que se interpretan como {\em conceptos}, y posteriormente se puede definir una medida de similitud entre ellos. Luego, se puede medir la coherencia textual \cite{t8} \cite{t10} \cite{t20} \cite{t29}, y evaluar ensayos \cite{t9}. 
 
