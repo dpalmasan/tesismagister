@@ -6,6 +6,7 @@ import nltk
 from collections import Counter
 from textstat.textstat import textstat
 import math
+import os
 
 with codecs.open("1000_common_words.txt", "r", "utf-8") as input:
     common_words = input.read()
@@ -39,7 +40,7 @@ header = "advanced_giraud\n"
 with codecs.open("adv_giraud.csv", "w", "utf-8") as output:
     output.write(header)
 
-for id in range(1, 1427):
+for id in range(1, len([name for name in os.listdir('essays')]) + 1):
     essay = read_essay("essays/" + str(id) + ".txt")
     essay_lower = essay.lower()
     words = strip_punctuation(essay_lower).split()
@@ -51,7 +52,7 @@ for id in range(1, 1427):
 with codecs.open("test_adv_giraud.csv", "w", "utf-8") as output:
     output.write(header)
 
-for id in range(1, 357):
+for id in range(1, len([name for name in os.listdir('test_essays')]) + 1):
     essay = read_essay("test_essays/" + str(id) + ".txt")
     essay_lower = essay.lower()
     words = strip_punctuation(essay_lower).split()

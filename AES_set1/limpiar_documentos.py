@@ -8,6 +8,7 @@ from textstat.textstat import textstat
 import math
 from nltk.corpus import stopwords
 from nltk.stem.porter import *
+import os
 
 stemmer = PorterStemmer()
 stop = stopwords.words('english')
@@ -31,7 +32,10 @@ def strip_punctuation(text):
 	return translate_non_alphanumerics(text, translate_to = u' ')
 
 
-for id in range(1, 1427):
+if not os.path.exists("essays_cleaned"):
+    os.makedirs("essays_cleaned")
+
+for id in range(1, len([name for name in os.listdir('essays')]) + 1):
     essay = read_essay("essays/" + str(id) + ".txt")
     essay_lower = essay.lower()
     words = strip_punctuation(essay_lower).split()
@@ -39,7 +43,10 @@ for id in range(1, 1427):
     with codecs.open("essays_cleaned/essay_" + str(id).zfill(4) + ".txt", "w", "utf-8") as output:
         output.write(" ".join(words))
 
-for id in range(1, 357):
+if not os.path.exists("test_essays_cleaned"):
+    os.makedirs("test_essays_cleaned")
+
+for id in range(1, len([name for name in os.listdir('test_essays')]) + 1):
     essay = read_essay("test_essays/" + str(id) + ".txt")
     essay_lower = essay.lower()
     words = strip_punctuation(essay_lower).split()

@@ -19,6 +19,9 @@ test_grades <- test_essays$domain1_score
 save(training_grades, file="training_grades.RData")
 save(test_grades, file="test_grades.RData")
 
+dir.create("essays", showWarnings = FALSE)
+dir.create("test_essays", showWarnings = FALSE)
+
 for(i in 1:1426) {
     output <- paste("essays/", as.character(i), ".txt", sep="")
     fileConn <- file(output)

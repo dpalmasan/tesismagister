@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import mean_squared_error as mse
 import numpy
 import scipy.optimize as optimization
+import os
 
 # Lee un ensayo y retorna el texto puro
 def read_essay(filename):
@@ -39,7 +40,7 @@ def avg_ttr(tokens, random_sel = 35, runs = 100):
 with codecs.open("d_estimates.csv", "w", "utf-8") as output:
     output.write("d_estimates\n")
 
-for id in range(1, 1427):
+for id in range(1, len([name for name in os.listdir('essays')]) + 1):
     essay = read_essay("essays/" + str(id) + ".txt")
     essay_lower = essay.lower()
     words = strip_punctuation(essay_lower).split()
@@ -71,7 +72,7 @@ for id in range(1, 1427):
 with codecs.open("test_d_estimates.csv", "w", "utf-8") as output:
     output.write("d_estimates\n")
 
-for id in range(1, 357):
+for id in range(1, len([name for name in os.listdir('test_essays')]) + 1):
     essay = read_essay("test_essays/" + str(id) + ".txt")
     essay_lower = essay.lower()
     words = strip_punctuation(essay_lower).split()

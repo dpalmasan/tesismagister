@@ -6,6 +6,7 @@ import nltk
 from collections import Counter
 from textstat.textstat import textstat
 import math
+import os
 
 stoplist = stopwords.words('english')
 d = enchant.Dict("en_US")
@@ -54,7 +55,7 @@ header += ",".join(tags_relevantes) + "\n"
 with codecs.open("essay_features.csv", "w", "utf-8") as output:
     output.write(header)
 
-for id in range(1, 1427):
+for id in range(1, len([name for name in os.listdir('essays')]) + 1):
     essay = read_essay("essays/" + str(id) + ".txt")
     essay_lower = essay.lower()
     words = strip_punctuation(essay_lower).split()
@@ -152,7 +153,7 @@ for id in range(1, 1427):
 with codecs.open("test_essay_features.csv", "w", "utf-8") as output:
     output.write(header)
 
-for id in range(1, 357):
+for id in range(1, len([name for name in os.listdir('test_essays')]) + 1):
     essay = read_essay("test_essays/" + str(id) + ".txt")
     essay_lower = essay.lower()
     words = strip_punctuation(essay_lower).split()
