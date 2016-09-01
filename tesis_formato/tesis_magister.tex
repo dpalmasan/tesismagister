@@ -62,9 +62,9 @@ Automática de Ensayos}
 % Notice that these are not typeset. But they do serve a purpose for
 % future references.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\submitdate{September, 2011} % date you submitted to the committee
-\defensedate{Octubre, 2011}  % date the defense was set
-\copyrightyear{2011}         % document for final archiving
+%\submitdate{September, 2011} % date you submitted to the committee
+%\defensedate{Octubre, 2011}  % date the defense was set
+%\copyrightyear{2011}         % document for final archiving
 
 \begin{document}
 \frontmatter
@@ -88,7 +88,7 @@ Automática de Ensayos}
 % http://research.berkeley.edu/ucday/abstract.html
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-Insertar Abstract aquí...
+La evaluación automática de ensayos es un problema abierto que tiene aplicaciones importantes en el contexto educativo. Por ejemplo, permite tener un sistema tutor inteligente que le entregue retroalimentación inmediata a un estudiante que desee mejorar sus capacidades de escritura y expresión de ideas. Un sistema con tales características debe ser capaz de evaluar un texto considerando sus propiedades fundamentales que son la coherencia y la cohesión. Hasta ahora se han desarrollado métodos que permiten hacer esto de forma parcial, principalmente basados en propiedades estadísticas de los textos, siendo la más común el conteo de palabras. En este trabajo, se pretende diseñar un método computacional que considere las distintas componentes de la coherencia textual, y ello se logrará combinando, métodos utilizados previamente para la tarea de la evaluación automática de ensayos, con métodos basados en teoría lingüística para el análisis de discursos. En síntesis, se propone un método de evaluación automática de ensayos que considera tanto características de contenido, como características sintácticas a nivel de discurso. Trabajos anteriores mostraron que integrando componentes de la semántica de un texto se pueden obtener mejores resultados que sólo considerando propiedades estadísticas, sin embargo, no se han utilizado combinaciones de métodos basados en teoría de discurso para esta tarea. El objetivo será mostrar empíricamente que un método de evaluación que considere las características mencionadas, tiene mejores resultados que los métodos convencionales.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -118,7 +118,7 @@ Una forma de mejorar las capacidades para formular adecuadamente las ideas en un
 
 Debe tenerse en cuenta que la evaluación de textos es una tarea costosa en términos de tiempo y personal requerido. Además, no existe otro modo que evalúe mejor el aprendizaje de un estudiante que no sea mediante la expresión de sus ideas a través de un escrito, por lo que se debe repetir el ejercicio constantemente en el tiempo. Sumado a lo anterior, la cantidad de estudiantes ha crecido con el paso del tiempo, por lo que los costos de corregir y revisar textos se vuelven abrumadores \cite{t10}.
 
-Para reducir los costos del personal requerido para revisar evaluaciones textuales a gran escala, se han propuesto métodos para evaluar textos de manera automática, tarea conocida como {\em Automatic Essay Scoring} \cite{t9}. Los primeros enfoques para esta tarea evaluan características relacionadas a la calidad del texto tales como la dicción, uso de vocabulario, coherencia, entre otros aspectos. Para ello, se utilizan propiedades superficiales del texto como por ejemplo: conteo de palabras, conteo de signos de puntuación, largo promedio de las palabras del texto, entre otros. Sin embargo, este método tiene algunas debilidades \cite{t24}\cite{t25}:
+Para reducir los costos del personal requerido para revisar evaluaciones textuales a gran escala, se han propuesto métodos para evaluar textos de manera automática, tarea conocida como {\em Automatic Essay Scoring} \cite{t9}. Los primeros enfoques para esta tarea evalúan características relacionadas a la calidad del texto tales como la dicción, uso de vocabulario, coherencia, entre otros aspectos. Para ello, se utilizan propiedades superficiales del texto como por ejemplo: conteo de palabras, conteo de signos de puntuación, largo promedio de las palabras del texto, entre otros. Sin embargo, este método tiene algunas debilidades \cite{t24}\cite{t25}:
 
 \begin{itemize}
 	\item No se evalúa la estructura sintáctica del texto, pues no considera el orden de las palabras. Por ejemplo, la oración {\em ``El árbol está seco.''} sería equivalente a {\em ``seco el está árbol.''} Un evaluador humano consideraría estas oraciones como diferentes.
@@ -143,12 +143,32 @@ Existen diferentes enfoques para evaluar coherencia textual:
 
 Consecuentemente, se han realizado estudios que comparan el rendimiento de los distintos modelos para evaluar la coherencia textual (generalmente utilizando métricas como correlación con humanos), y se ha concluido que no existe modelo que evalúe todos los aspectos relacionados a la coherencia. Sin embargo, los métodos evalúan propiedades complementarias de coherencia, por lo que podrían combinarse para evaluar la coherencia textual \cite{t33}.
 
+\section{Hipótesis}
+
+Un método de evaluación de textos que considere características sintácticas y semánticas para evaluar coherencia textual será más efectivo para la tarea de evaluación automática de ensayos en comparación a modelos que utilicen medidas superficiales estadísticas (como conteo de palabras, largo de las oraciones, etc.).
+
+\section{Objetivos}
+	\subsection{Objetivo General}
+		Desarrollar un método computacional que permita evaluar automáticamente textos en forma de ensayos considerando aspectos de coherencia textual.
+
+	\subsection{Objetivos Específicos}
+
+	\begin{itemize}
+		\item Analizar estrategias de evaluación de ensayos en forma de texto, basados tanto en modelos de estadísticos, como en teoría de discurso.
+		\item Desarrollar una estrategia que considere coherencia a nivel de contenido y sintaxis.
+		\item Crear un prototipo para realizar las pruebas.
+		\item Evaluar el modelo propuesto.
+	\end{itemize}
+	
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Step 11: Add background and literature review
 %
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Background and Related Work}\label{chap:background}
+\chapter{Trabajo Relacionado}\label{chap:background}
+
+\section{Evaluación de Ensayos Utilizando Características Superficiales}
 
 Las primeras técnicas de evaluación automática de textos \cite{t0} modelaban los textos como una combinación lineal de sus características intrínsecas (dicción, contenido, fluidez, etc.), las cuales se estiman a través de características superficiales ({\em proxes}) tales como: la cantidad de palabras, largo del ensayo, cantidad de signos de puntuación utilizados, largo de las oraciones, etc. La evaluación se realiza en dos etapas: entrenamiento y evaluación. En la etapa de entrenamiento se utilizan textos que ya tienen un puntaje asignado por humanos, que representa qué tan correcto es el texto bajo la evaluación de un experto. Luego se ajusta un modelo lineal mediante una regresión (multi-variable), de manera de ajustar las ponderaciones (pesos) de cada {\em proxe}. Finalmente, el puntaje de un ensayo se calcula como se muestra en la ecuación \ref{eq0}.
 
@@ -159,7 +179,9 @@ Las primeras técnicas de evaluación automática de textos \cite{t0} modelaban 
 
 Donde $\beta_i$ representa la ponderación correspondiente al {\em proxe} $P_i$, y representa el impacto que tiene el {\em proxe} en el puntaje del ensayo. Los mejores resultados experimentales mostraron una correlación de 0.87 entre los puntajes asignados por éste método y los asignados por humanos \cite{t0}. Sin embargo, el método utiliza medidas indirectas de la calidad del texto a evaluar lo que lo hace vulnerable a engaños \cite{t9}, ya que un estudiante podría mejorar su puntaje mediante trucos (por ejemplo escribir un texto más largo). Por otro lado, el uso de estas medidas no captura características importantes tales como contenido, organización, y coherencia. La razón de ello es que el método se fundamenta únicamente en la frecuencia de aparición de cada {\em proxe} y no en el significado de lo que está escrito ni en las relaciones que existen entre las ideas expresadas en el texto.
 
-Para evaluar el contenido de un texto, se han utilizado técnicas de {\em Recuperación de Información} (IR) \cite{t26} y {\em Procesamiento del Lenguaje Natural} (NLP) \cite{t27}. Para representar el contenido de un texto se utiliza un modelo de IR conocido como {\em modelo de espacio vectorial} \cite{t26}, el cual considera un vocabulario previamente definido (términos relevantes que encapsulan el contenido del texto) que se utiliza para representar un documento a partir de la frecuencia de aparición de los términos que lo componen, como se muestra en la ecuación \ref{eq1}.
+\section{Modelo de Espacio Vectorial}
+
+Para evaluar el contenido de un texto, se han utilizado técnicas de {\em Recuperación de Información} (IR) \cite{t26} y {\em Procesamiento del Lenguaje Natural} (NLP) \cite{t27}. Para representar el contenido de un texto se utiliza un modelo de IR conocido como {\em modelo de espacio vectorial} \cite{t26}, el cual representa a los documentos en un espacio altamente dimensional, donde cada dimensión está asociada a términos relevantes del texto, como por ejemplo frecuencia de aparición de palabras. Luego, un documento se puede representar como un vector (ecuación \ref{eq1}).
 
 \begin{equation}
 	\label{eq1}
@@ -175,9 +197,35 @@ Donde cada componente del vector $d$ representa la frecuencia en que el término
 
 Donde $d_i$ y $d_j$ son vectores que representan el contenido del texto. Luego, teniendo a disposición un corpus (conjunto de documentos), se puede utilizar esta técnica para encontrar las similitudes ente un documento nuevo y un documento del corpus.
 
+En la figura \ref{fig_01} se muestra como ejemplo un espacio vectorial de 3 dimensiones y documentos representados en dicho espacio.
+
+\begin{figure}[!htbp]
+  \begin{center}
+    \leavevmode
+    \fbox{\includegraphics[width=4in] {fig_01.png}}
+  \end{center}
+  \caption{Representación de documentos en un espacio fectorial}
+  \label{fig_01}
+\end{figure}
+
 En el contexto de evaluación automática de ensayos, se tiene un conjunto de documentos previamente evaluados por expertos humanos. Luego, para evaluar un texto nuevo, se calcula la similitud entre el documento nuevo y los documentos del corpus, y se asigna el puntaje del más similar, o una suma ponderada de los puntajes más similares.
 
-La aplicación del método ha logrado una correlación con la evaluación realizada por humanos de 0.76 \cite{t5}. Sin embargo, la evaluación depende fuertemente de la co-ocurrencia de términos, por lo que un ensayo que sea sólo un conjunto de palabras sin una conexión clara, podría ser bien evaluado \cite{t9}. Por otro lado, la técnica está puramente basada en representaciones de palabras, las cuales podrían no aparecer explícitamente en los ensayos (por ejemplo sinónimos).
+La aplicación del método ha logrado una correlación con la evaluación realizada por humanos de 0.76 \cite{t5}. Sin embargo, la evaluación depende fuertemente de la co-ocurrencia de términos, por lo que un ensayo que sea sólo un conjunto de palabras sin una conexión clara, podría ser bien evaluado \cite{t9}. 
+
+La efectividad del método depende de qué tan cercano es el cálculo de similitud realizado en el espacio vectorial, con la similitud real de los documentos. Algunos problemas que existen con este enfoque son los siguientes:
+
+\begin{itemize}
+	\item Polisemia ($sim(d_i, d_j) < cos(d_i, d_j)$): Si en el vocabulario definido para representar los vectores existen palabras que tengan múltiples significados, es posible que la similitud calculada (por ejemplo coseno), sobre-estime la similitud real entre los documentos, debido a que los términos se consideran equivalentes pues solo importa su frecuencia de aparición.
+	\item Sinónimos ($sim(d_i, d_j) > cos(d_i, d_j)$): Dos documentos que sean similares en cuanto a contenido pero utilicen diferentes términos, entre ellos, sinónimos, se considerarán poco similares, pues el coseno del angulo dependerá de qué tan cercanos se encuentran en el espacio vectorial, es decir, se subestima la similaridad real que existe entre dos documentos.
+	\item Relaciones: Los humanos son capaces de establecer relaciones entre palabras, debido a que un lector tiene una representación mental y conceptual de las mismas, cada palabra tiene un significado (por ejemplo existen relaciones entre las palabras doctor/paciente/enfermera/tratamiento). El modelo de espacio vectorial no logra detectar estas relaciones.
+	\item Se tiene una matriz muy dispersa, pues los documentos se representan en un espacio altamente dimensional y es probable que haya términos que no ocurran en todos los documentos. Esto podría ocasionar problemas al realizar el cálculo de similitud, pues si existen demasiados elementos nulos, se podría subestimar la similitud real entre documentos, y si existe co-ocurrencia de muchos términos, se podría sobre-estimar la similitud real entre documentos.
+\end{itemize}
+
+Estos problemas traen como consecuencia la necesidad de tener métodos de reducción dimensional.
+
+\section{Métodos de Reducción Dimensional}
+
+\subsection{Análisis Semántico Latente}
 
 Para abordar el problema de la co-ocurrencia de palabras, se ha aplicado una técnica de reducción dimensional conocida como {\em Análisis Semántico Latente} (LSA) \cite{t28}, la cual intenta extraer y representar el significado de las palabras, lo que permite encontrar similitudes entre documentos aunque no haya co-ocurrencia de términos. El método toma como supuesto que existen relaciones que subyacen de forma latente en la estructura semántica de los datos, y que se encuentran parcialmente ocultas. Este método requiere un corpus, y que se defina un vocabulario con las palabras más relevantes del corpus para representar los documentos en un espacio vectorial. El método considera un modelo de {\em bolsas de palabras} (BOW), es decir, asume que el orden de las palabras no importa. Posteriormente, se obtiene una matriz de palabras y documentos del corpus. Luego, se aplica una técnica matemática conocida como {\em descomposición de valores singulares} (SVD), para obtener una matriz reducida que en este contexto se denomina {\em espacio semántico}. Las dimensiones de este espacio semántico son una combinación lineal de documentos, las que se interpretan como {\em conceptos}, y posteriormente se puede definir una medida de similitud entre ellos. Luego, se puede medir la coherencia textual \cite{t8} \cite{t10} \cite{t20} \cite{t29}, y evaluar ensayos \cite{t9}. 
 
@@ -193,7 +241,11 @@ Para abordar parcialmente el problema relacionado al orden de las palabras, se h
 	\item La descomposición de valores singulares es costosa computacionalmente y el costo crece exponencialmente dependiendo de los n-gramas a utilizar.
 \end{itemize}
 
-El problema de la polisemia no es totalmente resuelto por GLSA, ya que depende de la distribución de n-gramas utilizados para capturar el contexto en que la palabra fue utilizada. Por otro lado, GLSA tampoco tiene una base estadística sólida (no define un modelo generativo de los datos) lo que dificulta interpretar el espacio semántico obtenido. Es por ello que se ha propuesto un método probabilístico denominado {\em Probabilistic Latent Semantic Analysis} \cite{t41}, el cual considera que los datos pueden expresarse en términos de 3 tipos de variables:
+El problema de la polisemia no es totalmente resuelto por GLSA, ya que depende de la distribución de n-gramas utilizados para capturar el contexto en que la palabra fue utilizada. Por otro lado, GLSA tampoco tiene una base estadística sólida (no define un modelo generativo de los datos) lo que dificulta interpretar el espacio semántico obtenido. 
+
+\section{Probabilistic Latent Semantic Analysis}
+
+Para abordar los problemas mencionados previamente se ha propuesto un método probabilístico denominado {\em Probabilistic Latent Semantic Analysis} \cite{t41}, el cual considera que los datos pueden expresarse en términos de 3 tipos de variables:
 
 \begin{itemize}
 	\item Documentos: Los documentos del corpus a utilizar.
@@ -222,11 +274,11 @@ Las ventajas que posee PLSA respecto a LSA incluyen:
 
 Este método se ha utilizado para la evaluación automática de ensayos, los resultados obtenidos son similares a los de LSA en conjuntos de datos pequeños, y mejores que LSA en corpus con más documentos.
 
+\section{Métodos Basados en Bases de Conocimiento}
 En general, los métodos basados en modelos de espacio vectorial tienen el problema de que no son capaces de detectar errores semánticos, como por ejemplo hechos contradictorios dentro de un texto, o hechos inconsistentes dentro del dominio en el que se quiere evaluar el texto. Debido a esto, se ha propuesto el uso de ontologías para la detección de errores semánticos \cite{t43}. Una ontología es una definición formal de tipos, propiedades, y relaciones entre entidades con respecto a un dominio específico. Básicamente, contiene axiomas que representan el dominio y sus características. Para evaluar la coherencia textual en un dominio específico, lo que se hace es crear una base de conocimiento que tenga axiomas sobre el dominio a considerar. Luego, para evaluar un texto, se genera una representación lógica del contenido del mismo y se evalúa la consistencia de los hechos mencionados en el texto con respecto a la base de conocimiento del dominio. Cualquier hecho que sea incosistente se considerará como un error semántico. Se ha encontrado que este método puede detectar errores semánticos que pasan desapercibidos en métodos basados en un modelo de espacio vectorial como LSA \cite{t44}. Un problema con este método es que la generación de la ontología y los axiomas se hace manualmente, por lo que se vuelve poco práctico si se tiene un corpus con miles de documentos. En los experimentos reportados se utilizan conjuntos de datos del orden de los 30 - 50 documentos.
 
-Por otro lado, se han propuesto nuevas medidas de coherencia para evaluar textos automáticamente \cite{t40}. Estas medidas están basadas en un modelo de espacio vectorial. Se divide un texto en segmentos fundamentales (Introducción, desarrollo, y conclusión), luego estos segmentos son llevados a un espacio vectorial, y se representan como puntos en dicho espacio. En esta representación, se definen características tales como distancia entre oraciones más distantes, distancia promedio entre oraciones, distancia entre párrafos, y otras medidas estadísticas relacionadas a la distribución de los datos, como por ejemplo distancia al centroide de cada párrafo. Estas características se interpretan como una medida de la coherencia local y global del texto a evaluar. Se encontró que agregar estas características a un método convencional de evaluación automática de ensayos, mejora la precisión y el grado de acuerdo con los puntajes asignados por humanos y se pueden obtener correlaciones de hasta 0.9, lo que supera a los métodos en el estado del arte \cite{t40}.
-
-Existen otros métodos para medir coherencia textual que consideran la sintaxis de un texto  \cite{t33} \cite{t34} \cite{t35} y se fundamentan en la {\em teoría de centrado} \cite{t36}. Esta establece que un discurso está conformado por segmentos de texto y que cada segmento de texto está conformado por expresiones o enunciados ({\em utterances} $U_i$ - $U_n$). Cada expresión ($U_i$) tiene asociada un conjunto de entidades de discurso o centros del discurso (los cuales pueden ser nombres, pronombres, objetos, etc.), el cual se denomina {\em forward looking centers} $C_f(U_i)$. Los elementos de $C_f$ se rankean de acuerdo a su importancia dentro del discurso. El centro de $C_f$ que tiene el mayor rango se denomina $C_p$ o el centro preferido. También se define un centro que relaciona la expresión actual con la anterior, y se denomina {\em backward looking center} $C_b$, y se define como el centro con mayor rango en la expresión previa $U_{i-1}$ que es mencionado en la exprsesión $U_i$. $C_b$ es un tipo especial de centro ya representa el tema que está tratando $U_i$.
+\section{Coherencia Textual y Análisis de Discurso}
+Los métodos mencionados previamente utilizan modelos de bolsa de palabras, es decir, el orden de las mismas no influye. Se ha demostrado que la coherencia textual está relacionada con el orden en que se presentan las ideas en un texto \cite{t33}. Existen métodos para medir coherencia textual que consideran la sintaxis de un texto \cite{t34} \cite{t35} y se fundamentan en la {\em teoría de centrado} \cite{t36}. Esta establece que un discurso está conformado por segmentos de texto y que cada segmento de texto está conformado por expresiones o enunciados ({\em utterances} $U_i$ - $U_n$). Cada expresión ($U_i$) tiene asociada un conjunto de entidades de discurso o centros del discurso (los cuales pueden ser nombres, pronombres, objetos, etc.), el cual se denomina {\em forward looking centers} $C_f(U_i)$. Los elementos de $C_f$ se rankean de acuerdo a su importancia dentro del discurso. El centro de $C_f$ que tiene el mayor rango se denomina $C_p$ o el centro preferido. También se define un centro que relaciona la expresión actual con la anterior, y se denomina {\em backward looking center} $C_b$, y se define como el centro con mayor rango en la expresión previa $U_{i-1}$ que es mencionado en la exprsesión $U_i$. $C_b$ es un tipo especial de centro ya representa el tema que está tratando $U_i$.
 
 La teoría define cuatro tipos de transiciones, las cuales se muestran en la tabla \ref{t1}.
 
@@ -312,14 +364,14 @@ Donde $sim(S_i, S_{i+1})$ es una medida de similaridad entre las oraciones $S_i$
 
 Este método ha sido comparado con otros enfoques para medir coherencia textual (entre ellos LSA, basados en ontologías, basados en características superficiales) en el ámbito de resumenes generados automáticamente \cite{t33}. Los resultados muestran que no existe correlación entre los métodos, por lo que cada uno mide distintas componentes de la coherencia textual. Así, un modelo que considere estas componentes tendrá un mejor desempeño en términos de correlación con humanos que cualquier modelo por sí solo.
 
-Tomando lo anterior, un modelo que considere la sintaxis y semántica de un ensayo podría mejorar el rendimiento de la evaluación debido a que considería diferentes componentes de la coherencia textual.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Step 12: Here's the main part of your research project. We can't tell
 % you what to write here... that's your job.
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Important stuff...}\label{chap:contributions}
+\chapter{Método de Evaluación de Ensayos en base a Sintaxis y Semántica}\label{chap:contributions}
 
+\chapter{Experimentos y Resultados}\label{chap:experiments}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Step 13: Add a conclusions chapter
 %
