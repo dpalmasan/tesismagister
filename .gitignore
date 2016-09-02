@@ -65,3 +65,5 @@ test_essays_cleaned
 *.snm
 *~
 *.synctex
+*.rda
+*.RData
