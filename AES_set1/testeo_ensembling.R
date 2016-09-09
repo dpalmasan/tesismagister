@@ -1,24 +1,9 @@
+# Este codigo testea uso de LSI y las caracteristicas extraidas para el test y el training set
+# Usado con fines de pruebas aun
+
 library(lsa)
 library(caret)
-library(Metrics); source("AgreementMeasures.R");
-
-# Funciones auxiliares para evaluar el modelo
-round_tmp <- function(x, min.grade, max.grade) {
-  tmp <- round(x)
-  if(tmp < min.grade) {
-    return(min.grade)
-  }
-  
-  if(tmp > max.grade) {
-    return(max.grade)
-  }
-  return(tmp)
-}
-
-round2 <- function(x, min.grade = 2, max.grade = 12) {
-  return(mapply(round_tmp, x, MoreArgs = list(min.grade = min.grade, 
-                                              max.grade = max.grade)))
-}
+library(Metrics); source("AgreementMeasures.R"); source("auxiliares.R")
 
 # Cargar Datos
 load("grades")
@@ -33,17 +18,20 @@ corpus_essays <- textmatrix("bow_lsa", stemming = FALSE,
 save(corpus_essays, file = "corpus_LSA.RData")
 #############################################################################
 
+# Preprocesado
+corpus_essays.lsa<- lw_bintf(corpus_essays) * gw_idf(corpus_essays) # weighting
+
 # LSA
-lsaSpace <- lsa(corpus_essays)
-dataset <- as.data.frame(lsaSpace$dk)
-dataset$grades <- grades
+lsaSpace <- lsa(corpus_essays.lsa)
+dataset.lsa <- as.data.frame(lsaSpace$dk)
+dataset.lsa$grades <- grades
 
 # Crear particion de datos
-trainIndex <- createDataPartition(dataset$grades, p = 0.8, list = FALSE)
+trainIndex <- createDataPartition(dataset.lsa$grades, p = 0.8, list = FALSE)
 
 # Modelo generado para LSA (testeando modelo lineal)
-training <- dataset[trainIndex, ]
-test <- dataset[-trainIndex, ]
+training <- dataset.lsa[trainIndex, ]
+test <- dataset.lsa[-trainIndex, ]
 
 mod <- lm(grades ~ ., data=training)
 
@@ -63,10 +51,3 @@ ScoreQuadraticWeightedKappa(round2(pred_base), test$grades, 2, 12)
 exactAgreement(round2(pred_base), test$grades)
 adjacentAgreement(round2(pred_base), test$grades)
 
-new_data <- data.frame(pred_lsa=pred_lsa, pred_base=pred_base)
-new_data$grades <- test$grades
-ensembled_mod <- lm(grades ~ ., data=new_data)
-pred_grades <- predict(ensembled_mod, new_data)
-ScoreQuadraticWeightedKappa(round2(pred_grades), test$grades, 2, 12)
-exactAgreement(round2(pred_grades), test$grades)
-adjacentAgreement(round2(pred_grades), test$grades)
