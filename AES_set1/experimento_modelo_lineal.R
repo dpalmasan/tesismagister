@@ -1,9 +1,7 @@
 # Este codigo lo utilizo para aplicar regresion lineal al modelo baseline
 # Y ver el comportamiento del mismo en 10 experimentos
 
-library(caret)
-library(Metrics); source("AgreementMeasures.R"); source("auxiliares.R")
-library(ggplot2)
+library(caret); library(Metrics); source("AgreementMeasures.R"); source("auxiliares.R"); library(ggplot2)
 
 load("grades")
 dataset <- read.csv("dataset_features.csv")
