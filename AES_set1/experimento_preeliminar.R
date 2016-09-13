@@ -1,13 +1,11 @@
 # Este codigo lo utilizo para aplicar regresion lineal al modelo baseline
 # Y ver el comportamiento del mismo en 10 experimentos
 
-library(caret)
-library(Metrics); source("AgreementMeasures.R"); source("auxiliares.R")
-library(ggplot2)
+library(caret); library(Metrics); source("AgreementMeasures.R"); source("auxiliares.R"); library(ggplot2)
 
 load("grades")
 dataset <- read.csv("discourse_features.csv")
-dataset$grades <- grades[1:nrow(dataset)]
+dataset$grades <- grades
 
 trainIndex <- createDataPartition(dataset$grades, p = 0.8, list = FALSE)
 training <- dataset[trainIndex, ]

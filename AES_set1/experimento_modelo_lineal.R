@@ -2,9 +2,13 @@
 # Y ver el comportamiento del mismo en 10 experimentos
 
 library(caret); library(Metrics); source("AgreementMeasures.R"); source("auxiliares.R"); library(ggplot2)
+library(MASS)
 
 load("grades")
 dataset <- read.csv("dataset_features.csv")
+nzv <- nearZeroVar(dataset)
+dataset <- dataset[, -nzv]
+
 dataset$grades <- grades
 
 # Runs para experimento y promediar
@@ -19,7 +23,7 @@ for (i in 1:runs) {
   training <- dataset[trainIndex, ]
   test <- dataset[-trainIndex, ]
   
-  mod <- lm(grades ~ ., data=training)
+  mod <- rlm(grades ~ ., data=training)
   pred_base <- predict(mod, test)
   qwk[i] <- ScoreQuadraticWeightedKappa(round2(pred_base), test$grades, 2, 12)
   eag[i] <- exactAgreement(round2(pred_base), test$grades)
@@ -31,3 +35,4 @@ p <- ggplot(data = stats, aes(x="qwk", y=qwk))
 p <- p + geom_boxplot()
 p
 
+mean(qwk)
